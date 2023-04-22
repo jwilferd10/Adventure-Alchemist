@@ -1,3 +1,13 @@
+const generateBtnEl = document.getElementById('generateBtn');
+const textAreaEl = document.getElementById('textArea');
+
+const genContent = () => {
+    let textTest = document.createElement('p');
+    textTest.innerHTML = 'Hello world';
+
+    textAreaEl.append(textTest);
+}
+
 // Create a function that picks a number between 0-100 standardly
 
     // Based on user input allow a user to customize the nubmer cap
@@ -13,3 +23,5 @@
 // Randomly determine if traps are true/false
 
 // consider creating a basic loot system
+
+generateBtnEl.addEventListener('click', genContent);
