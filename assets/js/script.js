@@ -1,12 +1,28 @@
 const generateBtnEl = document.getElementById('generateBtn');
 const textAreaEl = document.getElementById('textArea');
 
-const genContent = () => {
-    let textTest = document.createElement('p');
-    textTest.innerHTML = 'Hello world';
+// Dungeon Parameters
+const dungeonThemes = ['Ancient ruins', 'Caverns', 'Catacombs', 'Crypts', 'Dark forest', 'Desert tomb', 'Dwarf mine', 'Elemental plane', 'Ghost town', 'Goblin stronghold', 'Haunted mansion', 'Ice cave', 'Jungle temple', 'Labyrinth', 'Necropolis', 'Oceanic abyss', 'Orc stronghold', 'Palace dungeon', 'Sewer system', 'Underwater city', 'Vampire crypt', 'Wizard\'s tower', 'Zombie infested lab'];
+const monsterTypes = ['Undead', 'Abberations', 'Dragons', 'Constructs', 'Fiends', 'Giants', 'Fey', 'Elementals', 'Beasts', 'Humanoids'];
+const trapTypes = ["Pit trap", "Arrow trap", "Poison dart trap", "Swinging blade trap", "Net trap"];
+const lootType = ["Gold coins", "Magic ring", "Potion of healing", "Scroll of fireball", "Jeweled sword"];
 
-    textAreaEl.append(textTest);
-}
+// Array that collects all existing Dungeon Parameters 
+const dungeonInfo = [
+    dungeonThemes,
+    monsterTypes,
+    trapTypes,
+    lootType
+];
+
+console.log(dungeonInfo);
+
+// const genContent = () => {
+//     let textTest = document.createElement('p');
+//     textTest.innerHTML = 'Hello world';
+
+//     textAreaEl.append(textTest);
+// }
 
 // Create a function that picks a number between 0-100 standardly
 
@@ -24,4 +40,4 @@ const genContent = () => {
 
 // consider creating a basic loot system
 
-generateBtnEl.addEventListener('click', genContent);
+// generateBtnEl.addEventListener('click', genContent);
