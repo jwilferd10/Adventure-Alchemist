@@ -15,7 +15,25 @@ const dungeonInfo = [
     lootType
 ];
 
-console.log(dungeonInfo);
+// Running a test to make sure the functionality works
+// TO-DO: Modularize the code afterwards
+const generateDungeon = () => {
+    const roomAmount = Math.floor(Math.random() * 10) + 1;
+    const theme = dungeonInfo[0][Math.floor(Math.random() * dungeonInfo[0].length)];
+    const monsters = dungeonInfo[1][Math.floor(Math.random() * dungeonInfo[1].length)];
+    const traps = dungeonInfo[2][Math.floor(Math.random() * dungeonInfo[2].length)];
+    const loot = dungeonInfo[3][Math.floor(Math.random() * dungeonInfo[3].length)];
+
+    console.log(`You have entered a ${theme} dungeon with ${roomAmount} rooms. Be careful of the ${monsters} and the ${traps} trap. You might find ${loot} if you're lucky!`);
+}
+
+
+
+// Create a function that picks a number between 0-100 standardly
+
+    // Based on user input allow a user to customize the nubmer cap
+
+// Randomly select the theme of the dungeon 
 
 // const genContent = () => {
 //     let textTest = document.createElement('p');
@@ -24,20 +42,5 @@ console.log(dungeonInfo);
 //     textAreaEl.append(textTest);
 // }
 
-// Create a function that picks a number between 0-100 standardly
 
-    // Based on user input allow a user to customize the nubmer cap
-
-// Create an array that contains multiple dungeon themes
-
-// Create a function that randomly selects items in an array
-
-// Create an array that contains multiple monster types
-
-// Create a function that randomly selects at least 3 monster types
-
-// Randomly determine if traps are true/false
-
-// consider creating a basic loot system
-
-// generateBtnEl.addEventListener('click', genContent);
+generateBtnEl.addEventListener('click', generateDungeon);
