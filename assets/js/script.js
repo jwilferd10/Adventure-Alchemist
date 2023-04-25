@@ -57,7 +57,8 @@ const generateDungeon = () => {
     const trap = setTrap();
     const lootItem = setLoot();
 
-    console.log(`You have entered a ${theme} dungeon with ${numberOfRooms} rooms. Be careful of the ${monsters} and the ${trap} trap. You might find ${lootItem} if you're lucky!`);
+    console.log(`You have entered a ${theme} dungeon with ${numberOfRooms} rooms. Be careful of the ${monsters} ${trap ? ` and the ${trap} trap` : ''}. You might find ${lootItem} if you're lucky!`);
+
 }
 
 const generateDungeonTheme = () => {
@@ -77,7 +78,12 @@ const generateMonsterType = () => {
 
 const generateTrap = () => {
     const trap = setTrap();
-    console.log(`You have entered a dungeon with a ${trap} trap somewhere`);
+
+    if (trap === 'no trap') {
+        console.log(`You have entered a dungeon with no traps`);
+    } else {
+        console.log(`You have entered a dungeon with a ${trap} trap somewhere`);
+    }
 }
 
 const generateLoot = () => {
@@ -102,7 +108,15 @@ const setMonsterType = () => {
 
 // Randomly determine if traps are active in dungeon, then generate trap type
 const setTrap = () => {
-    return dungeonInfo[2][Math.floor(Math.random() * dungeonInfo[2].length)];
+    // trapBoolean will be true/false roughly 50% of the time, indicating whether traps will be present in the dungeon or not.
+    // For newer programmers, the 0.5 can tweaked to change the probability of true/false 
+    let trapBoolean = Math.random() < 0.5;
+
+    if (trapBoolean) {
+        return dungeonInfo[2][Math.floor(Math.random() * dungeonInfo[2].length)];
+    } else {
+        return 'no traps';
+    }
 }
 
 // Randomly select loot type
