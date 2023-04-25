@@ -20,10 +20,11 @@ const dungeonInfo = [
 const generateButtonHandler = (event) => {
     event.preventDefault();
 
-    // Collect the value from HTML FormSelect 
+    // Collect the value from HTML formSelect and clear searchSelectionEl afterwards 
     let generateParam = searchSelectionEl.value;
-    // searchSelectionEl.value = '';
+    searchSelectionEl.value = '';
 
+    // generate based by input
     switch (generateParam) {
         case 'entireScenario':
             generateDungeon();
