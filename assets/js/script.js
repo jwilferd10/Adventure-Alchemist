@@ -62,31 +62,36 @@ const generateDungeon = () => {
 
 }
 
+// generate theme
 const generateDungeonTheme = () => {
     const theme = setTheme();
     console.log(`You have entered a ${theme} dungeon`);
 }
 
+// generate room amount
 const generateRoomAmount = () => {
     const numberOfRooms = setRoomAmount();
-    console.log(`You have entered a dungeon with ${numberOfRooms} many rooms`);
+    console.log(`You have entered an area with ${numberOfRooms} unique locations`);
 }
 
+// generate monster type 
 const generateMonsterType = () => {
     const monsters = setMonsterType();
-    console.log(`You have entered a dungeon infested with ${monsters}`);
+    console.log(`You have entered an area infested with ${monsters}`);
 }
 
+// generate and determine if traps are present
 const generateTrap = () => {
     const trap = setTrap();
 
-    if (trap === 'no trap') {
+    if (trap === null || trap === undefined) {
         console.log(`You have entered a dungeon with no traps`);
-    } else {
+    } else if (trap) {
         console.log(`You have entered a dungeon with a ${trap} trap somewhere`);
     }
 }
 
+// generate loot
 const generateLoot = () => {
     const lootItem = setLoot();
     console.log(`Somewhere in the dungeon you can find a ${lootItem}!`);
@@ -116,7 +121,7 @@ const setTrap = () => {
     if (trapBoolean) {
         return dungeonInfo[2][Math.floor(Math.random() * dungeonInfo[2].length)];
     } else {
-        return 'no traps';
+        return null;
     }
 }
 
