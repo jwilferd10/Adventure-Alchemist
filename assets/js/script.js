@@ -1,4 +1,5 @@
 const generateBtnEl = document.getElementById('generateBtn');
+const searchSelectionEl = document.getElementById('searchSelection');
 const textAreaEl = document.getElementById('textArea');
 
 // Dungeon Parameters
@@ -15,30 +16,86 @@ const dungeonInfo = [
     lootType
 ];
 
+// Build form select functionality
+const generateButtonHandler = (event) => {
+    event.preventDefault();
+
+    // Collect the value from HTML FormSelect 
+    let generateParam = searchSelectionEl.value;
+    // searchSelectionEl.value = '';
+
+    switch (generateParam) {
+        case 'entireScenario':
+            generateDungeon();
+            break;
+        case 'dungeonTheme':
+            generateDungeonTheme();
+            break;
+        case 'roomNum':
+            generateRoomAmount();
+            break;
+        case 'monsterType':
+            generateMonsterType();
+            break;
+        case 'checkTrap': 
+            generateTrap();
+            break;
+        case 'loot':
+            generateLoot();
+            break;
+        default: 
+        alert('Please select a topic!');
+    }
+}
+
 // generate 
 const generateDungeon = () => {
-    // const roomAmount = Math.floor(Math.random() * 10) + 1;
-    const numberOfRooms = roomAmount();
-    const theme = generateTheme();
-    const monsters = generateMonsters();
+    const numberOfRooms = setRoomAmount();
+    const theme = setTheme();
+    const monsters = setMonsterType();
     const trap = setTrap();
     const lootItem = setLoot();
 
     console.log(`You have entered a ${theme} dungeon with ${numberOfRooms} rooms. Be careful of the ${monsters} and the ${trap} trap. You might find ${lootItem} if you're lucky!`);
 }
 
+const generateDungeonTheme = () => {
+    const theme = setTheme();
+    console.log(`You have entered a ${theme} dungeon`);
+}
+
+const generateRoomAmount = () => {
+    const numberOfRooms = setRoomAmount();
+    console.log(`You have entered a dungeon with ${numberOfRooms} many rooms`);
+}
+
+const generateMonsterType = () => {
+    const monsters = setMonsterType();
+    console.log(`You have entered a dungeon infested with ${monsters}`);
+}
+
+const generateTrap = () => {
+    const trap = setTrap();
+    console.log(`You have entered a dungeon with a ${trap} trap somewhere`);
+}
+
+const generateLoot = () => {
+    const lootItem = setLoot();
+    console.log(`Somewhere in the dungeon you can find a ${lootItem}!`);
+}
+
 // Randomly select room amount 
-const roomAmount = () => {
+const setRoomAmount = () => {
     return Math.floor(Math.random() * 10) + 1;
 }
 
 // Randomly select theme
-const generateTheme = () => {
+const setTheme = () => {
     return dungeonInfo[0][Math.floor(Math.random() * dungeonInfo[0].length)];
 }
 
 // Randomly select monster type
-const generateMonsters = () => {
+const setMonsterType = () => {
     return dungeonInfo[1][Math.floor(Math.random() * dungeonInfo[1].length)];
 }
 
@@ -63,4 +120,4 @@ const setLoot = () => {
     //     textAreaEl.append(textTest);
     // }
 
-generateBtnEl.addEventListener('click', generateDungeon);
+generateBtnEl.addEventListener('click', generateButtonHandler);
