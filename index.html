@@ -13,25 +13,29 @@
     
     <main class="flex-row justify-space-between">
         <!-- Search Form -->
-        <section class="card">
-            <h3 class="card-header text-uppercase text-center">📂 Generate By Topic</h3>
-            <!-- Form Select & Generate Options -->
-            <select id="searchSelection" class="form-input">
-                <option value="" disabled selected class="btn">Select A Topic</option>
-                <option value="entireScenario" class="btn">Entire Scenario</option>
-                <option value="dungeonTheme" class="btn">Dungeon Theme</option>
-                <option value="roomNum" class="btn">Amount of Room(s)</option>
-                <option value="monsterType" class="btn">Monster Type(s)</option>
-                <option value="checkTrap" class="btn">Traps</option>
-                <option value="loot" class="btn">Loot</option>
-            </select>
-            <button id="generateBtn" class="btn">🔍Generate</button>
+        <section>
+            <div class="card">
+                <h3 class="card-header text-uppercase text-center">📂 Generate By Topic</h3>
+                <!-- Form Select & Generate Options -->
+                <select id="searchSelection" class="form-input">
+                    <option value="" disabled selected class="btn">Select A Topic</option>
+                    <option value="entireScenario" class="btn">Entire Scenario</option>
+                    <option value="dungeonTheme" class="btn">Dungeon Theme</option>
+                    <option value="roomNum" class="btn">Amount of Room(s)</option>
+                    <option value="monsterType" class="btn">Monster Type(s)</option>
+                    <option value="checkTrap" class="btn">Traps</option>
+                    <option value="loot" class="btn">Loot</option>
+                </select>
+                <button id="generateBtn" class="btn">🔍Generate</button>
+            </div>
         </section>
 
-        <section class="card">
-            <h3 class="card-header text-uppercase text-center">Generated Content</h3>
-            <div id="textArea">
-
+        <section>
+            <div class="card">
+                <h3 class="card-header text-uppercase text-center">Generated Content</h3>
+                <div id="textArea">
+                    <!-- Generated Content here -->
+                </div>
             </div>
         </section>
     </main>
