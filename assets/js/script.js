@@ -49,7 +49,7 @@ const generateButtonHandler = (event) => {
     }
 }
 
-// generate 
+// generate every topic all at once 
 const generateDungeon = () => {
     const numberOfRooms = setRoomAmount();
     const theme = setTheme();
@@ -57,6 +57,7 @@ const generateDungeon = () => {
     const trap = setTrap();
     const lootItem = setLoot();
 
+    // ternary operator is checking whether traps are in or not
     console.log(`You have entered a ${theme} dungeon with ${numberOfRooms} rooms. Be careful of the ${monsters} ${trap ? ` and the ${trap} trap` : ''}. You might find ${lootItem} if you're lucky!`);
 
 }
