@@ -7,13 +7,30 @@ const dungeonThemes = ['Ancient ruins', 'Battlefield', 'Caverns', 'Catacombs', '
 const monsterTypes = ['Undead', 'Abberations', 'Dragons', 'Constructs', 'Fiends', 'Giants', 'Fey', 'Elementals', 'Beasts', 'Humanoids'];
 const trapTypes = ["Pit", "Arrow", "Poison dart", "Swinging blade", "Net"];
 const lootType = ["Gold coins", "Magic ring", "Potion of healing", "Scroll of fireball", "Jeweled sword"];
+const ambiance = [
+    'The mist creeps in, cloaking everything in a ghostly haze.',
+    'Shadows twist and writhe on the walls like living things.',
+    'The air hums with a strange energy, making the hairs on the back of your neck stand up.',
+    'A thick silence hangs heavy in the air, broken only by the sound of your own footsteps.',
+    'A pervasive sense of unease settles over you like a heavy blanket.',
+    'The world is quiet and the silence is loud.',
+    'The air is thick and humid, like walking through a swamp.',
+    'The darkness is oppressive and seems to swallow sound.',
+    'The ground is spongy and moist, like walking on a soaked sponge.',
+    'The air is cool and crisp, with a hint of woodsmoke in the distance.',
+    'The fog is thick and clings to everything like a damp veil.',
+    'The ground is littered with small rocks and pebbles, crunching beneath your feet.',
+    'The air is heavy with the scent of damp earth and decaying leaves.',
+    'The sky is a deep shade of blue, dotted with white fluffy clouds.'
+];
 
 // Array that collects all existing Dungeon Parameters 
 const dungeonInfo = [
     dungeonThemes,
     monsterTypes,
     trapTypes,
-    lootType
+    lootType,
+    ambiance
 ];
 
 // Build form select functionality
@@ -53,13 +70,14 @@ const generateButtonHandler = (event) => {
 const generateDungeon = () => {
     const numberOfRooms = setRoomAmount();
     const theme = setTheme();
+    const ambiance = setAmbiance();
     const monstersArr = setMonsterType();
     const monsterStr = formatMonsterStr(monstersArr);
     const trap = setTrap();
     const lootItem = setLoot();
 
     // ternary operator is checking whether traps are in or not
-    const generatedText = createParagraphElement(`You have entered a ${theme} with ${numberOfRooms} rooms. Be cautious of the ${monsterStr} that may lurk about. ${trap ? ` You're bound to run into a ${trap} trap somewhere.` : ''} You might find ${lootItem} if you're lucky!`);
+    const generatedText = createParagraphElement(`You have entered a ${theme} with ${numberOfRooms} rooms. ${ambiance} Be cautious of the ${monsterStr} that may lurk about. ${trap ? ` You're bound to run into a ${trap} trap somewhere.` : ''} You might find ${lootItem} if you're lucky!`);
 
     textAreaEl.append(generatedText);
 
@@ -68,7 +86,8 @@ const generateDungeon = () => {
 // generate theme
 const generateDungeonTheme = () => {
     const theme = setTheme();
-    const generatedText = createParagraphElement(`You have entered a ${theme} dungeon`);
+    const ambiance = setAmbiance();
+    const generatedText = createParagraphElement(`You have entered a ${theme} dungeon. ${ambiance}`);
 
     textAreaEl.append(generatedText);
 };
@@ -167,12 +186,18 @@ const setLoot = () => {
     return dungeonInfo[3][Math.floor(Math.random() * dungeonInfo[3].length)];
 };
 
+// setAmbiance
+const setAmbiance = () => {
+    return dungeonInfo[4][Math.floor(Math.random() * dungeonInfo[4].length)];
+}
+
+
 // Display generated content to HTML
 const createParagraphElement = (generatedText) => {
     // create a p element using generatedText
     const generatedEl = document.createElement('p');
     generatedEl.textContent = generatedText;
-    generatedEl.classList.add('text-center');
+    generatedEl.classList.add('text-center', 'listStyle');
 
     // Append to textAreaEl
     return generatedEl;
