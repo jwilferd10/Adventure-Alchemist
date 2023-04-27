@@ -59,7 +59,7 @@ const generateDungeon = () => {
     const lootItem = setLoot();
 
     // ternary operator is checking whether traps are in or not
-    const generatedText = createParagraphElement(`You have entered a ${theme} dungeon with ${numberOfRooms} rooms. Be careful of the ${monsterStr} ${trap ? ` and the ${trap} trap` : ''}. You might find ${lootItem} if you're lucky!`);
+    const generatedText = createParagraphElement(`You have entered a ${theme} with ${numberOfRooms} rooms. Be cautious of the ${monsterStr} that may lurk about. ${trap ? ` You're bound to run into a ${trap} trap somewhere.` : ''} You might find ${lootItem} if you're lucky!`);
 
     textAreaEl.append(generatedText);
 
@@ -144,7 +144,7 @@ const formatMonsterStr = (monstersArr) => {
         // then add 'and' before the last element of monstersArr
         monsterStr = `${monstersArr.slice(0, -1).join(', ')} and ${monstersArr.slice(-1)}`;
     } else {
-        monsterStr = monsterArr[0];
+        monsterStr = monstersArr[0];
     }
     return monsterStr;
 };
