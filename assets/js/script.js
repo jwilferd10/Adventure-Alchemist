@@ -53,12 +53,13 @@ const generateButtonHandler = (event) => {
 const generateDungeon = () => {
     const numberOfRooms = setRoomAmount();
     const theme = setTheme();
-    const monsters = setMonsterType();
+    const monstersArr = setMonsterType();
+    const monsterStr = monstersArr.join(' and ');
     const trap = setTrap();
     const lootItem = setLoot();
 
     // ternary operator is checking whether traps are in or not
-    const generatedText = createParagraphElement(`You have entered a ${theme} dungeon with ${numberOfRooms} rooms. Be careful of the ${monsters} ${trap ? ` and the ${trap} trap` : ''}. You might find ${lootItem} if you're lucky!`);
+    const generatedText = createParagraphElement(`You have entered a ${theme} dungeon with ${numberOfRooms} rooms. Be careful of the ${monsterStr} ${trap ? ` and the ${trap} trap` : ''}. You might find ${lootItem} if you're lucky!`);
 
     textAreaEl.append(generatedText);
 
@@ -82,8 +83,9 @@ const generateRoomAmount = () => {
 
 // generate monster type 
 const generateMonsterType = () => {
-    const monsters = setMonsterType();
-    const generatedText = createParagraphElement(`You have entered an area infested with ${monsters}`);
+    const monstersArr = setMonsterType();
+    const monsterStr = monstersArr.join(' and ');
+    const generatedText = createParagraphElement(`You have entered an area infested with ${monsterStr}`);
 
     textAreaEl.append(generatedText);
 }
@@ -121,7 +123,16 @@ const setTheme = () => {
 
 // Randomly select monster type
 const setMonsterType = () => {
-    return dungeonInfo[1][Math.floor(Math.random() * dungeonInfo[1].length)];
+    // Randomly select a number between 1 and 3, determines how many monsters are around
+    const randomAmount = Math.floor(Math.random() * 3) + 1;
+    const monsterArr = [];
+
+    for (let i = 0; i < randomAmount; i++) {
+        const randomMonsterType = dungeonInfo[1][Math.floor(Math.random() * dungeonInfo[1].length)];  
+        monsterArr.push(randomMonsterType);       
+    }
+
+    return monsterArr; 
 }
 
 // Randomly determine if traps are active in dungeon, then generate trap type
