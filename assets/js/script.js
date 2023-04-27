@@ -47,14 +47,14 @@ const generateButtonHandler = (event) => {
         default: 
         alert('Please select a topic!');
     }
-}
+};
 
 // generate every topic all at once 
 const generateDungeon = () => {
     const numberOfRooms = setRoomAmount();
     const theme = setTheme();
     const monstersArr = setMonsterType();
-    const monsterStr = monstersArr.join(' and ');
+    const monsterStr = formatMonsterStr(monstersArr);
     const trap = setTrap();
     const lootItem = setLoot();
 
@@ -63,7 +63,7 @@ const generateDungeon = () => {
 
     textAreaEl.append(generatedText);
 
-}
+};
 
 // generate theme
 const generateDungeonTheme = () => {
@@ -71,7 +71,7 @@ const generateDungeonTheme = () => {
     const generatedText = createParagraphElement(`You have entered a ${theme} dungeon`);
 
     textAreaEl.append(generatedText);
-}
+};
 
 // generate room amount
 const generateRoomAmount = () => {
@@ -79,16 +79,16 @@ const generateRoomAmount = () => {
     const generatedText = createParagraphElement(`You have entered an area with ${numberOfRooms} unique locations`);
 
     textAreaEl.append(generatedText);
-}
+};
 
 // generate monster type 
 const generateMonsterType = () => {
     const monstersArr = setMonsterType();
-    const monsterStr = monstersArr.join(' and ');
+    const monsterStr = formatMonsterStr(monstersArr);
     const generatedText = createParagraphElement(`You have entered an area infested with ${monsterStr}`);
 
     textAreaEl.append(generatedText);
-}
+};
 
 // generate and determine if traps are present
 const generateTrap = () => {
@@ -101,7 +101,7 @@ const generateTrap = () => {
         const generatedText = createParagraphElement(`You have entered a dungeon with a ${trap} trap somewhere`);
         textAreaEl.append(generatedText);
     }
-}
+};
 
 // generate loot
 const generateLoot = () => {
@@ -109,17 +109,17 @@ const generateLoot = () => {
     const generatedText = createParagraphElement(`Somewhere in the dungeon you can find a ${lootItem}!`);
 
     textAreaEl.append(generatedText);
-}
+};
 
 // Randomly select room amount 
 const setRoomAmount = () => {
     return Math.floor(Math.random() * 10) + 1;
-}
+};
 
 // Randomly select theme
 const setTheme = () => {
     return dungeonInfo[0][Math.floor(Math.random() * dungeonInfo[0].length)];
-}
+};
 
 // Randomly select monster type
 const setMonsterType = () => {
@@ -133,7 +133,21 @@ const setMonsterType = () => {
     }
 
     return monsterArr; 
-}
+};
+
+// format monsterStr
+const formatMonsterStr = (monstersArr) => {
+    let monsterStr = '';
+    
+    if (monstersArr.length > 1) {
+        // create new string with second to last element of monstersArr removed, joined with commas
+        // then add 'and' before the last element of monstersArr
+        monsterStr = `${monstersArr.slice(0, -1).join(', ')} and ${monstersArr.slice(-1)}`;
+    } else {
+        monsterStr = monsterArr[0];
+    }
+    return monsterStr;
+};
 
 // Randomly determine if traps are active in dungeon, then generate trap type
 const setTrap = () => {
@@ -146,12 +160,12 @@ const setTrap = () => {
     } else {
         return null;
     }
-}
+};
 
 // Randomly select loot type
 const setLoot = () => {
     return dungeonInfo[3][Math.floor(Math.random() * dungeonInfo[3].length)];
-}
+};
 
 // Display generated content to HTML
 const createParagraphElement = (generatedText) => {
