@@ -58,26 +58,34 @@ const generateDungeon = () => {
     const lootItem = setLoot();
 
     // ternary operator is checking whether traps are in or not
-    console.log(`You have entered a ${theme} dungeon with ${numberOfRooms} rooms. Be careful of the ${monsters} ${trap ? ` and the ${trap} trap` : ''}. You might find ${lootItem} if you're lucky!`);
+    const generatedText = createParagraphElement(`You have entered a ${theme} dungeon with ${numberOfRooms} rooms. Be careful of the ${monsters} ${trap ? ` and the ${trap} trap` : ''}. You might find ${lootItem} if you're lucky!`);
+
+    textAreaEl.append(generatedText);
 
 }
 
 // generate theme
 const generateDungeonTheme = () => {
     const theme = setTheme();
-    console.log(`You have entered a ${theme} dungeon`);
+    const generatedText = createParagraphElement(`You have entered a ${theme} dungeon`);
+
+    textAreaEl.append(generatedText);
 }
 
 // generate room amount
 const generateRoomAmount = () => {
     const numberOfRooms = setRoomAmount();
-    console.log(`You have entered an area with ${numberOfRooms} unique locations`);
+    const generatedText = createParagraphElement(`You have entered an area with ${numberOfRooms} unique locations`);
+
+    textAreaEl.append(generatedText);
 }
 
 // generate monster type 
 const generateMonsterType = () => {
     const monsters = setMonsterType();
-    console.log(`You have entered an area infested with ${monsters}`);
+    const generatedText = createParagraphElement(`You have entered an area infested with ${monsters}`);
+
+    textAreaEl.append(generatedText);
 }
 
 // generate and determine if traps are present
@@ -85,16 +93,20 @@ const generateTrap = () => {
     const trap = setTrap();
 
     if (trap === null || trap === undefined) {
-        console.log(`You have entered a dungeon with no traps`);
+        const generatedText = createParagraphElement(`You have entered a dungeon with no traps`);
+        textAreaEl.append(generatedText);
     } else if (trap) {
-        console.log(`You have entered a dungeon with a ${trap} trap somewhere`);
+        const generatedText = createParagraphElement(`You have entered a dungeon with a ${trap} trap somewhere`);
+        textAreaEl.append(generatedText);
     }
 }
 
 // generate loot
 const generateLoot = () => {
     const lootItem = setLoot();
-    console.log(`Somewhere in the dungeon you can find a ${lootItem}!`);
+    const generatedText = createParagraphElement(`Somewhere in the dungeon you can find a ${lootItem}!`);
+
+    textAreaEl.append(generatedText);
 }
 
 // Randomly select room amount 
@@ -130,15 +142,17 @@ const setLoot = () => {
     return dungeonInfo[3][Math.floor(Math.random() * dungeonInfo[3].length)];
 }
 
+// Display generated content to HTML
+const createParagraphElement = (generatedText) => {
+    // create a p element using generatedText
+    const generatedEl = document.createElement('p');
+    generatedEl.textContent = generatedText;
+    generatedEl.classList.add('text-center');
+
+    // Append to textAreaEl
+    return generatedEl;
+};
+
 // Create a 'previous searches' section that collects the generated code
-
-// Use the {theme} of the title as the innerHTML name
-
-    // const genContent = () => {
-    //     let textTest = document.createElement('p');
-    //     textTest.innerHTML = 'Hello world';
-
-    //     textAreaEl.append(textTest);
-    // }
 
 generateBtnEl.addEventListener('click', generateButtonHandler);
