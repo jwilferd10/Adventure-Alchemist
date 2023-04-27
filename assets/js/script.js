@@ -24,13 +24,27 @@ const ambiance = [
     'The sky is a deep shade of blue, dotted with white fluffy clouds.'
 ];
 
+const areaDifficulty = [
+    "This location looks like a cakewalk.",
+    "This location appears to be relatively simple, but don't let your guard down.",
+    "This location seems to have a moderate level of difficulty, so stay alert.",
+    "This location looks like it will require some skill and strategy to overcome.",
+    "This location appears to be a serious challenge that will test your abilities to the limit.",
+    "This location seems to be deceptively easy, so don't get overconfident.",
+    "This location appears to be filled with unexpected challenges, so be prepared for anything.",
+    "This location looks like it will be a tough but fair test of your abilities.",
+    "This location looks like it will require both strength and intelligence to overcome.",
+    "This location seems to be a true trial of your skills, so be ready to give it your all."
+  ];
+
 // Array that collects all existing Dungeon Parameters 
 const dungeonInfo = [
     dungeonThemes,
     monsterTypes,
     trapTypes,
     lootType,
-    ambiance
+    ambiance,
+    areaDifficulty
 ];
 
 // Build form select functionality
@@ -75,9 +89,10 @@ const generateDungeon = () => {
     const monsterStr = formatMonsterStr(monstersArr);
     const trap = setTrap();
     const lootItem = setLoot();
+    const difficulty = setDifficulty();
 
     // ternary operator is checking whether traps are in or not
-    const generatedText = createParagraphElement(`You have entered a ${theme} with ${numberOfRooms} rooms. ${ambiance} Be cautious of the ${monsterStr} that may lurk about. ${trap ? ` You're bound to run into a ${trap} trap somewhere.` : ''} You might find ${lootItem} if you're lucky!`);
+    const generatedText = createParagraphElement(`You have entered a ${theme} with ${numberOfRooms} rooms. ${ambiance} Be cautious of the ${monsterStr} that may lurk about. ${trap ? ` You're bound to run into a ${trap} trap somewhere.` : ''} ${difficulty} You might find ${lootItem} if you're lucky!`);
 
     textAreaEl.append(generatedText);
 
@@ -191,6 +206,10 @@ const setAmbiance = () => {
     return dungeonInfo[4][Math.floor(Math.random() * dungeonInfo[4].length)];
 }
 
+// set difficulty
+const setDifficulty = () => {
+    return dungeonInfo[5][Math.floor(Math.random() * dungeonInfo[5].length)];
+}
 
 // Display generated content to HTML
 const createParagraphElement = (generatedText) => {
