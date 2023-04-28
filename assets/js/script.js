@@ -35,7 +35,7 @@ const areaDifficulty = [
     "This location looks like it will be a tough but fair test of your abilities.",
     "This location looks like it will require both strength and intelligence to overcome.",
     "This location seems to be a true trial of your skills, so be ready to give it your all."
-  ];
+];
 
 // Array that collects all existing Dungeon Parameters 
 const dungeonInfo = [
@@ -53,7 +53,7 @@ const generateButtonHandler = (event) => {
 
     // Collect the value from HTML formSelect and clear searchSelectionEl afterwards 
     let generateParam = searchSelectionEl.value;
-    searchSelectionEl.value = '';
+    // searchSelectionEl.value = '';
 
     // generate based by input
     switch (generateParam) {
@@ -157,15 +157,50 @@ const setTheme = () => getRandomItem(dungeonInfo[0]);
 
 // Randomly select monster type
 const setMonsterType = () => {
-    // Randomly select a number between 1 and 3, determines how many monsters are around
-    const randomAmount = Math.floor(Math.random() * 3) + 1;
+    // Create an empty array to store monster types
     const monsterArr = [];
 
+    // make a copy of the monsterTypes array
+    const monsterTypesCopy = monsterTypes.slice();
+
+    // initialize an empty array to store used monster types
+    const usedMonsterTypes = [];
+
+    // Function returns random monsterType and ensures it hasn't been selected twice
+    const getRandomMonsterType = () => { 
+        // if all monster types have been used, reset the usedMonsterTypes and monsterTypesCopy arrays
+        if (monsterTypesCopy.length === 0) {
+            // Resets the usedMonsterTypes to an empty array. Ensures no repeat for any monster type
+            usedMonsterTypes.length = 0;
+            // Reset monsterTypesCopy array to original contents. splice() method used to modify the array in place, starting from index 0 and removing monsterTypes.length elements. 
+            // Then, using the spread operator ..., insert all elements of monsterTypes at the beginning of array
+            monsterTypesCopy.splice(0, monsterTypes.length, ...monsterTypes);
+        }
+
+        // Generate a random index to select a monster type from the global monsterTypes array
+        const randomIndex = Math.floor(Math.random() * monsterTypesCopy.length);
+        // Collect the monster type from randomIndex 
+        const randomMonsterType = monsterTypesCopy[randomIndex];
+
+        // If monsterType has already been used, recursively call the function again to get a new type
+        if(usedMonsterTypes.includes(randomMonsterType)) {
+            return getRandomMonsterType();
+        } else {
+            usedMonsterTypes.push(randomMonsterType);
+            return randomMonsterType;
+        }
+    }
+
+    // Randomly select a number between 1 and 3, determines how many monsters are around
+    const randomAmount = Math.floor(Math.random() * 3) + 1;
+
+    // Loop through randomAmount and add random monsters to the monsterArr
     for (let i = 0; i < randomAmount; i++) {
-        const randomMonsterType = dungeonInfo[1][Math.floor(Math.random() * dungeonInfo[1].length)];  
+        const randomMonsterType = getRandomMonsterType();
         monsterArr.push(randomMonsterType);       
     }
 
+    // Return the array
     return monsterArr; 
 };
 
