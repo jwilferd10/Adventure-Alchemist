@@ -145,15 +145,15 @@ const generateLoot = () => {
     textAreaEl.append(generatedText);
 };
 
+// consolidate 'set' code into one function. 
+// getRandomItem will round off and select a random number within an array
+const getRandomItem = (arr) => arr[Math.floor(Math.random() * arr.length)];
+
 // Randomly select room amount 
-const setRoomAmount = () => {
-    return Math.floor(Math.random() * 10) + 1;
-};
+const setRoomAmount = () =>  Math.floor(Math.random() * 10) + 1;
 
 // Randomly select theme
-const setTheme = () => {
-    return dungeonInfo[0][Math.floor(Math.random() * dungeonInfo[0].length)];
-};
+const setTheme = () => getRandomItem(dungeonInfo[0]);
 
 // Randomly select monster type
 const setMonsterType = () => {
@@ -169,6 +169,39 @@ const setMonsterType = () => {
     return monsterArr; 
 };
 
+// Randomly determine if traps are active in dungeon, then generate trap type
+const setTrap = () => {
+    // trapBoolean will be true/false roughly 50% of the time, indicating whether traps will be present in the dungeon or not.
+    // For newer programmers, the 0.5 can tweaked to change the probability of true/false 
+    let trapBoolean = Math.random() < 0.5;
+
+    if (trapBoolean) {
+        return getRandomItem(dungeonInfo[2]);
+    } else {
+        return null;
+    }
+};
+
+// Randomly select loot type
+const setLoot = () => getRandomItem(dungeonInfo[3]);
+
+// setAmbiance
+const setAmbiance = () =>  getRandomItem(dungeonInfo[4]);
+
+// set difficulty
+const setDifficulty = () => getRandomItem(dungeonInfo[5]);
+
+// Display generated content to HTML
+const createParagraphElement = (generatedText) => {
+    // create a p element using generatedText
+    const generatedEl = document.createElement('p');
+    generatedEl.textContent = generatedText;
+    generatedEl.classList.add('text-center', 'listStyle');
+
+    // Append to textAreaEl
+    return generatedEl;
+};
+
 // format monsterStr
 const formatMonsterStr = (monstersArr) => {
     let monsterStr = '';
@@ -181,45 +214,6 @@ const formatMonsterStr = (monstersArr) => {
         monsterStr = monstersArr[0];
     }
     return monsterStr;
-};
-
-// Randomly determine if traps are active in dungeon, then generate trap type
-const setTrap = () => {
-    // trapBoolean will be true/false roughly 50% of the time, indicating whether traps will be present in the dungeon or not.
-    // For newer programmers, the 0.5 can tweaked to change the probability of true/false 
-    let trapBoolean = Math.random() < 0.5;
-
-    if (trapBoolean) {
-        return dungeonInfo[2][Math.floor(Math.random() * dungeonInfo[2].length)];
-    } else {
-        return null;
-    }
-};
-
-// Randomly select loot type
-const setLoot = () => {
-    return dungeonInfo[3][Math.floor(Math.random() * dungeonInfo[3].length)];
-};
-
-// setAmbiance
-const setAmbiance = () => {
-    return dungeonInfo[4][Math.floor(Math.random() * dungeonInfo[4].length)];
-}
-
-// set difficulty
-const setDifficulty = () => {
-    return dungeonInfo[5][Math.floor(Math.random() * dungeonInfo[5].length)];
-}
-
-// Display generated content to HTML
-const createParagraphElement = (generatedText) => {
-    // create a p element using generatedText
-    const generatedEl = document.createElement('p');
-    generatedEl.textContent = generatedText;
-    generatedEl.classList.add('text-center', 'listStyle');
-
-    // Append to textAreaEl
-    return generatedEl;
 };
 
 // Create a 'previous searches' section that collects the generated code
