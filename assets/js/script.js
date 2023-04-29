@@ -83,6 +83,12 @@ const generateButtonHandler = (event) => {
     }
 };
 
+// Function to create and append generated text
+const generateAndAppendText = (text) => {
+    const generatedText = createParagraphElement(text);
+    textAreaEl.append(generatedText);
+};
+
 // generate every topic all at once 
 const generateDungeon = () => {
     const numberOfRooms = setRoomAmount();
@@ -95,44 +101,34 @@ const generateDungeon = () => {
     const difficulty = setDifficulty();
 
     // ternary operator is checking whether traps are in or not
-    const generatedText = createParagraphElement(`You have entered a ${theme} with ${numberOfRooms} rooms. ${ambiance} Be cautious of the ${monsterStr} that may lurk about. ${trap ? ` You're bound to run into a ${trap} trap somewhere.` : ''} ${difficulty} You might find ${lootItem} if you're lucky!`);
-
-    textAreaEl.append(generatedText);
-
+    generateAndAppendText(`You have entered a ${theme} with ${numberOfRooms} rooms. ${ambiance} Be cautious of the ${monsterStr} that may lurk about. ${trap ? ` You're bound to run into a ${trap} trap somewhere.` : ''} ${difficulty} You might find ${lootItem} if you're lucky!`);
 };
 
 // generate theme
 const generateDungeonTheme = () => {
     const theme = setTheme();
     const ambiance = setAmbiance();
-    const generatedText = createParagraphElement(`You have entered a ${theme} dungeon. ${ambiance}`);
+    generateAndAppendText(`You have entered a ${theme} dungeon. ${ambiance}`);
 
-    textAreaEl.append(generatedText);
 };
 
 // generate room amount
 const generateRoomAmount = () => {
     const numberOfRooms = setRoomAmount();
-    const generatedText = createParagraphElement(`You have entered an area with ${numberOfRooms} unique locations`);
-
-    textAreaEl.append(generatedText);
+    generateAndAppendText(`You have entered an area with ${numberOfRooms} unique locations`);
 };
 
 // select difficulty at random 
 const generateDifficulty = () => {
     const difficulty = setDifficulty();
-    const generatedText = createParagraphElement(`${difficulty}`)
-
-    textAreaEl.append(generatedText);
+    generateAndAppendText(`${difficulty}`)
 }
 
 // generate monster type 
 const generateMonsterType = () => {
     const monstersArr = setMonsterType();
     const monsterStr = formatMonsterStr(monstersArr);
-    const generatedText = createParagraphElement(`You have entered an area infested with ${monsterStr}`);
-
-    textAreaEl.append(generatedText);
+    generateAndAppendText(`You have entered an area infested with ${monsterStr}`);
 };
 
 // generate and determine if traps are present
@@ -140,20 +136,16 @@ const generateTrap = () => {
     const trap = setTrap();
 
     if (trap === null || trap === undefined) {
-        const generatedText = createParagraphElement(`You have entered a dungeon with no traps`);
-        textAreaEl.append(generatedText);
+        generateAndAppendText(`You have entered a dungeon with no traps`);
     } else if (trap) {
-        const generatedText = createParagraphElement(`You have entered a dungeon with a ${trap} trap somewhere`);
-        textAreaEl.append(generatedText);
+        generateAndAppendText(`You have entered a dungeon with a ${trap} trap somewhere`);
     }
 };
 
 // generate loot
 const generateLoot = () => {
     const lootItem = setLoot();
-    const generatedText = createParagraphElement(`Somewhere in the dungeon you can find a ${lootItem}!`);
-
-    textAreaEl.append(generatedText);
+    generateAndAppendText(`Somewhere in the dungeon you can find a ${lootItem}!`);
 };
 
 // consolidate 'set' code into one function. 
