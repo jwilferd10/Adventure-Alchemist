@@ -66,6 +66,9 @@ const generateButtonHandler = (event) => {
         case 'roomNum':
             generateRoomAmount();
             break;
+        case 'difficulty':
+            generateDifficulty();
+            break; 
         case 'monsterType':
             generateMonsterType();
             break;
@@ -114,6 +117,14 @@ const generateRoomAmount = () => {
 
     textAreaEl.append(generatedText);
 };
+
+// select difficulty at random 
+const generateDifficulty = () => {
+    const difficulty = setDifficulty();
+    const generatedText = createParagraphElement(`${difficulty}`)
+
+    textAreaEl.append(generatedText);
+}
 
 // generate monster type 
 const generateMonsterType = () => {
