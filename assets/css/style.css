@@ -3,6 +3,15 @@ body {
     padding: 0;
     line-height: 1.5;
     font-size: 16px;
+    /* background: linear-gradient(270deg, #4870c1, #bbbd56, #63c5ca); */
+    background-size: 600% 600%;
+
+    /* -webkit-animation: AnimationName 30s ease infinite;
+    animation: AnimationName 30s ease infinite; */
+}
+
+#projectTitle {
+    padding: 0.5rem 0 2rem;
 }
 
 .card {
@@ -18,3 +27,14 @@ section {
 .listStyle {
     margin: 25px 25px 25px;
 }
+
+/* @-webkit-keyframes AnimationName {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+@keyframes AnimationName {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+} */
