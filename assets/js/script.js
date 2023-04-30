@@ -254,6 +254,22 @@ const formatMonsterStr = (monstersArr) => {
     return monsterStr;
 };
 
-// Create a 'previous searches' section that collects the generated code
+// Delete HTML Overflow
+// When the generatedList overexceeds ten generated listItems 
+    // Add red flashing effects to the earliest generated listItem
+    // Delete the listItem when another is created
 
+// Save generated content
+// When the save button is 'clicked'
+    // save the generated content as an object and push it into an array
+    // save that into localStorage
+    // collect the value of the parameter used and use previouslyGenerated() to save onto HTML list
+
+// Create 'previouslyGenerated' section that uses savedContent to generate HTML list items for future calls
+
+// Create a function that clears the entire list
+
+// Create a function to delete one savedItem
+
+// Event Listeners
 generateBtnEl.addEventListener('click', generateButtonHandler);
