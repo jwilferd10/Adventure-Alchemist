@@ -26,6 +26,7 @@ section {
 
 .listStyle {
     margin: 25px 25px 25px;
+    list-style-type: none;
 }
 
 /* @-webkit-keyframes AnimationName {

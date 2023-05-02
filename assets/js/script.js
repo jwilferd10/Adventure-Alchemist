@@ -86,6 +86,17 @@ const generateButtonHandler = (event) => {
 // Function to create and append generated text
 const generateAndAppendText = (text) => {
     const generatedText = createParagraphElement(text);
+
+    // console.log(textAreaEl.children.length)
+
+    // When the generatedList overexceeds seven generated listItems 
+    // NOTE: For some reason, this will delete when TEN items are within textAreaEl. This is a bug
+    if (textAreaEl.children.length >= 7) {
+        // remove the oldest item
+        textAreaEl.removeChild(textAreaEl.firstChild);
+    }
+
+    // Add red flashing effects to the earliest generated listItem
     textAreaEl.append(generatedText);
 };
 
@@ -232,7 +243,7 @@ const setDifficulty = () => getRandomItem(dungeonInfo[5]);
 // Display generated content to HTML
 const createParagraphElement = (generatedText) => {
     // create a p element using generatedText
-    const generatedEl = document.createElement('p');
+    const generatedEl = document.createElement('li');
     generatedEl.textContent = generatedText;
     generatedEl.classList.add('text-center', 'listStyle');
 
@@ -253,11 +264,6 @@ const formatMonsterStr = (monstersArr) => {
     }
     return monsterStr;
 };
-
-// Delete HTML Overflow
-// When the generatedList overexceeds ten generated listItems 
-    // Add red flashing effects to the earliest generated listItem
-    // Delete the listItem when another is created
 
 // Save generated content
 // When the save button is 'clicked'
