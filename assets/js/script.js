@@ -47,6 +47,9 @@ const dungeonInfo = [
     areaDifficulty
 ];
 
+// Array for generated elements on the list
+const generatedElements = [];
+
 // Build form select functionality
 const generateButtonHandler = (event) => {
     event.preventDefault();
@@ -85,19 +88,34 @@ const generateButtonHandler = (event) => {
 
 // Function to create and append generated text
 const generateAndAppendText = (text) => {
-    const generatedText = createParagraphElement(text);
-
-    // console.log(textAreaEl.children.length)
-
-    // When the generatedList overexceeds seven generated listItems 
-    // NOTE: For some reason, this will delete when TEN items are within textAreaEl. This is a bug
-    if (textAreaEl.children.length >= 7) {
-        // remove the oldest item
-        textAreaEl.removeChild(textAreaEl.firstChild);
+    // Apply unique ID to each generated content
+    const id = Date.now().toString();
+    const generatedText = createParagraphElement(text, id);
+    const elementObject = { id, generatedText };
+    generatedElements.push(elementObject);
+    
+    // When the generatedList overexceeds ten generated listItems 
+    if (generatedElements.length > 10) {
+        // Use shift() to remove the first element from the array
+        const oldestElement = generatedElements.shift();
+        // Remove the oldestElement's text from the HTML
+        textAreaEl.removeChild(oldestElement.generatedText);
     }
 
     // Add red flashing effects to the earliest generated listItem
     textAreaEl.append(generatedText);
+};
+
+// Display generated content to HTML
+const createParagraphElement = (generatedText, id) => {
+    // create a p element using generatedText
+    const generatedEl = document.createElement('li');
+    generatedEl.textContent = generatedText;
+    generatedEl.classList.add('text-center', 'listStyle');
+    generatedEl.id = id
+
+    // Append to textAreaEl
+    return generatedEl;
 };
 
 // generate every topic all at once 
@@ -239,17 +257,6 @@ const setAmbiance = () =>  getRandomItem(dungeonInfo[4]);
 
 // set difficulty
 const setDifficulty = () => getRandomItem(dungeonInfo[5]);
-
-// Display generated content to HTML
-const createParagraphElement = (generatedText) => {
-    // create a p element using generatedText
-    const generatedEl = document.createElement('li');
-    generatedEl.textContent = generatedText;
-    generatedEl.classList.add('text-center', 'listStyle');
-
-    // Append to textAreaEl
-    return generatedEl;
-};
 
 // format monsterStr
 const formatMonsterStr = (monstersArr) => {
