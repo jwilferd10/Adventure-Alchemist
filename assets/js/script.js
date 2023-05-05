@@ -111,7 +111,7 @@ const createParagraphElement = (generatedText, id) => {
     // create a p element using generatedText
     const generatedEl = document.createElement('li');
     generatedEl.textContent = generatedText;
-    generatedEl.classList.add('text-center', 'listStyle');
+    generatedEl.classList.add('text-center', 'listStyle', 'border');
     generatedEl.id = id
 
     // Append to textAreaEl
