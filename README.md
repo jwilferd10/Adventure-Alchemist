@@ -40,7 +40,7 @@ Thank you so much for checking out Adventure Alchemist! I devoted time into ensu
 
 **GIVEN a Dungeon Scenario Generator**
 - WHEN I input party level, dungeon size, and theme preferences
-  - THEN I click 'Generate
+  - THEN I click 'Generate'
   - THEN I am presented with a unique and randomized dungeon scenario that fits my preferences
   - THEN I can save the scenario for later use or generate a new one
   
@@ -53,10 +53,11 @@ Thank you so much for checking out Adventure Alchemist! I devoted time into ensu
 ## :minidisc: Usage:
 To use Adventure Alchemist:
 
-Select your party level, dungeon size, and theme preferences
-Click the "Generate" button
-Review the generated scenario details
-Optionally, click the "generate" button again to generate a new scenario with the same preferences
+1. Select your preferenced content to generate
+2. Click the 'Generate' button
+3. Review the generated scenario details
+4. Optionally, click the 'generate' button again to generate a new scenario with the same preferences
+
 Repeat steps 1-4 as desired
   
 ## :e-mail: Contact Information:
