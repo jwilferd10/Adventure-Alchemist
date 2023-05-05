@@ -6,7 +6,26 @@ const textAreaEl = document.getElementById('textArea');
 const dungeonThemes = ['Ancient ruins', 'Battlefield', 'Caverns', 'Catacombs', 'Crypts', 'Dark forest', 'Desert tomb', 'Drow City', 'Dwarf mine', 'Elemental plane', 'Ghost town', 'Goblin stronghold', 'Haunted mansion', 'Ice cave', 'Jungle temple', 'Labyrinth', 'Necropolis', 'Oceanic abyss', 'Orc stronghold', 'Palace dungeon', 'Sewer system', 'Underwater city', 'Vampire crypt', 'Wizard\'s tower', 'Zombie infested lab'];
 const monsterTypes = ['Undead', 'Abberations', 'Dragons', 'Constructs', 'Fiends', 'Giants', 'Fey', 'Elementals', 'Beasts', 'Humanoids'];
 const trapTypes = ["Pit", "Arrow", "Poison dart", "Swinging blade", "Net"];
-const lootType = ["Gold coins", "Magic ring", "Potion of healing", "Scroll of fireball", "Jeweled sword"];
+const lootType = [
+    "plethora of gold coins", 
+    "a single coin", 
+    "magical equipment", 
+    "crate filled with potions of healing", 
+    "book of offensive magic", 
+    "book of defensive magic", 
+    "ancient scroll", 
+    "variety of gems", 
+    "enchanted weapon", 
+    "strange key",
+    "ornate box containing unknown contents",
+    "shimmering crystal orb",
+    "small glowing statue",
+    "strange deck of cards with unknown effects",
+    "ancient tome with forbidden knowledge",
+    "unusual wand with unknown properties",
+    "otherworldly artifact"
+];
+
 const ambiance = [
     'The mist creeps in, cloaking everything in a ghostly haze.',
     'Shadows twist and writhe on the walls like living things.',
@@ -130,7 +149,7 @@ const generateDungeon = () => {
     const difficulty = setDifficulty();
 
     // ternary operator is checking whether traps are in or not
-    generateAndAppendText(`You have entered a ${theme} with ${numberOfRooms} rooms. ${ambiance} Be cautious of the ${monsterStr} that may lurk about. ${trap ? ` You're bound to run into a ${trap} trap somewhere.` : ''} ${difficulty} You might find ${lootItem} if you're lucky!`);
+    generateAndAppendText(`You have entered a ${theme} with ${numberOfRooms} rooms. ${ambiance} Be cautious of the ${monsterStr} that may lurk about. ${trap ? ` You're bound to run into a ${trap} Trap somewhere.` : ''} ${difficulty} You might find ${lootItem} if you're lucky!`);
 };
 
 // generate theme
