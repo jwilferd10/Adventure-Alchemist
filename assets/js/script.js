@@ -302,14 +302,12 @@ const formatMonsterStr = (monstersArr) => {
 
 // Create a function that clears the entire list
 const clearList = () => {
-
     // Empty the array
     generatedElements.length = 0;
-    
+
     // Set textAreaEl to an empty string
     textAreaEl.innerHTML = '';
-
-}
+};
 
 // Create a function to delete one savedItem
 
