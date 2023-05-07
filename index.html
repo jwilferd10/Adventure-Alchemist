@@ -11,13 +11,11 @@
 <body>
     <div id="projectTitle" class="text-center">
         <h1>Adventure Alchemist</h1>
-        <!-- Use for Readme -->
-        <!-- Unleash your creativity with our dungeon generator. -->
     </div>
     
     <main class="flex-row justify-space-between">
         <!-- Search Form -->
-        <section>
+        <section class="stickyEffect">
             <div class="card">
                 <h3 class="card-header text-uppercase text-center">📂 Generate By Topic</h3>
                 <!-- Form Select & Generate Options -->
@@ -31,7 +29,8 @@
                     <option value="checkTrap" class="btn">Traps</option>
                     <option value="loot" class="btn">Loot</option>
                 </select>
-                <button id="generateBtn" class="btn">🔍Generate</button>
+                <button id="generateBtn" class="btn btn-primary">🔍Generate</button>
+                <button id="clearListBtn" class="btn btn-danger">Clear List</button>
             </div>
         </section>
 

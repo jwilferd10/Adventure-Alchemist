@@ -24,6 +24,13 @@ section {
     padding-bottom: 50px;
 }
 
+.stickyEffect {
+    position: sticky;
+    height: 100%;
+    top: 0;
+    z-index: 1;
+}
+
 .listStyle {
     margin: 15px 25px 20px;
     padding: 10px 5px 10px 5px;
