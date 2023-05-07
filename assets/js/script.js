@@ -1,4 +1,5 @@
 const generateBtnEl = document.getElementById('generateBtn');
+const clearListBtnEl = document.getElementById('clearListBtn');
 const searchSelectionEl = document.getElementById('searchSelection');
 const textAreaEl = document.getElementById('textArea');
 
@@ -300,8 +301,18 @@ const formatMonsterStr = (monstersArr) => {
 // Create 'previouslyGenerated' section that uses savedContent to generate HTML list items for future calls
 
 // Create a function that clears the entire list
+const clearList = () => {
+
+    // Empty the array
+    generatedElements.length = 0;
+    
+    // Set textAreaEl to an empty string
+    textAreaEl.innerHTML = '';
+
+}
 
 // Create a function to delete one savedItem
 
 // Event Listeners
 generateBtnEl.addEventListener('click', generateButtonHandler);
+clearListBtnEl.addEventListener('click', clearList); 
