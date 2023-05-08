@@ -70,40 +70,26 @@ const dungeonInfo = [
 // Array for generated elements on the list
 const generatedElements = [];
 
-// Build form select functionality
-const generateButtonHandler = (event) => {
-    event.preventDefault();
+// Save generated content
+// const saveItem = () => {
+//     // Save to localStorage
+//     localStorage.setItem('generatedElements', JSON.stringify(generatedElements));
+// }
 
-    // Collect the value from HTML formSelect and clear searchSelectionEl afterwards 
-    let generateParam = searchSelectionEl.value;
-    // searchSelectionEl.value = '';
+// Load saved content
 
-    // generate based by input
-    switch (generateParam) {
-        case 'entireScenario':
-            generateDungeon();
-            break;
-        case 'dungeonTheme':
-            generateDungeonTheme();
-            break;
-        case 'roomNum':
-            generateRoomAmount();
-            break;
-        case 'difficulty':
-            generateDifficulty();
-            break; 
-        case 'monsterType':
-            generateMonsterType();
-            break;
-        case 'checkTrap': 
-            generateTrap();
-            break;
-        case 'loot':
-            generateLoot();
-            break;
-        default: 
-        alert('Please select a topic!');
-    }
+// Create 'previouslyGenerated' section that uses savedContent to generate HTML list items for future calls
+// const previouslyGenerated = () => {
+//     // Create an HTML element that'll be appended to 'Saved Content'
+// }
+
+// Create a function that clears the entire list
+const clearList = () => {
+    // Empty the array
+    generatedElements.length = 0;
+
+    // Set textAreaEl to an empty string
+    textAreaEl.innerHTML = '';
 };
 
 // Function to create and append generated text
@@ -139,10 +125,47 @@ const createParagraphElement = (generatedText, id) => {
         console.log(`Clicked on element ${id}`);
         
         // Call the save function
+        saveItem(generatedEl);
     });
 
     // Append to textAreaEl
     return generatedEl;
+};
+
+// Build form select functionality
+const generateButtonHandler = (event) => {
+    event.preventDefault();
+
+    // Collect the value from HTML formSelect and clear searchSelectionEl afterwards 
+    let generateParam = searchSelectionEl.value;
+    // searchSelectionEl.value = '';
+
+    // generate based by input
+    switch (generateParam) {
+        case 'entireScenario':
+            generateDungeon();
+            break;
+        case 'dungeonTheme':
+            generateDungeonTheme();
+            break;
+        case 'roomNum':
+            generateRoomAmount();
+            break;
+        case 'difficulty':
+            generateDifficulty();
+            break; 
+        case 'monsterType':
+            generateMonsterType();
+            break;
+        case 'checkTrap': 
+            generateTrap();
+            break;
+        case 'loot':
+            generateLoot();
+            break;
+        default: 
+        alert('Please select a topic!');
+    }
 };
 
 // generate every topic all at once 
@@ -297,24 +320,6 @@ const formatMonsterStr = (monstersArr) => {
         monsterStr = monstersArr[0];
     }
     return monsterStr;
-};
-
-// Save generated content
-
-// When the save button is 'clicked'
-    // save the generated content as an object and push it into an array
-    // save that into localStorage
-    // collect the value of the parameter used and use previouslyGenerated() to save onto HTML list
-
-// Create 'previouslyGenerated' section that uses savedContent to generate HTML list items for future calls
-
-// Create a function that clears the entire list
-const clearList = () => {
-    // Empty the array
-    generatedElements.length = 0;
-
-    // Set textAreaEl to an empty string
-    textAreaEl.innerHTML = '';
 };
 
 // Event Listeners
