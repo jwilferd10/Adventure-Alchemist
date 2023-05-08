@@ -72,6 +72,8 @@ const dungeonInfo = [
 const generatedElements = [];
 
 let idCounter = 0;
+let savedItemNum = 1;
+let remadeEl;
 
 // Function to create and append generated text
 const generateAndAppendText = (text) => {
@@ -97,6 +99,7 @@ const generateAndAppendText = (text) => {
 
 // Display generated content to HTML
 const createParagraphElement = (generatedText, id) => {
+    
     // create a p element using generatedText
     const generatedEl = document.createElement('li');
     generatedEl.textContent = generatedText;
@@ -131,14 +134,28 @@ const saveItem = (generatedEl) => {
 
 // Create 'savedElement' section that uses savedContent to generate HTML list items for future calls
 const savedElement = (generatedText) => {
-    let itemNum 
     // Create an HTML element that'll be appended to 'Saved Content'
     const generatedListEl = document.createElement('li');
-    generatedListEl.textContent = generatedText;
+    generatedListEl.textContent = `Save ${savedItemNum++}`;
     generatedListEl.classList.add('text-center', 'listStyle', 'border');
 
 
-    savedContent.append(generatedListEl);
+    savedContentEl.append(generatedListEl);
+
+    generatedListEl.addEventListener('click', () => {
+        clearList();
+        showSavedContent(generatedText);
+    });
+}
+
+// Recreate savedElemen
+const showSavedContent = (text) => {
+    
+    const remadeEl = document.createElement('li');
+    remadeEl.textContent = text;
+    remadeEl.classList.add('text-center', 'listStyle', 'border', 'remadeEl');
+
+    textAreaEl.append(remadeEl);
 }
 
 // Create a function that clears the entire list
@@ -153,6 +170,13 @@ const clearList = () => {
 // Build form select functionality
 const generateButtonHandler = (event) => {
     event.preventDefault();
+
+    // Remove any existing 'remadeEl' 
+    const existingRemadeEl = document.querySelector('.remadeEl');
+
+    if (existingRemadeEl) {
+        existingRemadeEl.remove();
+    }
 
     // Collect the value from HTML formSelect and clear searchSelectionEl afterwards 
     let generateParam = searchSelectionEl.value;
