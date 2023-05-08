@@ -134,6 +134,13 @@ const createParagraphElement = (generatedText, id) => {
     generatedEl.classList.add('text-center', 'listStyle', 'border');
     generatedEl.id = id
 
+    // Each generatedEl has an eventListener that will trigger the saveItem function
+    generatedEl.addEventListener('click', () => {
+        console.log(`Clicked on element ${id}`);
+        
+        // Call the save function
+    });
+
     // Append to textAreaEl
     return generatedEl;
 };
@@ -293,6 +300,7 @@ const formatMonsterStr = (monstersArr) => {
 };
 
 // Save generated content
+
 // When the save button is 'clicked'
     // save the generated content as an object and push it into an array
     // save that into localStorage
@@ -308,8 +316,6 @@ const clearList = () => {
     // Set textAreaEl to an empty string
     textAreaEl.innerHTML = '';
 };
-
-// Create a function to delete one savedItem
 
 // Event Listeners
 generateBtnEl.addEventListener('click', generateButtonHandler);
