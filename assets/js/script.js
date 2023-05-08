@@ -1,6 +1,7 @@
 const generateBtnEl = document.getElementById('generateBtn');
 const clearListBtnEl = document.getElementById('clearListBtn');
 const searchSelectionEl = document.getElementById('searchSelection');
+const savedContentEl = document.getElementById('savedContent');
 const textAreaEl = document.getElementById('textArea');
 
 // Dungeon Parameters
@@ -70,32 +71,12 @@ const dungeonInfo = [
 // Array for generated elements on the list
 const generatedElements = [];
 
-// Save generated content
-// const saveItem = () => {
-//     // Save to localStorage
-//     localStorage.setItem('generatedElements', JSON.stringify(generatedElements));
-// }
-
-// Load saved content
-
-// Create 'previouslyGenerated' section that uses savedContent to generate HTML list items for future calls
-// const previouslyGenerated = () => {
-//     // Create an HTML element that'll be appended to 'Saved Content'
-// }
-
-// Create a function that clears the entire list
-const clearList = () => {
-    // Empty the array
-    generatedElements.length = 0;
-
-    // Set textAreaEl to an empty string
-    textAreaEl.innerHTML = '';
-};
+let idCounter = 0;
 
 // Function to create and append generated text
 const generateAndAppendText = (text) => {
-    // Apply unique ID to each generated content
-    const id = Date.now().toString();
+    // Apply unique ID to each generated content, increment through teneray operator
+    const id = `generated-${idCounter++}`;
     const generatedText = createParagraphElement(text, id);
     const elementObject = { id, generatedText };
     generatedElements.push(elementObject);
@@ -106,6 +87,8 @@ const generateAndAppendText = (text) => {
         const oldestElement = generatedElements.shift();
         // Remove the oldestElement's text from the HTML
         textAreaEl.removeChild(oldestElement.generatedText);
+        // Remove the oldestElement's object from localStorage
+        localStorage.removeItem(oldestElement.id);
     }
 
     // Add red flashing effects to the earliest generated listItem
@@ -130,6 +113,41 @@ const createParagraphElement = (generatedText, id) => {
 
     // Append to textAreaEl
     return generatedEl;
+};
+
+// Save generated content
+const saveItem = (generatedEl) => {
+    // Save to localStorage
+    localStorage.setItem(generatedEl.id, generatedEl.textContent);
+
+    // Add the saved element to the savedContent list
+    savedElement(generatedEl.textContent);
+};
+
+// Load saved content
+// const loadSavedContent = () => {
+//     // Get saved elements from localStorage
+// }
+
+// Create 'savedElement' section that uses savedContent to generate HTML list items for future calls
+const savedElement = (generatedText) => {
+    let itemNum 
+    // Create an HTML element that'll be appended to 'Saved Content'
+    const generatedListEl = document.createElement('li');
+    generatedListEl.textContent = generatedText;
+    generatedListEl.classList.add('text-center', 'listStyle', 'border');
+
+
+    savedContent.append(generatedListEl);
+}
+
+// Create a function that clears the entire list
+const clearList = () => {
+    // Empty the array
+    generatedElements.length = 0;
+
+    // Set textAreaEl to an empty string
+    textAreaEl.innerHTML = '';
 };
 
 // Build form select functionality
