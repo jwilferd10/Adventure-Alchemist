@@ -100,7 +100,7 @@ const generateAndAppendText = (text) => {
 // Display generated content to HTML
 const createParagraphElement = (generatedText, id) => {
     
-    // create a p element using generatedText
+    // Create a li element using generatedText
     const generatedEl = document.createElement('li');
     generatedEl.textContent = generatedText;
     generatedEl.classList.add('text-center', 'listStyle', 'border');
@@ -111,7 +111,7 @@ const createParagraphElement = (generatedText, id) => {
         // Checks to see what's clicked on GeneratedContent
         console.log(`Clicked on element ${id}`);
     
-        // Takes 
+        // Pass to savedContentList to process data
         savedContentList(generatedEl, savedData);
     });
 
@@ -127,10 +127,11 @@ const savedContentList = (generatedEl, savedData) => {
         id: savedItemNum
     };
 
+    // Create and append generatedListEl to HTML
     const generatedListEl = createSavedContentEl()
-
     savedContentEl.append(generatedListEl);
 
+    // When generatedListEl is clicked, show the text content
     generatedListEl.addEventListener('click', () => {
         clearList();
         showSavedContent(generatedEl);
@@ -139,20 +140,22 @@ const savedContentList = (generatedEl, savedData) => {
     // Add savedObj to the savedData array
     savedData.push(savedObj);
 
+    // Save the array to localStorage
     saveToLocalStorage(savedData);
 }
 
 // Append an HTML element to 'Saved Content'
 const createSavedContentEl = () => {
     const generatedListEl = document.createElement('li');
+    
+    // Increment every time an element is created
     generatedListEl.textContent = `Save ${savedItemNum++}`;
     generatedListEl.classList.add('text-center', 'listStyle', 'border');
     return generatedListEl;
 };
 
-// Recreate savedElemen
+// Recreate the textContent from generatedEl when invoked
 const showSavedContent = (generatedEl) => {
-    
     const remadeEl = document.createElement('li');
     remadeEl.textContent = generatedEl.textContent;
     remadeEl.classList.add('text-center', 'listStyle', 'border', 'remadeEl');
@@ -160,12 +163,13 @@ const showSavedContent = (generatedEl) => {
     textAreaEl.append(remadeEl);
 }
 
+// save to localStorage
 const saveToLocalStorage = (savedData) => {
     // Load existing data from localStorage 
     let savedContent = localStorage.getItem('saved');
     savedContent = JSON.parse(savedContent) || [];
 
-    // Add new data to the existing array
+    // Append new data to the existing array
     savedData.forEach(item => savedContent.push(item));
 
     // Save the updated array to localStorage
@@ -173,11 +177,13 @@ const saveToLocalStorage = (savedData) => {
 };
 
 const loadFromLocalStorage = () => {
+    // getItem and parse it for savedContent
     let savedContent = localStorage.getItem('saved');
+    savedContent = JSON.parse(savedContent);
 
+    // Check results
     console.log(savedContent);
 
-    savedContent = JSON.parse(savedContent);
     for (let i = 0; i < savedContent.length; i++) {
         const key = savedContent[i].id;
         const value = savedContent[i].text;
