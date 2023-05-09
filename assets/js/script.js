@@ -112,7 +112,7 @@ const createParagraphElement = (generatedText, id) => {
         console.log(`Clicked on element ${id}`);
     
         // Takes 
-        savedContentList(generatedEl);
+        savedContentList(generatedEl, savedData);
     });
 
     // Append to textAreaEl
@@ -120,7 +120,7 @@ const createParagraphElement = (generatedText, id) => {
 };
 
 // Create 'savedContentList' section that uses savedContent to generate HTML list items for future calls
-const savedContentList = (generatedEl) => {
+const savedContentList = (generatedEl, savedData) => {
     // Object that collects the text and ID, will be stored in an array
     let savedObj = {
         text: generatedEl.textContent,
@@ -139,7 +139,7 @@ const savedContentList = (generatedEl) => {
     // Add savedObj to the savedData array
     savedData.push(savedObj);
 
-    saveToLocalStorage(savedObj);
+    saveToLocalStorage(savedData);
 }
 
 // Append an HTML element to 'Saved Content'
@@ -160,8 +160,16 @@ const showSavedContent = (generatedEl) => {
     textAreaEl.append(remadeEl);
 }
 
-const saveToLocalStorage = () => {
-    localStorage.setItem('saved', JSON.stringify(savedData));
+const saveToLocalStorage = (savedData) => {
+    // Load existing data from localStorage 
+    let savedContent = localStorage.getItem('saved');
+    savedContent = JSON.parse(savedContent) || [];
+
+    // Add new data to the existing array
+    savedData.forEach(item => savedContent.push(item));
+
+    // Save the updated array to localStorage
+    localStorage.setItem('saved', JSON.stringify(savedContent));
 };
 
 const loadFromLocalStorage = () => {
