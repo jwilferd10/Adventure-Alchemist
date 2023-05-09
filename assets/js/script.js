@@ -70,10 +70,10 @@ const dungeonInfo = [
 
 // Array for generated elements on the list
 const generatedElements = [];
+const savedData = [];
 
 let idCounter = 0;
 let savedItemNum = 1;
-// let remadeEl;
 
 // Function to create and append generated text
 const generateAndAppendText = (text) => {
@@ -108,32 +108,25 @@ const createParagraphElement = (generatedText, id) => {
 
     // Each generatedEl has an eventListener that will trigger the saveItem function
     generatedEl.addEventListener('click', () => {
+        // Checks to see what's clicked on GeneratedContent
         console.log(`Clicked on element ${id}`);
-        
-        // Call the save function
-        saveItem(generatedEl);
+    
+        // Takes 
+        savedContentList(generatedEl);
     });
 
     // Append to textAreaEl
     return generatedEl;
 };
 
-// Save generated content
-const saveItem = (generatedEl) => {
-    // Save to localStorage
-    localStorage.setItem(generatedEl.id, generatedEl.textContent);
+// Create 'savedContentList' section that uses savedContent to generate HTML list items for future calls
+const savedContentList = (generatedEl) => {
+    // Object that collects the text and ID, will be stored in an array
+    let savedObj = {
+        text: generatedEl.textContent,
+        id: savedItemNum
+    };
 
-    // Add the saved element to the savedContent list
-    savedElement(generatedEl.textContent);
-};
-
-// Load saved content
-// const loadSavedContent = () => {
-//     // Get saved elements from localStorage
-// }
-
-// Create 'savedElement' section that uses savedContent to generate HTML list items for future calls
-const savedElement = (generatedText) => {
     // Create an HTML element that'll be appended to 'Saved Content'
     const generatedListEl = document.createElement('li');
     generatedListEl.textContent = `Save ${savedItemNum++}`;
@@ -144,19 +137,37 @@ const savedElement = (generatedText) => {
 
     generatedListEl.addEventListener('click', () => {
         clearList();
-        showSavedContent(generatedText);
+        showSavedContent(generatedEl);
     });
+
+    // Add savedObj to the savedData array
+    savedData.push(savedObj);
+
+    saveToLocalStorage(savedObj);
 }
 
 // Recreate savedElemen
-const showSavedContent = (text) => {
+const showSavedContent = (generatedEl) => {
     
     const remadeEl = document.createElement('li');
-    remadeEl.textContent = text;
+    remadeEl.textContent = generatedEl.textContent;
     remadeEl.classList.add('text-center', 'listStyle', 'border', 'remadeEl');
 
     textAreaEl.append(remadeEl);
 }
+
+const saveToLocalStorage = () => {
+    localStorage.setItem('saved', JSON.stringify(savedData));
+};
+
+// const loadFromLocalStorage = () => {
+//     let savedContent = localStorage.getItem('saved');
+
+//     savedContent = JSON.parse(savedContent);
+//     for (let i = 0; i < savedContent.length; i++) {
+//         showSavedContent(savedContent[i].text);  
+//     }
+// }
 
 // clearList empties the array and sets textAreaEl to an empty string
 const clearList = () => {
@@ -364,3 +375,4 @@ const formatMonsterStr = (monstersArr) => {
 // Event Listeners
 generateBtnEl.addEventListener('click', generateButtonHandler);
 clearListBtnEl.addEventListener('click', clearList); 
+// loadFromLocalStorage();
