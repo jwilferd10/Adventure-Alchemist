@@ -73,7 +73,7 @@ const generatedElements = [];
 
 let idCounter = 0;
 let savedItemNum = 1;
-let remadeEl;
+// let remadeEl;
 
 // Function to create and append generated text
 const generateAndAppendText = (text) => {
@@ -158,12 +158,9 @@ const showSavedContent = (text) => {
     textAreaEl.append(remadeEl);
 }
 
-// Create a function that clears the entire list
+// clearList empties the array and sets textAreaEl to an empty string
 const clearList = () => {
-    // Empty the array
     generatedElements.length = 0;
-
-    // Set textAreaEl to an empty string
     textAreaEl.innerHTML = '';
 };
 
