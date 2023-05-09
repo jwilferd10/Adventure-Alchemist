@@ -70,7 +70,7 @@ const dungeonInfo = [
 
 // Array for generated elements on the list
 const generatedElements = [];
-const savedData = [];
+let savedData = [];
 
 let idCounter = 0;
 let savedItemNum = 1;
@@ -127,11 +127,7 @@ const savedContentList = (generatedEl) => {
         id: savedItemNum
     };
 
-    // Create an HTML element that'll be appended to 'Saved Content'
-    const generatedListEl = document.createElement('li');
-    generatedListEl.textContent = `Save ${savedItemNum++}`;
-    generatedListEl.classList.add('text-center', 'listStyle', 'border');
-
+    const generatedListEl = createSavedContentEl()
 
     savedContentEl.append(generatedListEl);
 
@@ -145,6 +141,14 @@ const savedContentList = (generatedEl) => {
 
     saveToLocalStorage(savedObj);
 }
+
+// Append an HTML element to 'Saved Content'
+const createSavedContentEl = () => {
+    const generatedListEl = document.createElement('li');
+    generatedListEl.textContent = `Save ${savedItemNum++}`;
+    generatedListEl.classList.add('text-center', 'listStyle', 'border');
+    return generatedListEl;
+};
 
 // Recreate savedElemen
 const showSavedContent = (generatedEl) => {
@@ -160,14 +164,33 @@ const saveToLocalStorage = () => {
     localStorage.setItem('saved', JSON.stringify(savedData));
 };
 
-// const loadFromLocalStorage = () => {
-//     let savedContent = localStorage.getItem('saved');
+const loadFromLocalStorage = () => {
+    let savedContent = localStorage.getItem('saved');
 
-//     savedContent = JSON.parse(savedContent);
-//     for (let i = 0; i < savedContent.length; i++) {
-//         showSavedContent(savedContent[i].text);  
-//     }
-// }
+    console.log(savedContent);
+
+    savedContent = JSON.parse(savedContent);
+    for (let i = 0; i < savedContent.length; i++) {
+        const key = savedContent[i].id;
+        const value = savedContent[i].text;
+
+        // Create an HTML element with the key and it's text 
+        const savedObjEl = createSavedContentEl(key);
+
+        // Add a click event listener to element
+        savedObjEl.addEventListener('click', () => {
+            // console.log(value);
+            
+            const createEl = document.createElement('li');
+            createEl.textContent = value
+            createEl.classList.add('text-center', 'listStyle', 'border');
+            textAreaEl.append(createEl);
+        });
+
+        // Append the element to the saved content section
+        savedContentEl.append(savedObjEl);
+    }
+}
 
 // clearList empties the array and sets textAreaEl to an empty string
 const clearList = () => {
@@ -375,4 +398,4 @@ const formatMonsterStr = (monstersArr) => {
 // Event Listeners
 generateBtnEl.addEventListener('click', generateButtonHandler);
 clearListBtnEl.addEventListener('click', clearList); 
-// loadFromLocalStorage();
+loadFromLocalStorage();
