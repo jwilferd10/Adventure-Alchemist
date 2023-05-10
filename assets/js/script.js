@@ -210,7 +210,7 @@ const loadFromLocalStorage = () => {
             
             const createEl = document.createElement('li');
             createEl.textContent = value
-            createEl.classList.add('text-center', 'listStyle', 'border');
+            createEl.classList.add('text-center', 'listStyle', 'border', 'remadeEl');
             textAreaEl.append(createEl);
         });
 
