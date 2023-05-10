@@ -184,6 +184,10 @@ const loadFromLocalStorage = () => {
     // Check results
     console.log(savedContent);
 
+    if (savedContent === null) {
+        return;
+    }
+
     for (let i = 0; i < savedContent.length; i++) {
         const key = savedContent[i].id;
         const value = savedContent[i].text;
