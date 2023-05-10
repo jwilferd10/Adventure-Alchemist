@@ -121,6 +121,15 @@ const createParagraphElement = (generatedText, id) => {
 
 // Create 'savedContentList' section that uses savedContent to generate HTML list items for future calls
 const savedContentList = (generatedEl, savedData) => {
+    // Check if the savedData array already contains an object with the same text property
+    const alreadyExists = savedData.some(savedObj => savedObj.text === generatedEl.textContent);
+
+    // If alreadyExists is true return nothing and console.log the info
+    if (alreadyExists) {
+        console.log('Content already saved');
+        return;
+    }
+
     // Object that collects the text and ID, will be stored in an array
     let savedObj = {
         text: generatedEl.textContent,
