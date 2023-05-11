@@ -1,5 +1,6 @@
 const generateBtnEl = document.getElementById('generateBtn');
 const clearListBtnEl = document.getElementById('clearListBtn');
+const clearSavesEl = document.getElementById('clearSaves');
 const searchSelectionEl = document.getElementById('searchSelection');
 const savedContentEl = document.getElementById('savedContent');
 const textAreaEl = document.getElementById('textArea');
@@ -70,9 +71,14 @@ const dungeonInfo = [
 
 // Array for generated elements on the list
 const generatedElements = [];
+
+// Array for saved elements 
 let savedData = [];
 
+// Counter for generating unique IDs
 let idCounter = 0;
+
+// Counter for generating 'Save' labels
 let savedItemNum = 1;
 
 // Function to create and append generated text
@@ -80,6 +86,8 @@ const generateAndAppendText = (text) => {
     // Apply unique ID to each generated content, increment through teneray operator
     const id = `generated-${idCounter++}`;
     const generatedText = createParagraphElement(text, id);
+
+    // Add elementObject to generatedElements array
     const elementObject = { id, generatedText };
     generatedElements.push(elementObject);
     
@@ -168,10 +176,6 @@ const showSavedContent = (generatedEl) => {
     const remadeEl = document.createElement('li');
     remadeEl.textContent = generatedEl.textContent;
     remadeEl.classList.add('text-center', 'listStyle', 'border', 'remadeEl');
-
-    // Clear the textAreaEl
-    // clearList();
-
     textAreaEl.append(remadeEl);
 }
 
@@ -211,8 +215,8 @@ const loadFromLocalStorage = () => {
         savedObjEl.addEventListener('click', () => {
             // console.log(value);
             
-                // Clear the textAreaEl
-    clearList();
+            // Clear the textAreaEl
+            clearList();
 
             const createEl = document.createElement('li');
             createEl.textContent = value
@@ -223,6 +227,12 @@ const loadFromLocalStorage = () => {
         // Append the element to the saved content section
         savedContentEl.append(savedObjEl);
     }
+}
+
+// clearLocalStorage empties savedContent's list and clears up localStorage
+const clearLocalStorage = () => {
+    savedContentEl.innerHTML = '';
+    localStorage.clear();
 }
 
 // clearList empties the array and sets textAreaEl to an empty string
@@ -431,4 +441,5 @@ const formatMonsterStr = (monstersArr) => {
 // Event Listeners
 generateBtnEl.addEventListener('click', generateButtonHandler);
 clearListBtnEl.addEventListener('click', clearList); 
+clearSavesEl.addEventListener('click', clearLocalStorage);
 loadFromLocalStorage();
