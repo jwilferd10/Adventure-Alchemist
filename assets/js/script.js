@@ -169,6 +169,9 @@ const showSavedContent = (generatedEl) => {
     remadeEl.textContent = generatedEl.textContent;
     remadeEl.classList.add('text-center', 'listStyle', 'border', 'remadeEl');
 
+    // Clear the textAreaEl
+    // clearList();
+
     textAreaEl.append(remadeEl);
 }
 
@@ -208,6 +211,9 @@ const loadFromLocalStorage = () => {
         savedObjEl.addEventListener('click', () => {
             // console.log(value);
             
+                // Clear the textAreaEl
+    clearList();
+
             const createEl = document.createElement('li');
             createEl.textContent = value
             createEl.classList.add('text-center', 'listStyle', 'border', 'remadeEl');
