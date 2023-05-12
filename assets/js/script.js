@@ -343,8 +343,7 @@ const generateLoot = () => {
     generateAndAppendText(`Somewhere in the dungeon you can find a ${lootItem}!`);
 };
 
-// consolidate 'set' code into one function. 
-// getRandomItem will round off and select a random number within an array
+// getRandomItem rounds off and selects a random number within an array
 const getRandomItem = (arr) => arr[Math.floor(Math.random() * arr.length)];
 
 // Randomly select room amount 
@@ -404,9 +403,7 @@ const setMonsterType = () => {
 
 // Randomly determine if traps are active in dungeon, then generate trap type
 const setTrap = () => {
-    // trapBoolean will be true/false roughly 50% of the time, indicating whether traps will be present in the dungeon or not.
-    // For newer programmers, the 0.5 can tweaked to change the probability of true/false 
-    let trapBoolean = Math.random() < 0.5;
+    let trapBoolean = randomChance();
 
     if (trapBoolean) {
         return getRandomItem(dungeonInfo[2]);
@@ -437,6 +434,9 @@ const formatMonsterStr = (monstersArr) => {
     }
     return monsterStr;
 };
+    
+// randomChance will be true/false roughly 50% of the time.
+const randomChance = () => { return Math.random() < 0.5; } 
 
 // Event Listeners
 generateBtnEl.addEventListener('click', generateButtonHandler);
