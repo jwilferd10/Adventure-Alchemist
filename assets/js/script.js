@@ -359,10 +359,10 @@ const setTheme = () => {
 
     // If True, return exterior dungeon themes
     if (dungeonLocation) {
-        getRandomItem(dungeonInfo[0]);
+        return getRandomItem(dungeonInfo[0]);
     } else {
         // If false, return interior dungeon themes
-        getRandomItem(dungeonInfo[1]);
+        return getRandomItem(dungeonInfo[1]);
     }
 }
 
