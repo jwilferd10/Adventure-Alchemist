@@ -6,7 +6,10 @@ const savedContentEl = document.getElementById('savedContent');
 const textAreaEl = document.getElementById('textArea');
 
 // Dungeon Parameters
-const dungeonThemes = ['Ancient ruins', 'Battlefield', 'Caverns', 'Catacombs', 'Crypts', 'Dark forest', 'Desert tomb', 'Drow City', 'Dwarf mine', 'Elemental plane', 'Ghost town', 'Goblin stronghold', 'Haunted mansion', 'Ice cave', 'Jungle temple', 'Labyrinth', 'Necropolis', 'Oceanic abyss', 'Orc stronghold', 'Palace dungeon', 'Sewer system', 'Underwater city', 'Vampire crypt', 'Wizard\'s tower', 'Zombie infested lab'];
+// const dungeonThemes = ['Ancient ruins', 'Battlefield', 'Caverns', 'Catacombs', 'Crypts', 'Dark forest', 'Desert tomb', 'Drow City', 'Dwarf mine', 'Elemental plane', 'Ghost town', 'Goblin stronghold', 'Haunted mansion', 'Ice cave', 'Jungle temple', 'Labyrinth', 'Necropolis', 'Oceanic abyss', 'Orc stronghold', 'Palace dungeon', 'Sewer system', 'Underwater city', 'Vampire crypt', 'Wizard\'s tower', 'Zombie infested lab'];
+
+const interiorDungeonThemes = ['Ancient ruins', 'Catacombs', 'Crypts', 'Drow City', 'Dwarf mine', 'Goblin stronghold', 'Haunted mansion', 'Labyrinth', 'Necropolis', 'Palace dungeon', 'Sewer system', 'Underwater city', 'Vampire crypt', 'Wizard\'s tower', 'Zombie infested lab'];
+const exteriorDungeonThemes = ['Battlefield', 'Caverns', 'Dark forest', 'Desert tomb', 'Elemental plane', 'Ghost town', 'Ice cave', 'Jungle temple', 'Oceanic abyss', 'Orc stronghold'];
 const monsterTypes = ['Undead', 'Abberations', 'Dragons', 'Constructs', 'Fiends', 'Giants', 'Fey', 'Elementals', 'Beasts', 'Humanoids'];
 const trapTypes = ["Pit", "Arrow", "Poison Dart", "Swinging Blade", "Net"];
 const lootType = [
@@ -61,7 +64,8 @@ const areaDifficulty = [
 
 // Array that collects all existing Dungeon Parameters 
 const dungeonInfo = [
-    dungeonThemes,
+    interiorDungeonThemes,
+    exteriorDungeonThemes,
     monsterTypes,
     trapTypes,
     lootType,
@@ -350,7 +354,17 @@ const getRandomItem = (arr) => arr[Math.floor(Math.random() * arr.length)];
 const setRoomAmount = () =>  Math.floor(Math.random() * 10) + 1;
 
 // Randomly select theme
-const setTheme = () => getRandomItem(dungeonInfo[0]);
+const setTheme = () => {
+    let dungeonLocation = randomChance();
+
+    // If True, return exterior dungeon themes
+    if (dungeonLocation) {
+        getRandomItem(dungeonInfo[0]);
+    } else {
+        // If false, return interior dungeon themes
+        getRandomItem(dungeonInfo[1]);
+    }
+}
 
 // Randomly select monster type
 const setMonsterType = () => {
@@ -406,26 +420,26 @@ const setTrap = () => {
     let trapBoolean = randomChance();
 
     if (trapBoolean) {
-        return getRandomItem(dungeonInfo[2]);
+        return getRandomItem(dungeonInfo[3]);
     } else {
         return null;
     }
 };
 
 // Randomly select loot type
-const setLoot = () => getRandomItem(dungeonInfo[3]);
+const setLoot = () => getRandomItem(dungeonInfo[4]);
 
 // setAmbiance
-const setAmbiance = () =>  getRandomItem(dungeonInfo[4]);
+const setAmbiance = () =>  getRandomItem(dungeonInfo[5]);
 
 // set difficulty
-const setDifficulty = () => getRandomItem(dungeonInfo[5]);
+const setDifficulty = () => getRandomItem(dungeonInfo[6]);
 
 // format monsterStr
 const formatMonsterStr = (monstersArr) => {
     let monsterStr = '';
     
-    if (monstersArr.length > 1) {
+    if (monstersArr.length > 2) {
         // create new string with second to last element of monstersArr removed, joined with commas
         // then add 'and' before the last element of monstersArr
         monsterStr = `${monstersArr.slice(0, -1).join(', ')} and ${monstersArr.slice(-1)}`;
