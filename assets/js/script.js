@@ -6,8 +6,8 @@ const savedContentEl = document.getElementById('savedContent');
 const textAreaEl = document.getElementById('textArea');
 
 // Dungeon Parameters
-const interiorDungeonThemes = ['Ancient ruins', 'Catacombs', 'Crypts', 'Drow City', 'Dwarf mine', 'Goblin stronghold', 'Haunted mansion', 'Labyrinth', 'Necropolis', 'Palace dungeon', 'Sewer system', 'Underwater city', 'Vampire crypt', 'Wizard\'s tower', 'Zombie infested lab'];
-const exteriorDungeonThemes = ['Battlefield', 'Caverns', 'Dark forest', 'Desert tomb', 'Elemental plane', 'Ghost town', 'Ice cave', 'Jungle temple', 'Oceanic abyss', 'Orc stronghold'];
+const interiorDungeonThemes = ['Abandoned Manor', 'Ancient ruins', 'Castle Ruins', 'Catacombs', 'Crypts', 'Drow City', 'Desert Tomb', 'Dwarf mine', 'Forsakened Cathedral', 'Goblin stronghold', 'Haunted mansion', 'Ice Cave', 'Jungle Temple', 'Labyrinth', 'Necropolis', 'Orc stronghold', 'Palace dungeon', 'Sewer system', 'Underwater city', 'Vampire crypt', 'Wizard\'s tower', 'Zombie infested lab'];
+const exteriorDungeonThemes = ['Forest', 'Jungle', 'Battlefield', 'Elemental Plane', 'Forgotten Graveyard', 'Graveyard', 'Ghost Town', 'Oceanic Abyss', 'Ruined Cityscape', 'Set of Caverns'];
 const monsterTypes = ['Undead', 'Abberations', 'Dragons', 'Constructs', 'Fiends', 'Giants', 'Fey', 'Elementals', 'Beasts', 'Humanoids'];
 const trapTypes = ["Pit", "Arrow", "Poison Dart", "Swinging Blade", "Net"];
 const lootType = [
@@ -122,7 +122,7 @@ let savedItemNum = 1;
 
 // Function to create and append generated text
 const generateAndAppendText = (text) => {
-    // Apply unique ID to each generated content, increment through teneray operator
+    // Apply unique ID to each generated content, increment through ternary operator
     const id = `generated-${idCounter++}`;
     const generatedText = createParagraphElement(text, id);
 
@@ -342,7 +342,7 @@ const generateDungeon = () => {
 const generateDungeonTheme = () => {
     const theme = setTheme();
     const ambiance = setAmbiance();
-    generateAndAppendText(`You have entered a ${theme} dungeon. ${ambiance}`);
+    generateAndAppendText(`You have entered a ${theme}. ${ambiance}`);
 
 };
 
