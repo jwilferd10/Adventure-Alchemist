@@ -7,9 +7,9 @@ const textAreaEl = document.getElementById('textArea');
 
 // Dungeon Parameters
 const interiorDungeonThemes = ['Abandoned Manor', 'Ancient ruins', 'Castle Ruins', 'Catacombs', 'Crypts', 'Drow City', 'Desert Tomb', 'Dwarf mine', 'Forsakened Cathedral', 'Goblin stronghold', 'Haunted mansion', 'Ice Cave', 'Jungle Temple', 'Labyrinth', 'Necropolis', 'Orc stronghold', 'Palace dungeon', 'Sewer system', 'Underwater city', 'Vampire crypt', 'Wizard\'s tower', 'Zombie infested lab'];
-const exteriorDungeonThemes = ['Forest', 'Jungle', 'Battlefield', 'Elemental Plane', 'Forgotten Graveyard', 'Graveyard', 'Ghost Town', 'Oceanic Abyss', 'Ruined Cityscape', 'Set of Caverns'];
+const exteriorDungeonThemes = ['Forest', 'Jungle', 'Battlefield', 'Elemental Plane', 'Forgotten Graveyard', 'Graveyard', 'Ghost Town', 'Oceanic Abyss', 'Part of the Underdark', 'Part of the Abyss', 'Part of Hell', 'Ruined Cityscape', 'Set of Caverns'];
 const monsterTypes = ['Undead', 'Abberations', 'Dragons', 'Constructs', 'Fiends', 'Giants', 'Fey', 'Elementals', 'Beasts', 'Humanoids'];
-const trapTypes = ["Pit", "Arrow", "Poison Dart", "Swinging Blade", "Net"];
+const trapTypes = ["Pit", "Arrow", "Poison Dart", "Swinging Blade", "Net", 'Frost', 'Fire', 'Acid', 'Electric', 'Explosive'];
 const lootType = [
     "a plethora of gold coins", 
     "a single coin", 
@@ -81,6 +81,7 @@ const exteriorAmbiance = [
     'A sense of unease settles over you, as if you are being watched.',
     'The landscape is barren and desolate, a testament to some long-forgotten disaster.',
     'The sounds of battle can be heard all around, with swords clashing and arrows whistling through the air.',
+    'Corpses new and old litter the land, death is in every corner.'
 ];
 
 const areaDifficulty = [
