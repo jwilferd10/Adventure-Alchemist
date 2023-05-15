@@ -31,10 +31,15 @@ section {
     z-index: 1;
 }
 
+.controlBtns {
+    width: 35%;
+}
+
 .listStyle {
     margin: 15px 25px 20px;
     padding: 10px 5px 10px 5px;
     list-style-type: none;
+    cursor: pointer;
 }
 
 .flashingEffect {

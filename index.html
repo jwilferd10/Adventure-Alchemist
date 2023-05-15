@@ -17,9 +17,9 @@
         <!-- Search Form -->
         <section class="stickyEffect">
             <div class="card">
-                <h3 class="card-header text-uppercase text-center">📂 Generate By Topic</h3>
+                <h3 class="card-header text-uppercase text-center mb-3">💡 Generate By Topic 💡</h3>
                 <!-- Form Select & Generate Options -->
-                <select id="searchSelection" class="form-input">
+                <select id="searchSelection" class="modal-body form-input">
                     <option value="" disabled selected class="btn">Select A Topic</option>
                     <option value="entireScenario" class="btn">Entire Scenario</option>
                     <option value="dungeonTheme" class="btn">Dungeon Theme</option>
@@ -29,16 +29,21 @@
                     <option value="checkTrap" class="btn">Traps</option>
                     <option value="loot" class="btn">Loot</option>
                 </select>
-                <button id="generateBtn" class="btn btn-primary">🔍Generate</button>
-                <button id="clearListBtn" class="btn btn-danger">Clear List</button>
+
+                <div class="modal-footer d-flex justify-content-center">
+                    <button id="generateBtn" class="btn btn-primary controlBtns">Generate</button>
+                    <button id="clearListBtn" class="btn btn-danger controlBtns">Clear List</button>
+                </div>
             </div>
         </section>
 
         <!-- Saved Scenarios -->
         <section>
             <div class="card">
-                <h3 class="card-header text-uppercase text-center">Saved Content</h3>
-                <button id="clearSaves" class="btn btn-danger">Clear Saves</button>
+                <h3 class="card-header text-uppercase text-center">💾 Saved Content 💾</h3>
+                <div class="d-flex justify-content-center pt-3">
+                    <button id="clearSaves" class="btn btn-danger controlBtns">Clear Saves</button>
+                </div>
                 <ul class="d-flex flex-row" id="savedContent">
                     <!-- Saved Items  -->
                 </ul>
@@ -48,7 +53,7 @@
         <!-- Generated Content -->
         <section>
             <div class="card">
-                <h3 class="card-header text-uppercase text-center">Generated Content</h3>
+                <h3 class="card-header text-uppercase text-center">📝 Generated Content 📝</h3>
                 <ul id="textArea">
                     <!-- Generated Content here -->
                 </ul>
