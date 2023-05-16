@@ -151,7 +151,7 @@ const createParagraphElement = (generatedText, id) => {
     // Create a li element using generatedText
     const generatedEl = document.createElement('li');
     generatedEl.textContent = generatedText;
-    generatedEl.classList.add('text-center', 'listStyle', 'border');
+    generatedEl.classList.add('text-center', 'listStyle', 'border','border-dark', 'rounded');
     generatedEl.id = id
 
     // Each generatedEl has an eventListener that will trigger the saveItem function
@@ -260,7 +260,7 @@ const loadFromLocalStorage = () => {
 
             const createEl = document.createElement('li');
             createEl.textContent = value
-            createEl.classList.add('text-center', 'listStyle', 'border', 'remadeEl');
+            createEl.classList.add('text-center', 'listStyle', 'border', 'remadeEl', 'border','border-dark', 'rounded');
             textAreaEl.append(createEl);
         });
 
