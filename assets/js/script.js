@@ -207,7 +207,7 @@ const createSavedContentEl = () => {
     
     // Increment every time an element is created
     generatedListEl.textContent = `Save ${savedItemNum++}`;
-    generatedListEl.classList.add('text-center', 'listStyle', 'border');
+    generatedListEl.classList.add('text-center', 'listStyle', 'savedItem', 'border','border-dark', 'rounded');
     return generatedListEl;
 };
 

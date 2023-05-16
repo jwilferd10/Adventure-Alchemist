@@ -42,6 +42,10 @@ section {
     cursor: pointer;
 }
 
+.savedItem {
+    width: 5rem;
+}
+
 .flashingEffect {
     color:red;
 }
