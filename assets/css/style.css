@@ -3,11 +3,11 @@ body {
     padding: 0;
     line-height: 1.5;
     font-size: 16px;
-    background: linear-gradient(270deg, #fbd3b4, #f9f29f, #a1c4fd);
+    background: linear-gradient(270deg, #5b9be3, #82c7f7, #a9e0fb);
     background-size: 600% 600%;
 
-    -webkit-animation: AnimationName 20s ease infinite;
-    animation: AnimationName 20s ease infinite;
+    -webkit-animation: AnimationName 10s ease infinite;
+    animation: AnimationName 10s ease infinite;
 }
 
 #projectTitle {
