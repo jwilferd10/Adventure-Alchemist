@@ -53,7 +53,7 @@ section {
     background-image: linear-gradient(45deg, #2196F3, #00BCD4);
     opacity: 0;
     transition: opacity 1s ease;
-    z-index: -1
+
 }
 
 .listStyle:hover:before {
@@ -62,7 +62,7 @@ section {
 
 .listStyle span {
     position: relative;
-    z-index: 1;
+
 }
 .savedItem {
     width: 5rem;

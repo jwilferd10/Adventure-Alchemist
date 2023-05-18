@@ -150,9 +150,15 @@ const createParagraphElement = (generatedText, id) => {
     
     // Create a li element using generatedText
     const generatedEl = document.createElement('li');
-    generatedEl.textContent = generatedText;
     generatedEl.classList.add('text-center', 'listStyle', 'border','border-dark', 'rounded');
     generatedEl.id = id
+
+    // Create a span element and set its text content 
+    const spanEl = document.createElement('span');
+    spanEl.textContent = generatedText;
+
+    // Append the span element to the li element
+    generatedEl.appendChild(spanEl);
 
     // Each generatedEl has an eventListener that will trigger the saveItem function
     generatedEl.addEventListener('click', () => {
@@ -204,18 +210,30 @@ const savedContentList = (generatedEl, savedData) => {
 // Append an HTML element to 'Saved Content'
 const createSavedContentEl = () => {
     const generatedListEl = document.createElement('li');
+    generatedListEl.classList.add('text-center', 'listStyle', 'savedItem', 'border','border-dark', 'rounded');
     
     // Increment every time an element is created
-    generatedListEl.textContent = `Save ${savedItemNum++}`;
-    generatedListEl.classList.add('text-center', 'listStyle', 'savedItem', 'border','border-dark', 'rounded');
+    const spanEl = document.createElement('span');
+    spanEl.textContent = `Save ${savedItemNum++}`;
+
+    // Append span element to li element
+    generatedListEl.appendChild(spanEl);
+
     return generatedListEl;
 };
 
 // Recreate the textContent from generatedEl when invoked
 const showSavedContent = (generatedEl) => {
     const remadeEl = document.createElement('li');
-    remadeEl.textContent = generatedEl.textContent;
     remadeEl.classList.add('text-center', 'listStyle', 'border', 'remadeEl');
+
+    const spanEl = document.createElement('span');
+    spanEl.textContent = generatedEl.textContent;
+
+    // Append span element to li element
+    remadeEl.appendChild(spanEl);
+
+    // Append remadEl & it's children to textAreaEl
     textAreaEl.append(remadeEl);
 }
 
@@ -259,8 +277,16 @@ const loadFromLocalStorage = () => {
             clearList();
 
             const createEl = document.createElement('li');
-            createEl.textContent = value
             createEl.classList.add('text-center', 'listStyle', 'border', 'remadeEl', 'border','border-dark', 'rounded');
+            // createEl.textContent = value
+
+            const spanEl = document.createElement('span');
+            spanEl.textContent = value;
+
+            // Append span element to li element
+            createEl.appendChild(spanEl);
+
+            // Append createEl & it's children to textAreaEl
             textAreaEl.append(createEl);
         });
 
