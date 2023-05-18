@@ -74,6 +74,11 @@ section {
     width: 5rem;
 }
 
+#notification {
+    font-style:italic;
+    font-size: 14px;
+}
+
 .flashingEffect {
     color:red;
 }

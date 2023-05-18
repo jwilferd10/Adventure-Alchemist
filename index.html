@@ -1,84 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adventure Alchemist - Unleash your creativity with our dungeon generator.</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="./assets/css/style.css">
-</head>
-<body>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Adventure Alchemist - Unleash your creativity with our dungeon generator.</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <link rel="stylesheet" href="./assets/css/style.css">
+    </head>
+    <body>
 
-    <!-- Project Title -->
-    <section id="projectTitle" class="text-center">
-        <h1>Adventure Alchemist</h1>
-    </section>
-    
-    <main class="flex-row justify-space-between">
-        <!-- Search Form -->
-        <section class="stickyEffect">
-            <div class="card">
+        <!-- Project Title -->
+        <section id="projectTitle" class="text-center">
+            <h1>Adventure Alchemist</h1>
+        </section>
+        
+        <main class="flex-row justify-space-between">
+            <!-- Search Form -->
+            <section class="stickyEffect">
+                <div class="card">
 
-                <!-- Card Header -->
-                <h3 class="card-header text-uppercase text-center mb-3">💡 Generate By Topic 💡</h3>
-                
-                <!-- Form Select & Generate Options -->
-                <select id="searchSelection" class="modal-body form-input">
-                    <option value="" disabled selected class="btn">Select A Topic</option>
-                    <option value="entireScenario" class="btn">Entire Scenario</option>
-                    <option value="dungeonTheme" class="btn">Dungeon Theme</option>
-                    <option value="roomNum" class="btn">Amount of Room(s)</option>
-                    <option value="difficulty" class="btn">Dungeon Difficulty</option>
-                    <option value="monsterType" class="btn">Monster Type(s)</option>
-                    <option value="checkTrap" class="btn">Traps</option>
-                    <option value="loot" class="btn">Loot</option>
-                </select>
+                    <!-- Card Header -->
+                    <h3 class="card-header text-uppercase text-center mb-3">💡 Generate By Topic 💡</h3>
+                    
+                    <!-- Form Select & Generate Options -->
+                    <select id="searchSelection" class="modal-body form-input">
+                        <option value="" disabled selected class="btn">Select A Topic</option>
+                        <option value="entireScenario" class="btn">Entire Scenario</option>
+                        <option value="dungeonTheme" class="btn">Dungeon Theme</option>
+                        <option value="roomNum" class="btn">Amount of Room(s)</option>
+                        <option value="difficulty" class="btn">Dungeon Difficulty</option>
+                        <option value="monsterType" class="btn">Monster Type(s)</option>
+                        <option value="checkTrap" class="btn">Traps</option>
+                        <option value="loot" class="btn">Loot</option>
+                    </select>
 
-                <!-- Modal Footer / Control Buttons -->
-                <div class="modal-footer d-flex justify-content-center">
-                    <button id="generateBtn" class="btn btn-primary controlBtns">Generate</button>
-                    <button id="clearListBtn" class="btn btn-danger controlBtns">Clear List</button>
+                    <!-- Modal Footer / Control Buttons -->
+                    <div class="modal-footer d-flex justify-content-center">
+                        <button id="generateBtn" class="btn btn-primary controlBtns">Generate</button>
+                        <button id="clearListBtn" class="btn btn-danger controlBtns">Clear List</button>
+                    </div>
                 </div>
-            </div>
-        </section>
+            </section>
 
-        <!-- Saved Scenarios -->
-        <section>
-            <div class="card">
+            <!-- Saved Scenarios -->
+            <section>
+                <div class="card">
 
-                <!-- Card Header -->
-                <h3 class="card-header text-uppercase text-center">💾 Saved Content 💾</h3>
-                
-                <!-- Saved Items List  -->
-                <ul class="d-flex flex-wrap" id="savedContent">
-                    <!-- Generated HTML Here  -->
-                </ul>
+                    <!-- Card Header -->
+                    <h3 class="card-header text-uppercase text-center">💾 Saved Content 💾</h3>
+                    
+                    <!-- Saved Items List  -->
+                    <ul class="d-flex flex-wrap" id="savedContent">
+                        <!-- Generated HTML Here  -->
+                    </ul>
 
-                <!-- Clear Saves -->
-                <div class="d-flex justify-content-center pb-3">
-                    <button id="clearSaves" class="btn btn-danger controlBtns">Clear Saves</button>
+                    <!-- Clear Saves -->
+                    <div class="d-flex justify-content-center pb-3">
+                        <button id="clearSaves" class="btn btn-danger controlBtns">Clear Saves</button>
+                    </div>
                 </div>
-            </div>
-        </section>
+            </section>
 
-        <!-- Generated Content -->
-        <section>
-            <div class="card">
+            <!-- Generated Content -->
+            <section>
+                <div class="card">
 
-                <!-- Card Header -->
-                <h3 class="card-header text-uppercase text-center">📝 Generated Content 📝</h3>
+                    <!-- Card Header -->
+                    <h3 class="card-header text-uppercase text-center">📝 Generated Content 📝</h3>
 
-                <!-- Generated Content List  -->
-                <ul id="textArea">
-                    <!-- Generated HTML Here -->
-                </ul>
-            </div>
-        </section>
-    </main>
+                    <!-- Generated Content List  -->
+                    <ul id="textArea">
+                        <!-- Generated HTML Here -->
+                    </ul>
 
-    <!-- script -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <script src="./assets/js/script.js"></script>
-</body>
+                    <!-- Notify User -->
+                    <p id="notification" class="text-center mt-1">Note: Only the 10 most recent generated items are shown. Oldest items will be automatically deleted.</p>
+                </div>
+            </section>
+        </main>
+
+        <!-- script -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+        <script src="./assets/js/script.js"></script>
+    </body>
 </html>
