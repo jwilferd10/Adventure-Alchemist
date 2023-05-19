@@ -362,7 +362,7 @@ const generateDungeon = () => {
     const difficulty = setDifficulty();
 
     // ternary operator is checking whether traps are in or not
-    generateAndAppendText(`You have entered a ${theme} with ${numberOfRooms} rooms. ${ambiance} Be cautious of the ${monsterStr} that may lurk about. ${trap ? ` You're bound to run into a ${trap} Trap somewhere.` : ''} ${difficulty} Perhaps you shall find ${lootItem} amidst the shadows.`);
+    generateAndAppendText(`You have entered a ${theme} with ${numberOfRooms} ${numberOfRooms === 1 ? 'noteworthy area.' : 'noteworthy areas.'} ${ambiance} Be cautious of the ${monsterStr} that may lurk about. ${trap ? ` You're bound to run into a ${trap} Trap somewhere.` : ''} ${difficulty} Perhaps you shall find ${lootItem} amidst the shadows.`);
 };
 
 // generate theme
@@ -413,7 +413,7 @@ const generateLoot = () => {
 const getRandomItem = (arr) => arr[Math.floor(Math.random() * arr.length)];
 
 // Randomly select room amount 
-const setRoomAmount = () =>  Math.floor(Math.random() * 10) + 1;
+const setRoomAmount = () =>  Math.floor(Math.random() * 30) + 1;
 
 // Randomly select theme
 const setTheme = () => {
