@@ -225,7 +225,7 @@ const createSavedContentEl = () => {
 // Recreate the textContent from generatedEl when invoked
 const showSavedContent = (savedObj) => {
     const remadeEl = document.createElement('li');
-    remadeEl.classList.add('text-center', 'listStyle', 'border', 'remadeEl');
+    remadeEl.classList.add('text-center', 'listStyle', 'border', 'border-dark', 'rounded', 'remadeEl');
 
     const spanEl = document.createElement('span');
     spanEl.textContent = savedObj.text;
