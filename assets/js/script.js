@@ -121,14 +121,16 @@ let idCounter = 0;
 // Counter for generating 'Save' labels
 let savedItemNum = 1;
 
-// Function to create and append generated text
-const generateAndAppendText = (text) => {
-    // Apply unique ID to each generated content, increment through ternary operator
-    const id = `generated-${idCounter++}`;
-    const generatedText = createParagraphElement(text, id);
+// Function to generate a unique ID
+const generateUniqueID = () => `generated-${idCounter++}`;
 
+// Function to create and append generated text
+const appendGeneratedText = (generatedText) => {
+    // Create list element
+    const generatedListItem = createListElement(generatedText);
+    
     // Add elementObject to generatedElements array
-    const elementObject = { id, generatedText };
+    const elementObject = { id: generateUniqueID(), generatedText: generatedListItem };
     generatedElements.push(elementObject);
     
     // When the generatedList overexceeds ten generated listItems 
@@ -144,40 +146,31 @@ const generateAndAppendText = (text) => {
     // Add red flashing effects to the earliest generated listItem
     if (generatedElements.length >= 9) {
         const secondElement = generatedElements[0];
-        // Apply red 
         secondElement.generatedText.classList.add('flashingEffect');
     }
 
     // Append to textAreaEl
-    textAreaEl.append(generatedText);
+    textAreaEl.append(generatedListItem);
 };
 
-// Display generated content to HTML
-const createParagraphElement = (generatedText, id) => {
-    
-    // Create a li element using generatedText
-    const generatedEl = document.createElement('li');
-    generatedEl.classList.add('text-center', 'listStyle', 'border','border-dark', 'rounded');
-    generatedEl.id = id
+// Function to create a list element
+const createListElement = (generatedText) => {
+    const generatedListItem = document.createElement('li');
+    generatedListItem.classList.add('text-center', 'listStyle', 'border','border-dark', 'rounded');
+    generatedListItem.id = generateUniqueID();
 
-    // Create a span element and set its text content 
+    // Create and append span element
     const spanEl = document.createElement('span');
     spanEl.textContent = generatedText;
+    generatedListItem.appendChild(spanEl);
 
-    // Append the span element to the li element
-    generatedEl.appendChild(spanEl);
-
-    // Each generatedEl has an eventListener that will trigger the saveItem function
-    generatedEl.addEventListener('click', () => {
-        // Checks to see what's clicked on GeneratedContent
-        console.log(`Clicked on element ${id}`);
-    
-        // Pass to savedContentList to process data
-        savedContentList(generatedEl, savedData);
+    // When generatedEl is clicked, pass to savedContentList to process data
+    generatedListItem.addEventListener('click', () => {
+        savedContentList(generatedListItem, savedData);
     });
 
     // Append to textAreaEl
-    return generatedEl;
+    return generatedListItem;
 };
 
 // Create 'savedContentList' section that uses savedContent to generate HTML list items for future calls
@@ -216,91 +209,67 @@ const savedContentList = (generatedEl, savedData) => {
 
 // Append an HTML element to 'Saved Content'
 const createSavedContentEl = () => {
-    const generatedListEl = document.createElement('li');
-    generatedListEl.classList.add('text-center', 'listStyle', 'savedItem', 'border','border-dark', 'rounded');
+    const generatedListItem = document.createElement('li');
+    generatedListItem.classList.add('text-center', 'listStyle', 'savedItem', 'border','border-dark', 'rounded');
     
     // Increment every time an element is created
     const spanEl = document.createElement('span');
     spanEl.textContent = `Save ${savedItemNum++}`;
 
     // Append span element to li element
-    generatedListEl.appendChild(spanEl);
-
-    return generatedListEl;
+    generatedListItem.appendChild(spanEl);
+    return generatedListItem;
 };
 
 // Recreate the textContent from generatedEl when invoked
-const showSavedContent = (generatedEl) => {
+const showSavedContent = (item) => {
     const remadeEl = document.createElement('li');
     remadeEl.classList.add('text-center', 'listStyle', 'border', 'remadeEl');
 
     const spanEl = document.createElement('span');
-    spanEl.textContent = generatedEl.textContent;
+    spanEl.textContent = item.text
 
-    // Append span element to li element
+    // Append span element to li element & Append remadEl & it's children to textAreaEl
     remadeEl.appendChild(spanEl);
-
-    // Append remadEl & it's children to textAreaEl
     textAreaEl.append(remadeEl);
 }
 
-// save to localStorage
+// Function to save data to localStorage
 const saveToLocalStorage = (savedData) => {
-    // Load existing data from localStorage 
+    // Load existing data
     let savedContent = localStorage.getItem('saved');
     savedContent = JSON.parse(savedContent) || [];
 
-    // Append new data to the existing array
-    savedData.forEach(item => savedContent.push(item));
-
-    // Save the updated array to localStorage
+    // Append new data to existing array & save updated array to localStorage
+    savedData.forEach((item) => savedContent.push(item));
     localStorage.setItem('saved', JSON.stringify(savedContent));
 };
 
+// Function to load data from localStorage
 const loadFromLocalStorage = () => {
     // getItem and parse it for savedContent
-    let savedContent = localStorage.getItem('saved');
-    savedContent = JSON.parse(savedContent);
+    let savedContent = JSON.parse(localStorage.getItem('saved'));
 
     // Check results
     console.log(savedContent);
 
-    if (savedContent === null) {
+    if (!savedContent) {
         return;
     }
 
-    for (let i = 0; i < savedContent.length; i++) {
-        const key = savedContent[i].id;
-        const value = savedContent[i].text;
+    // Run createSavedContentEl for each savedContent
+    savedContent.forEach((item) => {
+        const savedObjElement = createSavedContentEl();
 
-        // Create an HTML element with the key and it's text 
-        const savedObjEl = createSavedContentEl(key);
-
-        // Add a click event listener to element
-        savedObjEl.addEventListener('click', () => {
-            // console.log(value);
-            
-            // Clear the textAreaEl
+        // Clear textArea and show content
+        savedObjElement.addEventListener('click', () => {
             clearList();
-
-            const createEl = document.createElement('li');
-            createEl.classList.add('text-center', 'listStyle', 'border', 'remadeEl', 'border','border-dark', 'rounded');
-            // createEl.textContent = value
-
-            const spanEl = document.createElement('span');
-            spanEl.textContent = value;
-
-            // Append span element to li element
-            createEl.appendChild(spanEl);
-
-            // Append createEl & it's children to textAreaEl
-            textAreaEl.append(createEl);
+            showSavedContent(item);
         });
 
-        // Append the element to the saved content section
-        savedContentEl.append(savedObjEl);
-    }
-}
+        savedContentEl.append(savedObjElement);
+    });
+};
 
 // clearLocalStorage empties savedContent's list and clears up localStorage
 const clearLocalStorage = () => {
@@ -369,34 +338,34 @@ const generateDungeon = () => {
     const difficulty = setDifficulty();
 
     // ternary operator is checking whether traps are in or not
-    generateAndAppendText(`You have entered a ${theme} with ${numberOfRooms} ${numberOfRooms === 1 ? 'noteworthy area.' : 'noteworthy areas.'} ${ambiance} Be cautious of the ${monsterStr} that may lurk about. ${trap ? ` You're bound to run into a ${trap} Trap somewhere.` : ''} ${difficulty} Perhaps you shall find ${lootItem} amidst the shadows.`);
+    appendGeneratedText(`You have entered a ${theme} with ${numberOfRooms} ${numberOfRooms === 1 ? 'noteworthy area.' : 'noteworthy areas.'} ${ambiance} Be cautious of the ${monsterStr} that may lurk about. ${trap ? ` You're bound to run into a ${trap} Trap somewhere.` : ''} ${difficulty} Perhaps you shall find ${lootItem} amidst the shadows.`);
 };
 
 // generate theme
 const generateDungeonTheme = () => {
     const theme = setTheme();
     const ambiance = setAmbiance();
-    generateAndAppendText(`You have entered a ${theme}. ${ambiance}`);
+    appendGeneratedText(`You have entered a ${theme}. ${ambiance}`);
 
 };
 
 // generate room amount
 const generateRoomAmount = () => {
     const numberOfRooms = setRoomAmount();
-    generateAndAppendText(`You have entered an area with ${numberOfRooms} unique locations`);
+    appendGeneratedText(`You have entered an area with ${numberOfRooms} unique locations`);
 };
 
 // select difficulty at random 
 const generateDifficulty = () => {
     const difficulty = setDifficulty();
-    generateAndAppendText(`${difficulty}`)
+    appendGeneratedText(`${difficulty}`)
 }
 
 // generate monster type 
 const generateMonsterType = () => {
     const monstersArr = setMonsterType();
     const monsterStr = formatMonsterStr(monstersArr);
-    generateAndAppendText(`You have entered an area infested with ${monsterStr}`);
+    appendGeneratedText(`You have entered an area infested with ${monsterStr}`);
 };
 
 // generate and determine if traps are present
@@ -404,16 +373,16 @@ const generateTrap = () => {
     const trap = setTrap();
 
     if (trap === null || trap === undefined) {
-        generateAndAppendText(`You have entered a dungeon with no traps`);
+        appendGeneratedText(`You have entered a dungeon with no traps`);
     } else if (trap) {
-        generateAndAppendText(`You have entered a dungeon with a ${trap} Trap somewhere`);
+        appendGeneratedText(`You have entered a dungeon with a ${trap} Trap somewhere`);
     }
 };
 
 // generate loot
 const generateLoot = () => {
     const lootItem = setLoot();
-    generateAndAppendText(`Somewhere in the dungeon you can find a ${lootItem}!`);
+    appendGeneratedText(`Somewhere in the dungeon you can find a ${lootItem}!`);
 };
 
 // getRandomItem rounds off and selects a random number within an array
