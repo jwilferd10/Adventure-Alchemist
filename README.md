@@ -19,9 +19,11 @@
 Coming Soon!
 
 ## :wave: Description: 
-This web application aims to make the process of generating random dungeon scenarios for tabletop RPGs, specifically DnD campaigns, easier and more accessible. The app utilizes a variety of algorithms and user preferences to create unique scenarios for the user, taking into account various factors such as the party's level, dungeon size, and theme. With Adventure Alchemist, dungeon masters and players can quickly generate creative and exciting scenarios to spice up their campaigns and keep their gameplay fresh and engaging.
+Adventure Alchemist is an application with an aim to help make the process of generating dungeon scenarios for your tabletop RPGs, specifically DnD campaigns, easier and more accessible. This app utilizes a variety of algorithms and user preference to create, save and recall unique scenarios for the user. When generating a scenario the application takes into account various factors such as dungeon theme, size, and difficulty. 
 
-Thank you so much for checking out Adventure Alchemist! I devoted time into ensuring the code is modularized and easily modifiable. It's my hope that this application helps YOU out in anyway possible. Feel free to take a look through the files and fork it if you'd like, Happy Coding! 
+With Adventure Alchemist, dungeon masters and players can quickly generate creative and exciting scenarios to spice up their campaigns or spark up some ideas. Keeping the gameplay fresh and engaging!
+
+Thanks so much for checking out Adventure Alchemist! This application was a commission and I recieved the green-light to keep this repository public for everyone to use. I devoted time into ensuring the code is modularized and easily modifiable. It's my hope that this application helps YOU out in anyway possible. Feel free to take a look through the files and fork it if you'd like, Happy Coding!
 
 ## :book: User Story:
 **AS A Dungeon Master for a DnD Campaign**
