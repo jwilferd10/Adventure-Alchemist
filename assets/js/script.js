@@ -142,6 +142,13 @@ const generateAndAppendText = (text) => {
     }
 
     // Add red flashing effects to the earliest generated listItem
+    if (generatedElements.length >= 9) {
+        const secondElement = generatedElements[0];
+        // Apply red 
+        secondElement.generatedText.classList.add('flashingEffect');
+    }
+
+    // Append to textAreaEl
     textAreaEl.append(generatedText);
 };
 
