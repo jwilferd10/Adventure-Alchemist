@@ -6,8 +6,8 @@ const savedContentEl = document.getElementById('savedContent');
 const textAreaEl = document.getElementById('textArea');
 
 // Dungeon Parameters
-const interiorDungeonThemes = ['Abandoned Manor', 'Ancient ruins', 'Castle Ruins', 'Catacombs', 'Crypts', 'Drow City', 'Desert Tomb', 'Dwarf mine', 'Forsakened Cathedral', 'Goblin stronghold', 'Haunted mansion', 'Ice Cave', 'Jungle Temple', 'Labyrinth', 'Necropolis', 'Orc stronghold', 'Palace dungeon', 'Sewer system', 'Underwater city', 'Vampire crypt', 'Wizard\'s tower', 'Zombie infested lab'];
-const exteriorDungeonThemes = ['Forest', 'Jungle', 'Battlefield', 'Elemental Plane', 'Forgotten Graveyard', 'Graveyard', 'Ghost Town', 'Oceanic Abyss', 'Part of the Underdark', 'Part of the Abyss', 'Part of Hell', 'Ruined Cityscape', 'Set of Caverns'];
+const interiorDungeonThemes = ['Abandoned Manor', 'Abyssal Fortress', 'Ancient ruins', 'Bandit Hideout', 'Besieged Fortress', 'Castle Ruins', 'Catacombs', 'Crypts', 'Drow City', 'Desert Tomb', 'Dwarf mine', 'Forsakened Cathedral', 'Goblin stronghold', 'Haunted mansion', 'Ice Cave', 'Jungle Temple', 'Labyrinth', 'Necropolis', 'Orc stronghold', 'Palace dungeon', 'Prison Riot', 'Sewer system', 'Set of Caverns', 'Sinister Asylum', 'Underwater city', 'Vampire crypt', 'Wizard\'s tower', 'Witch\'s Coven', 'Zombie infested lab'];
+const exteriorDungeonThemes = ['Active Battlefield', 'Distant Battlefield', 'Elemental Plane', 'Forgotten Graveyard', 'Forest', 'Frozen Wasteland', 'Ghost Town', 'Graveyard', 'Jungle', 'Majestic Castle Grounds', 'Misty Mountains', 'Mysterious Island', 'Oceanic Abyss', 'Part of Hell', 'Part of the Abyss', 'Part of the Shadowplane', 'Part of the Underdark', 'Ruined Cityscape', 'Snowy Tundra', 'Volcanic Island', 'Windswept Desert'];
 const monsterTypes = ['Undead', 'Abberations', 'Dragons', 'Constructs', 'Fiends', 'Giants', 'Fey', 'Elementals', 'Beasts', 'Humanoids'];
 const trapTypes = ["Pit", "Arrow", "Poison Dart", "Swinging Blade", "Net", 'Frost', 'Fire', 'Acid', 'Electric', 'Explosive'];
 const lootType = [
@@ -81,7 +81,8 @@ const exteriorAmbiance = [
     'A sense of unease settles over you, as if you are being watched.',
     'The landscape is barren and desolate, a testament to some long-forgotten disaster.',
     'The sounds of battle can be heard all around, with swords clashing and arrows whistling through the air.',
-    'Corpses new and old litter the land, death is in every corner.'
+    'Corpses new and old litter the land, death is in every corner.',
+    'Pervasive heat covers the land, engulfing everything in its scorching embrace.'
 ];
 
 const areaDifficulty = [
