@@ -191,7 +191,7 @@ const savedContentList = (generatedEl, savedData) => {
     };
 
     // Create and append generatedListEl to HTML
-    const generatedListEl = createSavedContentEl()
+    const generatedListEl = createSavedContentEl();
     savedContentEl.append(generatedListEl);
 
     // When generatedListEl is clicked, show the text content
@@ -205,7 +205,7 @@ const savedContentList = (generatedEl, savedData) => {
 
     // Save the array to localStorage
     saveToLocalStorage(savedData);
-}
+};
 
 // Append an HTML element to 'Saved Content'
 const createSavedContentEl = () => {
@@ -227,7 +227,7 @@ const showSavedContent = (savedObj) => {
     remadeEl.classList.add('text-center', 'listStyle', 'border', 'remadeEl');
 
     const spanEl = document.createElement('span');
-    spanEl.textContent = savedObj.text
+    spanEl.textContent = savedObj.text;
 
     // Append span element to li element & Append remadEl & it's children to textAreaEl
     remadeEl.appendChild(spanEl);
@@ -275,7 +275,7 @@ const loadFromLocalStorage = () => {
 const clearLocalStorage = () => {
     savedContentEl.innerHTML = '';
     localStorage.clear();
-}
+};
 
 // clearList empties the array and sets textAreaEl to an empty string
 const clearList = () => {
@@ -292,7 +292,7 @@ const generateButtonHandler = (event) => {
 
     if (existingRemadeEl) {
         existingRemadeEl.remove();
-    }
+    };
 
     // Collect the value from HTML formSelect and clear searchSelectionEl afterwards 
     let generateParam = searchSelectionEl.value;
@@ -323,7 +323,7 @@ const generateButtonHandler = (event) => {
             break;
         default: 
         alert('Please select a topic!');
-    }
+    };
 };
 
 // generate every topic all at once 
@@ -358,8 +358,8 @@ const generateRoomAmount = () => {
 // select difficulty at random 
 const generateDifficulty = () => {
     const difficulty = setDifficulty();
-    appendGeneratedText(`${difficulty}`)
-}
+    appendGeneratedText(`${difficulty}`);
+};
 
 // generate monster type 
 const generateMonsterType = () => {
@@ -376,7 +376,7 @@ const generateTrap = () => {
         appendGeneratedText(`You have entered a dungeon with no traps`);
     } else if (trap) {
         appendGeneratedText(`You have entered a dungeon with a ${trap} Trap somewhere`);
-    }
+    };
 };
 
 // generate loot
@@ -401,8 +401,8 @@ const setTheme = () => {
     } else {
         // If false, return interior dungeon themes
         return getRandomItem(dungeonInfo[1]);
-    }
-}
+    };
+};
 
 // Randomly select monster type
 const setMonsterType = () => {
@@ -424,7 +424,7 @@ const setMonsterType = () => {
             // Reset monsterTypesCopy array to original contents. splice() method used to modify the array in place, starting from index 0 and removing monsterTypes.length elements. 
             // Then, using the spread operator ..., insert all elements of monsterTypes at the beginning of array
             monsterTypesCopy.splice(0, monsterTypes.length, ...monsterTypes);
-        }
+        };
 
         // Generate a random index to select a monster type from the global monsterTypes array
         const randomIndex = Math.floor(Math.random() * monsterTypesCopy.length);
@@ -437,8 +437,8 @@ const setMonsterType = () => {
         } else {
             usedMonsterTypes.push(randomMonsterType);
             return randomMonsterType;
-        }
-    }
+        };
+    };
 
     // Randomly select a number between 1 and 3, determines how many monsters are around
     const randomAmount = Math.floor(Math.random() * 3) + 1;
@@ -472,7 +472,7 @@ const setAmbiance = (dungeonLocation) =>  {
     // Check to see if dungeonLocation is true or false and pass array data appropriately
     let ambianceArray = dungeonLocation ? dungeonInfo[5] : dungeonInfo[6];
     return getRandomItem(ambianceArray);
-}
+};
 
 // set difficulty
 const setDifficulty = () => getRandomItem(dungeonInfo[7]);
@@ -487,12 +487,13 @@ const formatMonsterStr = (monstersArr) => {
         monsterStr = `${monstersArr.slice(0, -1).join(', ')} and ${monstersArr.slice(-1)}`;
     } else {
         monsterStr = monstersArr[0];
-    }
+    };
+
     return monsterStr;
 };
     
 // randomChance will be true/false roughly 50% of the time.
-const randomChance = () => { return Math.random() < 0.5; } 
+const randomChance = () => { return Math.random() < 0.5 };
 
 // Event Listeners
 generateBtnEl.addEventListener('click', generateButtonHandler);
