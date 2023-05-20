@@ -500,4 +500,7 @@ const randomChance = () => { return Math.random() < 0.5 };
 generateBtnEl.addEventListener('click', generateButtonHandler);
 clearListBtnEl.addEventListener('click', clearList); 
 clearSavesEl.addEventListener('click', clearLocalStorage);
+searchSelectionEl.addEventListener('change', () => {
+    generateBtnEl.focus();
+});
 loadFromLocalStorage();
