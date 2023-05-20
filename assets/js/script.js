@@ -197,7 +197,7 @@ const savedContentList = (generatedEl, savedData) => {
     // When generatedListEl is clicked, show the text content
     generatedListEl.addEventListener('click', () => {
         clearList();
-        showSavedContent(generatedEl);
+        showSavedContent(savedObj);
     });
 
     // Add savedObj to the savedData array
@@ -222,12 +222,12 @@ const createSavedContentEl = () => {
 };
 
 // Recreate the textContent from generatedEl when invoked
-const showSavedContent = (item) => {
+const showSavedContent = (savedObj) => {
     const remadeEl = document.createElement('li');
     remadeEl.classList.add('text-center', 'listStyle', 'border', 'remadeEl');
 
     const spanEl = document.createElement('span');
-    spanEl.textContent = item.text
+    spanEl.textContent = savedObj.text
 
     // Append span element to li element & Append remadEl & it's children to textAreaEl
     remadeEl.appendChild(spanEl);
