@@ -5,7 +5,6 @@ body {
     font-size: 16px;
     background: linear-gradient(270deg, #5b9be3, #82c7f7, #a9e0fb);
     background-size: 600% 600%;
-
     -webkit-animation: colorShift 10s ease infinite;
     animation: colorShift 10s ease infinite;
 }
@@ -69,7 +68,6 @@ section {
     background-image: linear-gradient(45deg, #2196F3, #00BCD4, #2196F3);
     opacity: 0;
     transition: opacity 0.8s ease;
-    /* box-shadow: 2px 3px 6px black; */
 }
 
 .listStyle:hover:before {
@@ -97,17 +95,26 @@ section {
 }
 
 .flashingEffect {
-    color:red;
+    background-image: linear-gradient(45deg, #FF0000, #FF3300, #FF6600, #FF9900, #FFCC00);
+    animation: flashing 1s infinite ease-in;
+    opacity: 0;
 }
 
 @-webkit-keyframes colorShift {
-    0%{background-position:0% 50%}
-    50%{background-position:100% 50%}
-    100%{background-position:0% 50%}
+    0%{background-position: 0% 50%}
+    50%{background-position: 100% 50%}
+    100%{background-position: 0% 50%}
 }
 
 @keyframes colorShift {
-    0%{background-position:0% 50%}
-    50%{background-position:100% 50%}
-    100%{background-position:0% 50%}
+    0%{background-position: 0% 50%}
+    50%{background-position: 100% 50%}
+    100%{background-position: 0% 50%}
+}
+
+
+@keyframes flashing {
+    0% {opacity: 0}
+    50% {opacity: 1}
+    100% {opacity: 0}
 }
