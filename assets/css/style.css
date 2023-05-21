@@ -56,30 +56,42 @@ section {
     list-style-type: none;
     cursor: pointer;
     box-shadow: 0px 2px 3px black;
+    transition: background-color 0.3s ease;
 }
 
 .listStyle:before {
-    content: "";
+    content: "🔓";
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: linear-gradient(45deg, #2196F3, #00BCD4, #2196F3);
+    top: -50px;
+    left: 50%;
+    transform: translate(-50%);
+    font-size: 24px;
     opacity: 0;
-    transition: opacity 0.8s ease;
+    transition: opacity 0.3s ease, top 0.5s ease;
+    z-index: 1;
+}
+
+.listStyle:hover {
+    background-image: none;
+    background-color: #2196F3;
 }
 
 .listStyle:hover:before {
     opacity: 1;
+    top: 10%
+}
+
+.listStyle:active:before {
+    content: "🔒";
 }
 
 .listStyle:active {
     transform: translateY(2px);
     color: white;
-    background-image: linear-gradient(45deg, #0d6cb2, #0087a3, #0d6cb2);
+    background-color: #0d6cb2;
     filter: brightness(0.8);
 }
+
 
 .listStyle span {
     position: relative;
