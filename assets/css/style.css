@@ -13,6 +13,11 @@ body {
     padding: 0.5rem 0 2rem;
 }
 
+#gitHubLink {
+    text-decoration: none;
+    color: black !important;
+}
+
 .card {
     width: 60%;
     margin-left: auto;
