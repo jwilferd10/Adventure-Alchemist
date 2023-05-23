@@ -211,6 +211,9 @@ const savedContentList = (generatedEl, savedData) => {
 
 // Append an HTML element to 'Saved Content'
 const createSavedContentEl = () => {
+    // Remove 'hidden' to reveal the clearSaves btn
+    clearSavesEl.classList.remove('hidden');
+
     const generatedListItem = document.createElement('li');
     generatedListItem.classList.add('text-center', 'listStyle', 'savedItem', 'border','border-dark', 'rounded');
     
@@ -276,9 +279,10 @@ const loadFromLocalStorage = () => {
     });
 };
 
-// clearLocalStorage empties savedContent's list and clears up localStorage
+// clearLocalStorage empties savedContent's list and clears up localStorage, then hide the clearSaves btn
 const clearLocalStorage = () => {
     savedContentEl.innerHTML = '';
+    clearSavesEl.classList.add('hidden');
     localStorage.clear();
 };
 
