@@ -290,6 +290,7 @@ const clearLocalStorage = () => {
 const clearList = () => {
     generatedElements.length = 0;
     textAreaEl.innerHTML = '';
+    limitNotifyEl.classList.add('hidden');
 };
 
 // Build form select functionality
