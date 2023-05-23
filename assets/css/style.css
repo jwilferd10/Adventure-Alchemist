@@ -9,6 +9,10 @@ body {
     animation: colorShift 10s ease infinite;
 }
 
+.hidden {
+    display: none;
+}
+
 #projectTitle {
     padding: 0.5rem 0 2rem;
 }
@@ -106,7 +110,7 @@ section {
     width: 5rem;
 }
 
-#notification {
+#limitNotify {
     font-style:italic;
     font-size: 14px;
 }

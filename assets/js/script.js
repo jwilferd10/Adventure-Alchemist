@@ -4,6 +4,7 @@ const clearSavesEl = document.getElementById('clearSaves');
 const searchSelectionEl = document.getElementById('searchSelection');
 const savedContentEl = document.getElementById('savedContent');
 const textAreaEl = document.getElementById('textArea');
+const limitNotifyEl = document.getElementById('limitNotify');
 
 // Dungeon Parameters
 const interiorDungeonThemes = ['Abandoned Manor', 'Abyssal Fortress', 'Ancient ruins', 'Bandit Hideout', 'Besieged Fortress', 'Castle Ruins', 'Catacombs', 'Crypts', 'Drow City', 'Desert Tomb', 'Dwarf mine', 'Forsakened Cathedral', 'Goblin stronghold', 'Haunted mansion', 'Ice Cave', 'Jungle Temple', 'Labyrinth', 'Necropolis', 'Orc stronghold', 'Palace dungeon', 'Prison Riot', 'Sewer system', 'Set of Caverns', 'Sinister Asylum', 'Underwater city', 'Vampire crypt', 'Wizard\'s tower', 'Witch\'s Coven', 'Zombie infested lab'];
@@ -233,6 +234,9 @@ const showSavedContent = (savedObj) => {
     // Append span element to li element & Append remadEl & it's children to textAreaEl
     remadeEl.appendChild(spanEl);
     textAreaEl.append(remadeEl);
+
+    // Hide limit notification
+    limitNotifyEl.classList.add('hidden');
 }
 
 // Function to save data to localStorage
@@ -294,6 +298,9 @@ const generateButtonHandler = (event) => {
     if (existingRemadeEl) {
         existingRemadeEl.remove();
     };
+
+    // remove hidden and show user a notification
+    limitNotifyEl.classList.remove('hidden');
 
     // Collect the value from HTML formSelect and clear searchSelectionEl afterwards 
     let generateParam = searchSelectionEl.value;
