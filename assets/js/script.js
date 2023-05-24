@@ -282,6 +282,7 @@ const loadFromLocalStorage = () => {
 // clearLocalStorage empties savedContent's list and clears up localStorage, then hide the clearSaves btn
 const clearLocalStorage = () => {
     savedContentEl.innerHTML = '';
+    textAreaEl.innerHTML = '';
     clearSavesEl.classList.add('hidden');
     localStorage.clear();
 };
