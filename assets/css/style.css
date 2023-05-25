@@ -58,6 +58,21 @@ section {
     width: 35%;
 }
 
+.btn .btn-primary:active,
+.btn:active {
+    background-color: #0d6cb2;
+}
+
+.btn .btn-danger:active,
+.btn:active.btn-danger {
+    background-color: #910c0c;
+}
+
+.btn:active {
+    transform: translateY(2px);
+    filter: brightness(0.8);
+}
+
 .listStyle {
     position: relative;
     margin: 15px 25px 20px;
