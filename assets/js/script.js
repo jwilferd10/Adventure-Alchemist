@@ -259,7 +259,7 @@ const loadFromLocalStorage = () => {
     let savedContent = JSON.parse(localStorage.getItem('saved'));
 
     // Check results
-    console.log(savedContent);
+    // console.log(savedContent);
 
     if (!savedContent) {
         return;
@@ -396,7 +396,7 @@ const generateTrap = () => {
 // generate loot
 const generateLoot = () => {
     const lootItem = setLoot();
-    appendGeneratedText(`Somewhere in the dungeon you can find a ${lootItem}!`);
+    appendGeneratedText(`You can find a ${lootItem} somewhere here!`);
 };
 
 // getRandomItem rounds off and selects a random number within an array
