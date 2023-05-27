@@ -158,7 +158,7 @@ const appendGeneratedText = (generatedText) => {
 // Function to create a list element
 const createListElement = (generatedText) => {
     const generatedListItem = document.createElement('li');
-    generatedListItem.classList.add('text-center', 'listStyle', 'border','border-dark', 'rounded');
+    generatedListItem.classList.add('text-center', 'listStyle', 'border','border-dark', 'rounded', 'saveGenContent');
     generatedListItem.id = generateUniqueID();
 
     // Create and append span element
@@ -211,19 +211,35 @@ const savedContentList = (generatedEl, savedData) => {
 
 // Append an HTML element to 'Saved Content'
 const createSavedContentEl = () => {
-    // Remove 'hidden' to reveal the clearSaves btn
-    clearSavesEl.classList.remove('hidden');
+    // Create a container div to hold the list item and the delete button
+    const containerDiv = document.createElement('div');
+    containerDiv.classList.add('d-flex', 'flex-column', 'align-items-center');
 
+    // Create the delete button element
+    const deleteButton = document.createElement('button');
+    deleteButton.textContent = 'Delete';
+    deleteButton.classList.add('btn', 'border', 'border-dark', 'rounded');
+    // deleteButton.addEventListener('click', () => {
+    //     // Implement delete functionality here
+    //     generatedListItem.remove();
+    // });
+    
+    containerDiv.appendChild(deleteButton);
+
+    // Create a list element
     const generatedListItem = document.createElement('li');
     generatedListItem.classList.add('text-center', 'listStyle', 'savedItem', 'border','border-dark', 'rounded');
-    
+
     // Increment every time an element is created
     const spanEl = document.createElement('span');
     spanEl.textContent = `Save ${savedItemNum++}`;
 
-    // Append span element to li element
+    // Append span element to generatedListItem
     generatedListItem.appendChild(spanEl);
-    return generatedListItem;
+
+    containerDiv.appendChild(generatedListItem);
+
+    return containerDiv;
 };
 
 // Recreate the textContent from generatedEl when invoked

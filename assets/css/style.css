@@ -83,7 +83,28 @@ section {
     transition: background-color 0.3s ease;
 }
 
-.listStyle:before {
+.listStyle:hover {
+    background-image: none;
+    background-color: #2196F3;
+}
+
+.listStyle:hover:before {
+    opacity: 1;
+    top: 10%
+}
+
+.listStyle:active {
+    transform: translateY(2px);
+    color: white;
+    background-color: #0d6cb2;
+    filter: brightness(0.8);
+}
+
+.listStyle span {
+    position: relative;
+}
+
+.saveGenContent:before {
     content: "🔓";
     position: absolute;
     top: -50px;
@@ -95,32 +116,9 @@ section {
     z-index: 1;
 }
 
-.listStyle:hover {
-    background-image: none;
-    background-color: #2196F3;
-}
-
-.listStyle:hover:before {
-    opacity: 1;
-    top: 10%
-}
-
-.listStyle:active:before {
+.saveGenContent:active:before {
     content: "🔒";
 }
-
-.listStyle:active {
-    transform: translateY(2px);
-    color: white;
-    background-color: #0d6cb2;
-    filter: brightness(0.8);
-}
-
-
-.listStyle span {
-    position: relative;
-}
-
 .savedItem {
     width: 5rem;
 }
