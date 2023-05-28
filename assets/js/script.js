@@ -193,7 +193,7 @@ const savedContentList = (generatedEl, savedData) => {
     };
 
     // Create and append generatedListEl to HTML
-    const generatedListEl = createSavedContentEl();
+    const generatedListEl = createSavedContentEl(savedObj);
     savedContentEl.append(generatedListEl);
 
     // When generatedListEl is clicked, show the text content
@@ -210,7 +210,7 @@ const savedContentList = (generatedEl, savedData) => {
 };
 
 // Append an HTML element to 'Saved Content'
-const createSavedContentEl = () => {
+const createSavedContentEl = (savedObj) => {
     // Create a container div to hold the list item and the delete button
     const containerDiv = document.createElement('div');
     containerDiv.classList.add('d-flex', 'flex-column', 'align-items-center');
@@ -219,12 +219,15 @@ const createSavedContentEl = () => {
     const deleteButton = document.createElement('button');
     deleteButton.textContent = 'Delete';
     deleteButton.classList.add('btn', 'border', 'border-dark', 'rounded');
-    // deleteButton.addEventListener('click', () => {
-    //     // Implement delete functionality here
-    //     generatedListItem.remove();
-    // });
+    deleteButton.addEventListener('click', () => {
+        // handleDelete(containerDiv, savedObj);
+    });
     
     containerDiv.appendChild(deleteButton);
+
+
+    // CREATE UNIQUE OBJECT ID FOR SAVED CONTENT
+
 
     // Create a list element
     const generatedListItem = document.createElement('li');
@@ -294,6 +297,13 @@ const loadFromLocalStorage = () => {
         savedContentEl.append(savedObjElement);
     });
 };
+
+// Function to handle deletion of a single saved item
+// const handleDelete = (containerDiv, savedObj) => {
+//     containerDiv.remove();
+
+//     // DELETE FROM LOCALSTORAGE
+// };
 
 // clearLocalStorage empties savedContent's list and clears up localStorage, then hide the clearSaves btn
 const clearLocalStorage = () => {
