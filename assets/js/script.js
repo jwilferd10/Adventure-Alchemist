@@ -211,9 +211,10 @@ const savedContentList = (generatedEl, savedData) => {
 
 // Append an HTML element to 'Saved Content'
 const createSavedContentEl = (savedObj) => {
-    // Create a container div to hold the list item and the delete button
+    // Create a container div to hold the list item and the delete button, 
     const containerDiv = document.createElement('div');
     containerDiv.classList.add('d-flex', 'flex-column', 'align-items-center');
+    containerDiv.setAttribute('saveID', savedObj.id);
 
     // Create the delete button element
     const deleteButton = document.createElement('button');
@@ -224,10 +225,6 @@ const createSavedContentEl = (savedObj) => {
     });
     
     containerDiv.appendChild(deleteButton);
-
-
-    // CREATE UNIQUE OBJECT ID FOR SAVED CONTENT
-
 
     // Create a list element
     const generatedListItem = document.createElement('li');
