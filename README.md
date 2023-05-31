@@ -23,7 +23,8 @@ Adventure Alchemist is an application with an aim to help make the process of ge
 
 With Adventure Alchemist, dungeon masters and players can quickly generate creative and exciting scenarios to spice up their campaigns or spark up some ideas. Keeping the gameplay fresh and engaging!
 
-Thanks so much for checking out Adventure Alchemist! This application was a commission and I recieved the green-light to keep this repository public for everyone to use. I devoted time into ensuring the code is modularized and easily modifiable. It's my hope that this application helps YOU out in anyway possible. Feel free to take a look through the files and fork it if you'd like, Happy Coding!
+
+Thanks so much for checking out Adventure Alchemist! This application was an accumulation of ideas and practices that I've picked up from past projects, I found myself stuck on errors a few times - such as working with localStorage and figuring out why it's unique ID wasn't going through. This project was also a  commission and I recieved the green-light to keep this repository public for everyone to use. I devoted time into ensuring the code is modularized and easily modifiable. It's my hope that this application helps YOU out in anyway possible. Feel free to take a look through the files and fork it if you'd like, Happy Coding!
 
 ## :book: User Story:
 **AS A Dungeon Master for a DnD Campaign**
