@@ -114,14 +114,12 @@ const dungeonInfo = [
 // Array for generated elements on the list
 const generatedElements = [];
 
-// Array for saved elements 
-let savedData = [];
+// // Array for saved elements 
+let savedData = JSON.parse(localStorage.getItem('savedData')) || [];
+let savedItemNum = parseInt(localStorage.getItem('savedItemNum')) || 1;
 
 // Counter for generating unique IDs
 let idCounter = 0;
-
-// Counter for generating 'Save' labels
-let savedItemNum = 1;
 
 // Function to generate a unique ID
 const generateUniqueID = () => `generated-${idCounter++}`;
@@ -204,9 +202,10 @@ const savedContentList = (generatedEl, savedData) => {
 
     // Add savedObj to the savedData array
     savedData.push(savedObj);
+    savedItemNum++
 
     // Save the array to localStorage
-    saveToLocalStorage(savedData);
+    saveToLocalStorage(savedData, savedItemNum);
 };
 
 
@@ -267,6 +266,7 @@ const showSavedContent = (savedObj) => {
 // Function to save data to localStorage
 const saveToLocalStorage = (savedData) => {
     localStorage.setItem('savedData', JSON.stringify(savedData));
+    localStorage.setItem('savedItemNum', savedItemNum.toString());
 };
 
 // Function to load data from localStorage
