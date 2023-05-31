@@ -203,54 +203,47 @@ const savedContentList = (generatedEl, savedData) => {
     });
 
     // Add savedObj to the savedData array
-    // savedData.push(savedObj);
+    savedData.push(savedObj);
 
     // Save the array to localStorage
     saveToLocalStorage(savedData);
 };
 
+
 // Append an HTML element to 'Saved Content'
 const createSavedContentEl = (savedObj) => {
-    // Create a container div to hold the list item and the delete button, 
+    // Create a container div to hold the list item and the delete button
     const containerDiv = document.createElement('div');
     containerDiv.classList.add('d-flex', 'flex-column', 'align-items-center');
 
-
-
-
-    // WHATEVER THIS IS ADJUSTED TO, MAKE SURE TO INCREMENT
-    containerDiv.setAttribute('saveID', savedItemNum);
-
-
-
-
+    // Set the unique ID as a data attribute on the container div
+    containerDiv.setAttribute('data-save-id', savedObj.id);
 
     // Create the delete button element
     const deleteButton = document.createElement('button');
     deleteButton.textContent = 'Delete';
     deleteButton.classList.add('btn', 'border', 'border-dark', 'rounded');
     deleteButton.addEventListener('click', () => {
-        // handleDelete(containerDiv, savedObj);
+        handleDelete(containerDiv, savedObj);
     });
-    
+
     containerDiv.appendChild(deleteButton);
 
     // Create a list element
     const generatedListItem = document.createElement('li');
-    generatedListItem.classList.add('text-center', 'listStyle', 'savedItem', 'border','border-dark', 'rounded');
+    generatedListItem.classList.add('text-center', 'listStyle', 'savedItem', 'border', 'border-dark', 'rounded');
 
     // Increment every time an element is created
     const spanEl = document.createElement('span');
-    spanEl.textContent = `Save ${savedItemNum++}`;
+    spanEl.textContent = `Save ${savedObj.id}`;
 
     // Append span element to generatedListItem
     generatedListItem.appendChild(spanEl);
 
     containerDiv.appendChild(generatedListItem);
 
-
-    // MAKE SURE TO PUSH THE SAVEDOBJ TO SAVEDDATA 
-    // savedData.push(savedObj);
+    // For every item created,
+    savedItemNum++
 
     return containerDiv;
 };
@@ -269,7 +262,7 @@ const showSavedContent = (savedObj) => {
 
     // Hide limit notification
     limitNotifyEl.classList.add('hidden');
-}
+};
 
 // Function to save data to localStorage
 const saveToLocalStorage = (savedData) => {
@@ -280,16 +273,13 @@ const saveToLocalStorage = (savedData) => {
 const loadFromLocalStorage = () => {
     let savedContent = JSON.parse(localStorage.getItem('savedData'));
 
-    // Check results
-    // console.log(savedContent);
-
     if (!savedContent) {
         return;
     }
 
     // Run createSavedContentEl for each savedContent
     savedContent.forEach((item) => {
-        const savedObjElement = createSavedContentEl();
+        const savedObjElement = createSavedContentEl(item);
 
         // Clear textArea and show content
         savedObjElement.addEventListener('click', () => {
@@ -302,20 +292,27 @@ const loadFromLocalStorage = () => {
 };
 
 // Function to handle deletion of a single saved item
-// const handleDelete = (containerDiv, savedObj) => {
-//     containerDiv.remove();
+const handleDelete = (containerDiv, savedObj) => {
+    // Remove HTML
+    containerDiv.remove();
 
-//     // DELETE FROM LOCALSTORAGE
-    // USE THIS TO DELETE FROM LOCALSTORAGE
+    // Collect unique ID to delete it from localStorage
+    const saveId = savedObj.id;
 
-    // Instead of trying to delete from the savedObj ID, try selecting the parent node (or it's identifier on the savedData array)
+    // Load savedData from localStorage
+    let savedData = JSON.parse(localStorage.getItem('savedData'));
 
-    // Delete the node's placement inside the array
+    // Locate the index of element with the matching ID in savedData
+    const index = savedData.findIndex(item => item.id === saveId);
 
-    // localStorage.removeItem(key);
+    if (index !== -1) {
+        // Remove the element from the savedData array
+        savedData.splice(index, 1);
 
-    // Update localStorage
-// };
+        // Update array to localStorage
+        saveToLocalStorage(savedData);
+    }
+};
 
 // clearLocalStorage empties savedContent's list and clears up localStorage, then hide the clearSaves btn
 const clearLocalStorage = () => {
