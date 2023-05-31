@@ -203,7 +203,7 @@ const savedContentList = (generatedEl, savedData) => {
     });
 
     // Add savedObj to the savedData array
-    savedData.push(savedObj);
+    // savedData.push(savedObj);
 
     // Save the array to localStorage
     saveToLocalStorage(savedData);
@@ -214,7 +214,16 @@ const createSavedContentEl = (savedObj) => {
     // Create a container div to hold the list item and the delete button, 
     const containerDiv = document.createElement('div');
     containerDiv.classList.add('d-flex', 'flex-column', 'align-items-center');
-    containerDiv.setAttribute('saveID', savedObj.id);
+
+
+
+
+    // WHATEVER THIS IS ADJUSTED TO, MAKE SURE TO INCREMENT
+    containerDiv.setAttribute('saveID', savedItemNum);
+
+
+
+
 
     // Create the delete button element
     const deleteButton = document.createElement('button');
@@ -239,6 +248,10 @@ const createSavedContentEl = (savedObj) => {
 
     containerDiv.appendChild(generatedListItem);
 
+
+    // MAKE SURE TO PUSH THE SAVEDOBJ TO SAVEDDATA 
+    // savedData.push(savedObj);
+
     return containerDiv;
 };
 
@@ -260,19 +273,12 @@ const showSavedContent = (savedObj) => {
 
 // Function to save data to localStorage
 const saveToLocalStorage = (savedData) => {
-    // Load existing data
-    let savedContent = localStorage.getItem('saved');
-    savedContent = JSON.parse(savedContent) || [];
-
-    // Append new data to existing array & save updated array to localStorage
-    savedData.forEach((item) => savedContent.push(item));
-    localStorage.setItem('saved', JSON.stringify(savedContent));
+    localStorage.setItem('savedData', JSON.stringify(savedData));
 };
 
 // Function to load data from localStorage
 const loadFromLocalStorage = () => {
-    // getItem and parse it for savedContent
-    let savedContent = JSON.parse(localStorage.getItem('saved'));
+    let savedContent = JSON.parse(localStorage.getItem('savedData'));
 
     // Check results
     // console.log(savedContent);
@@ -300,6 +306,15 @@ const loadFromLocalStorage = () => {
 //     containerDiv.remove();
 
 //     // DELETE FROM LOCALSTORAGE
+    // USE THIS TO DELETE FROM LOCALSTORAGE
+
+    // Instead of trying to delete from the savedObj ID, try selecting the parent node (or it's identifier on the savedData array)
+
+    // Delete the node's placement inside the array
+
+    // localStorage.removeItem(key);
+
+    // Update localStorage
 // };
 
 // clearLocalStorage empties savedContent's list and clears up localStorage, then hide the clearSaves btn
