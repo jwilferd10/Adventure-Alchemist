@@ -243,9 +243,6 @@ const createSavedContentEl = (savedObj) => {
 
     containerDiv.appendChild(generatedListItem);
 
-    // // For every item created,
-    // savedItemNum++
-
     clearSavesEl.classList.remove('hidden');
 
     return containerDiv;
