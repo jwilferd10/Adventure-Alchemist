@@ -152,3 +152,18 @@ section {
     50% {opacity: 1}
     100% {opacity: 0}
 }
+
+
+/* Media Queries */
+/* ol, ul {
+    padding-left: 0rem;
+} */
+
+/* .listStyle {
+    margin: 5px 0px 20px 0px;
+    padding: 10px 0px 10px 0px;
+} */
+
+/* .listStyle span {
+    font-size: 15px;
+} */
