@@ -8,8 +8,7 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
         <link rel="stylesheet" href="./assets/css/style.css">
     </head>
-    <body>
-
+    <body class="flex-column min-100-vh">
         <!-- Project Title -->
         <section id="projectTitle" class="text-center mb-3">
             <a href="https://github.com/jwilferd10/Adventure-Alchemist" target="_blank" id="gitHubLink" class="text-light borderStyle h1">
@@ -19,15 +18,15 @@
         
         <main class="flex-row justify-space-between">
             <!-- Search Form -->
-            <section class="container">
-                <div class="row stickyEffect">
-                    <div class="card border-dark col-md-3 col-sm-12">
-
+            <div class="col-sm-12">
+                <section>
+                    <!-- Wrapper Div -->
+                    <div class="stickyEffect card border-dark">
                         <!-- Card Header -->
                         <div class="card-header-wrapper">
                             <h3 class="card-header text-uppercase text-center mb-3">💡 Generate By Topic 💡</h3>
                         </div>
-                        
+                                
                         <!-- Form Select & Generate Options -->
                         <select id="searchSelection" class="modal-body form-input">
                             <option value="" disabled selected class="btn">Select A Topic</option>
@@ -46,48 +45,48 @@
                             <button id="clearListBtn" class="btn btn-danger controlBtns">Clear List</button>
                         </div>
                     </div>
-                </div>
-            </section>
+                </section>
 
-            <!-- Saved Scenarios -->
-            <section>
-                <div class="card border border-dark backgroundEffect col-md-8 col-sm-12 flex-sm-column">
+                <!-- Saved Scenarios -->
+                <section>
+                    <div class="card border border-dark backgroundEffect col-md-8 col-sm-12 flex-sm-column">
 
-                    <!-- Card Header -->
-                    <div class="card-header-wrapper">
-                        <h3 class="card-header text-uppercase text-center mb-2">💾 Saved Content 💾</h3>
+                        <!-- Card Header -->
+                        <div class="card-header-wrapper">
+                            <h3 class="card-header text-uppercase text-center mb-2">💾 Saved Content 💾</h3>
+                        </div>
+                        
+                        <!-- Saved Items List  -->
+                        <ul class="d-flex flex-wrap" id="savedContent">
+                            <!-- Generated HTML Here  -->
+                        </ul>
+
+                        <!-- Clear Saves -->
+                        <div class="d-flex justify-content-center pb-3">
+                            <button id="clearSaves" class="btn btn-danger controlBtns hidden">Clear Saves</button>
+                        </div>
                     </div>
-                    
-                    <!-- Saved Items List  -->
-                    <ul class="d-flex flex-wrap" id="savedContent">
-                        <!-- Generated HTML Here  -->
-                    </ul>
+                </section>
 
-                    <!-- Clear Saves -->
-                    <div class="d-flex justify-content-center pb-3">
-                        <button id="clearSaves" class="btn btn-danger controlBtns hidden">Clear Saves</button>
+                <!-- Generated Content -->
+                <section>
+                    <div class="card border border-dark backgroundEffect">
+
+                        <!-- Card Header -->
+                        <div class="card-header-wrapper">
+                            <h3 class="card-header text-uppercase text-center mb-2">📝 Generated Content 📝</h3>
+                        </div>
+
+                        <!-- Generated Content List  -->
+                        <ul id="textArea">
+                            <!-- Generated HTML Here -->
+                        </ul>
+
+                        <!-- Notify User -->
+                        <p id="limitNotify" class="text-center mt-1 hidden">Note: Only the 10 most recent generated items are shown. Oldest items will be automatically deleted.</p>
                     </div>
-                </div>
-            </section>
-
-            <!-- Generated Content -->
-            <section>
-                <div class="card border border-dark backgroundEffect">
-
-                    <!-- Card Header -->
-                    <div class="card-header-wrapper">
-                        <h3 class="card-header text-uppercase text-center mb-2">📝 Generated Content 📝</h3>
-                    </div>
-
-                    <!-- Generated Content List  -->
-                    <ul id="textArea">
-                        <!-- Generated HTML Here -->
-                    </ul>
-
-                    <!-- Notify User -->
-                    <p id="limitNotify" class="text-center mt-1 hidden">Note: Only the 10 most recent generated items are shown. Oldest items will be automatically deleted.</p>
-                </div>
-            </section>
+                </section>
+            </div>
         </main>
 
         <!-- Footer -->
