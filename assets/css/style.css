@@ -158,6 +158,15 @@ section {
     100% {opacity: 0}
 }
 
+/* Media Queries */
+
+@media (max-width: 800px) {
+    #savedContent {
+        padding-left: revert;
+        column-gap: 8px;
+    }
+}
+
 @media (max-width: 700px ) {
     .controlBtns {
         width: 90%;
@@ -170,13 +179,15 @@ section {
     ol, ul {
         padding-left: 0rem;
     }    
+
+    .listStyle {
+        margin: 5px 0px 20px 0px;
+        padding: 10px 0px 10px 0px;
+    }
     
 }
 
 /* Media Queries */
-/* ol, ul {
-    padding-left: 0rem;
-} */
 
 /* .listStyle {
     margin: 5px 0px 20px 0px;
