@@ -176,6 +176,10 @@ section {
         width: 100%;
     }
 
+    .card-header {
+        font-size: 4.5vw;
+    }
+
     ol, ul {
         padding-left: 0rem;
     }    
@@ -193,5 +197,11 @@ section {
 @media (max-width: 600px ) { 
     #savedContent {
         column-gap: 40px;
+    }
+}
+
+@media (max-width: 500px ) { 
+    .card-header {
+        font-size: 6.5vw;
     }
 }
