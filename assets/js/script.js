@@ -223,7 +223,7 @@ const createSavedContentEl = (savedObj) => {
     // Create the delete button element
     const deleteButton = document.createElement('button');
     deleteButton.textContent = 'Delete';
-    deleteButton.classList.add('btn', 'border', 'border-dark', 'rounded');
+    deleteButton.classList.add('btn', 'border', 'border-dark', 'rounded', 'btn-danger');
     deleteButton.addEventListener('click', () => {
         handleDelete(containerDiv, savedObj);
     });
