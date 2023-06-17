@@ -3,6 +3,7 @@ const clearListBtnEl = document.getElementById('clearListBtn');
 const clearSavesEl = document.getElementById('clearSaves');
 const searchSelectionEl = document.getElementById('searchSelection');
 const savedContentEl = document.getElementById('savedContent');
+const savedCardEl = document.getElementById('savedCard');
 const textAreaEl = document.getElementById('textArea');
 const limitNotifyEl = document.getElementById('limitNotify');
 
@@ -243,6 +244,7 @@ const createSavedContentEl = (savedObj) => {
 
     containerDiv.appendChild(generatedListItem);
 
+    savedCardEl.classList.remove('hidden');
     clearSavesEl.classList.remove('hidden');
 
     return containerDiv;
@@ -319,6 +321,7 @@ const handleDelete = (containerDiv, savedObj) => {
 const clearLocalStorage = () => {
     savedContentEl.innerHTML = '';
     textAreaEl.innerHTML = '';
+    savedCardEl.classList.add('hidden');
     clearSavesEl.classList.add('hidden');
     localStorage.clear();
 };
