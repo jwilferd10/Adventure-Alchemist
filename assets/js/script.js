@@ -1,3 +1,4 @@
+// DOM Elements for basic application use 
 const generateBtnEl = document.getElementById('generateBtn');
 const clearListBtnEl = document.getElementById('clearListBtn');
 const clearSavesEl = document.getElementById('clearSaves');
@@ -5,7 +6,13 @@ const searchSelectionEl = document.getElementById('searchSelection');
 const savedContentEl = document.getElementById('savedContent');
 const savedCardEl = document.getElementById('savedCard');
 const textAreaEl = document.getElementById('textArea');
+
+// DOM Elements for Notifications
 const limitNotifyEl = document.getElementById('limitNotify');
+const modalNotifyEl = document.getElementById('modalNotify');
+const modalHeaderEl = document.getElementById('modalHeader');
+const modalTextEl = document.getElementById('modalText');
+const modalActionBtnEl = document.getElementById('modalActionBtn');
 
 // Dungeon Parameters
 const interiorDungeonThemes = ['Abandoned Manor', 'Abyssal Fortress', 'Ancient ruins', 'Bandit Hideout', 'Besieged Fortress', 'Castle Ruins', 'Catacombs', 'Crypts', 'Drow City', 'Desert Tomb', 'Dwarf mine', 'Forsakened Cathedral', 'Goblin stronghold', 'Haunted mansion', 'Ice Cave', 'Jungle Temple', 'Labyrinth', 'Necropolis', 'Orc stronghold', 'Palace dungeon', 'Prison Riot', 'Sewer system', 'Set of Caverns', 'Sinister Asylum', 'Underwater city', 'Vampire crypt', 'Wizard\'s tower', 'Witch\'s Coven', 'Zombie infested lab'];

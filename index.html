@@ -63,7 +63,7 @@
 
                         <!-- Clear Saves -->
                         <div class="d-flex justify-content-center pb-3">
-                            <button id="clearSaves" class="btn deleteBtnStyle controlBtns hidden">Clear Saves</button>
+                            <button class="btn deleteBtnStyle controlBtns hidden" id="clearSaves" data-toggle="modal" data-target="#modalNotify">Clear Saves</button>
                         </div>
                     </div>
                 </section>
@@ -94,22 +94,25 @@
             <p class="footerText pt-2 text-center">&copy;2023 by Jonathan Wilferd</p>
         </footer>
 
-            <!-- Clear Saves Modal -->
-            <div class="modal fade" id="clearAllModal" tabindex="-1" role="dialog" aria-labelledby="deleteAllModalLabel" aria-hidden="true">
+            <!-- Reusable Modal -->
+            <div class="modal fade" id="modalNotify" tabindex="-1" role="dialog" aria-labelledby="modalNotifyLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
+                    <!-- Header -->
                     <div class="modal-header">
-                        <h5 class="modal-title" id="clearAllModalLabel">Clear Saves?</h5>
+                        <h5 class="modal-title" id="modalHeader">Header Placeholder</h5>
                         <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
+                    <!-- Body -->
                     <div class="modal-body text-center">
-                        Clicking 'Confirm' will clear <b>all</b> saves, are you sure?
+                        <p id="modalText">Modal Placeholder Text</p>
                     </div>
+                    <!-- Footer -->
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Confirm</button>
+                        <button type="button" class="btn btn-danger" id="modalActionBtn" data-bs-dismiss="modal">Confirm</button>
                     </div>
                 </div>
             </div>
