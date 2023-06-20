@@ -13,6 +13,8 @@ const modalNotifyEl = document.getElementById('modalNotify');
 const modalHeaderEl = document.getElementById('modalHeader');
 const modalTextEl = document.getElementById('modalText');
 const modalActionBtnEl = document.getElementById('modalActionBtn');
+const closeModalEl = document.querySelector('#modalNotify .modal-footer .btn-secondary');
+const secondCloseButtonEl = document.querySelector('#modalNotify .modal-header .close');
 
 // Dungeon Parameters
 const interiorDungeonThemes = ['Abandoned Manor', 'Abyssal Fortress', 'Ancient ruins', 'Bandit Hideout', 'Besieged Fortress', 'Castle Ruins', 'Catacombs', 'Crypts', 'Drow City', 'Desert Tomb', 'Dwarf mine', 'Forsakened Cathedral', 'Goblin stronghold', 'Haunted mansion', 'Ice Cave', 'Jungle Temple', 'Labyrinth', 'Necropolis', 'Orc stronghold', 'Palace dungeon', 'Prison Riot', 'Sewer system', 'Set of Caverns', 'Sinister Asylum', 'Underwater city', 'Vampire crypt', 'Wizard\'s tower', 'Witch\'s Coven', 'Zombie infested lab'];
@@ -324,6 +326,25 @@ const handleDelete = (containerDiv, savedObj) => {
     }
 };
 
+// Check with users if they want to clear save list
+const checkClearSaves = () => {
+    modalHeaderEl.textContent = "Let's Double Check..."
+    modalTextEl.textContent = "Clicking 'Confirm' will clear ALL saves, are you sure?"
+
+    modalActionBtnEl.classList.add('btn-outline-danger');
+    modalActionBtnEl.textContent = 'Clear Saves';
+
+    modalActionBtnEl.addEventListener('click', () => {
+        clearLocalStorage();
+    });
+}
+
+// Modal Visibility 
+const closeModal = () => {
+    modalNotifyEl.classList.remove('show');
+    modalNotifyEl.style.display = 'none';
+}
+
 // clearLocalStorage empties savedContent's list and clears up localStorage, then hide the clearSaves btn
 const clearLocalStorage = () => {
     savedContentEl.innerHTML = '';
@@ -558,8 +579,11 @@ const randomChance = () => { return Math.random() < 0.5 };
 // Event Listeners
 generateBtnEl.addEventListener('click', generateButtonHandler);
 clearListBtnEl.addEventListener('click', clearList); 
-clearSavesEl.addEventListener('click', clearLocalStorage);
+clearSavesEl.addEventListener('click', checkClearSaves);
 searchSelectionEl.addEventListener('change', () => {
     generateBtnEl.focus();
 });
+closeModalEl.addEventListener('click', closeModal);
+secondCloseButtonEl.addEventListener('click', closeModal);
+
 loadFromLocalStorage();
