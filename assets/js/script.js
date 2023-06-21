@@ -9,6 +9,7 @@ const textAreaEl = document.getElementById('textArea');
 
 // DOM Elements for Notifications
 const limitNotifyEl = document.getElementById('limitNotify');
+const placeholderTextEl = document.getElementById('placeholderText');
 const modalNotifyEl = document.getElementById('modalNotify');
 const modalHeaderEl = document.getElementById('modalHeader');
 const modalTextEl = document.getElementById('modalText');
@@ -374,6 +375,9 @@ const generateButtonHandler = (event) => {
 
     // remove hidden and show user a notification
     limitNotifyEl.classList.remove('hidden');
+
+    // Add hidden to the placeholder
+    placeholderTextEl.classList.add('hidden');
 
     // Collect the value from HTML formSelect and clear searchSelectionEl afterwards 
     let generateParam = searchSelectionEl.value;

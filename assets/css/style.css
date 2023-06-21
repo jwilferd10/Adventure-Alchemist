@@ -145,7 +145,7 @@ section {
     width: 5rem;
 }
 
-#limitNotify {
+.cardNotification {
     font-style:italic;
     font-size: 14px;
 }
