@@ -360,6 +360,7 @@ const clearList = () => {
     generatedElements.length = 0;
     textAreaEl.innerHTML = '';
     limitNotifyEl.classList.add('hidden');
+    placeholderTextEl.classList.remove('hidden');
 };
 
 // Build form select functionality
