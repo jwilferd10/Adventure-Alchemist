@@ -272,8 +272,9 @@ const showSavedContent = (savedObj) => {
     remadeEl.appendChild(spanEl);
     textAreaEl.append(remadeEl);
 
-    // Hide limit notification
+    // Hide notifications
     limitNotifyEl.classList.add('hidden');
+    placeholderTextEl.classList.add('hidden');
 };
 
 // Function to save data to localStorage
