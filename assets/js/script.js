@@ -349,10 +349,19 @@ const closeModal = () => {
 
 // clearLocalStorage empties savedContent's list and clears up localStorage, then hide the clearSaves btn
 const clearLocalStorage = () => {
+    // Clear the saves container
     savedContentEl.innerHTML = '';
-    textAreaEl.innerHTML = '';
+
+    // Clear the generatedElements array
+    generatedElements.length = 0;
+
+    // Reset the generated item counter
+    savedItemNum = 1;
+
+    // Hide the saved card and clear saves button
     savedCardEl.classList.add('hidden');
     clearSavesEl.classList.add('hidden');
+
     localStorage.clear();
 };
 
