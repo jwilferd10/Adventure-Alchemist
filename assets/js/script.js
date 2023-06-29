@@ -287,7 +287,11 @@ const saveToLocalStorage = (savedData) => {
 const loadFromLocalStorage = () => {
     let savedContent = JSON.parse(localStorage.getItem('savedData'));
 
+    // Check savedContent
+    console.log('Retrieved savedContent;', savedContent);
+
     if (!savedContent) {
+        console.log('No saved content has been found in localStorage');
         return;
     }
 
@@ -303,6 +307,13 @@ const loadFromLocalStorage = () => {
 
         savedContentEl.append(savedObjElement);
     });
+
+    // Update the savedData array and savedItemNum from localStorage
+    savedData = savedContent;
+    savedItemNum = parseInt(localStorage.getItem('savedItemNum')) || 1;
+
+    console.log('Updated savedData:', savedData);
+    console.log('Updated savedItemNum:', savedItemNum);
 };
 
 // Function to handle deletion of a single saved item
