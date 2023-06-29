@@ -279,6 +279,10 @@ const showSavedContent = (savedObj) => {
 
 // Function to save data to localStorage
 const saveToLocalStorage = (savedData) => {
+    // Use console.log to check content
+    console.log('Saving to localStorage:', savedData);
+    console.log('Saving savedItemNum to localStorage:', savedItemNum);
+
     localStorage.setItem('savedData', JSON.stringify(savedData));
     localStorage.setItem('savedItemNum', savedItemNum.toString());
 };
