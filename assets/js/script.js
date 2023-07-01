@@ -368,7 +368,7 @@ const clearLocalStorage = () => {
     savedContentEl.innerHTML = '';
 
     // Clear the generatedElements array
-    generatedElements.length = 0;
+    savedData.length = 0;
 
     // Reset the generated item counter
     savedItemNum = 1;
