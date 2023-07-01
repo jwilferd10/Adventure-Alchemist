@@ -328,9 +328,6 @@ const handleDelete = (containerDiv, savedObj) => {
     // Collect unique ID to delete it from localStorage
     const saveId = savedObj.id;
 
-    // Load savedData from localStorage
-    let savedData = JSON.parse(localStorage.getItem('savedData'));
-
     // Locate the index of element with the matching ID in savedData
     const index = savedData.findIndex(item => item.id === saveId);
 
