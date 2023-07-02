@@ -207,12 +207,6 @@ const savedContentList = (generatedEl, savedData) => {
     const generatedListEl = createSavedContentEl(savedObj);
     savedContentEl.append(generatedListEl);
 
-    // When generatedListEl is clicked, show the text content
-    generatedListEl.addEventListener('click', () => {
-        clearList();
-        showSavedContent(savedObj);
-    });
-
     // Add savedObj to the savedData array
     savedData.push(savedObj);
     savedItemNum++;
@@ -244,6 +238,11 @@ const createSavedContentEl = (savedObj) => {
     // Create a list element
     const generatedListItem = document.createElement('li');
     generatedListItem.classList.add('text-center', 'listStyle', 'savedItem', 'border', 'border-dark', 'rounded');
+
+    generatedListItem.addEventListener('click', () => {
+        clearList();
+        showSavedContent(savedObj);
+    });
 
     // Increment every time an element is created
     const spanEl = document.createElement('span');
