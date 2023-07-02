@@ -302,11 +302,11 @@ const loadFromLocalStorage = () => {
     savedContent.forEach((item) => {
         const savedObjElement = createSavedContentEl(item);
 
-        // Clear textArea and show content
-        savedObjElement.addEventListener('click', () => {
-            clearList();
-            showSavedContent(item);
-        });
+        // // Clear textArea and show content
+        // savedObjElement.addEventListener('click', () => {
+        //     clearList();
+        //     showSavedContent(item);
+        // });
 
         savedContentEl.append(savedObjElement);
     });
