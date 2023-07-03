@@ -75,6 +75,17 @@ section {
 
 }
 
+#mobileGenBtn {
+    border-radius: 60px;
+    width: 55px;
+    height: 55px;
+    position: fixed;
+    right: 20px;
+    bottom: 30px;
+    box-shadow: 0px 1px 4px black;
+    display: none;
+}
+
 .deleteBtnStyle {
     color: white;
     background: linear-gradient(to right, #880101, #FF5252);
@@ -176,7 +187,6 @@ section {
 }
 
 /* Media Queries */
-
 @media (max-width: 800px) {
     #savedContent {
         padding-left: revert;
@@ -208,6 +218,10 @@ section {
     
     #textArea {
         padding: 20px;
+    }
+
+    #mobileGenBtn {
+        display: block;
     }
 }
 
