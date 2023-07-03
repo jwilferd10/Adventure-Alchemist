@@ -64,12 +64,12 @@ section {
     border: 1px solid black;
 }
 
-#generateBtn {
+.generateBtn {
     background: linear-gradient(to right, #00BFFF, #00fff2, #00ffa6, #00ff66, #00FF00);
     color: black;
 }
 
-#generateBtn:hover {
+.generateBtn:hover {
     color: white;
     background: linear-gradient(to right, #006494, #00818a, #009d7e, #00b564, #00d246);
 

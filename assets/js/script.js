@@ -1,11 +1,12 @@
 // DOM Elements for basic application use 
-const generateBtnEl = document.getElementById('generateBtn');
+const generateBtnEl = document.querySelector('.generateBtn');
 const clearListBtnEl = document.getElementById('clearListBtn');
 const clearSavesEl = document.getElementById('clearSaves');
 const searchSelectionEl = document.getElementById('searchSelection');
 const savedContentEl = document.getElementById('savedContent');
 const savedCardEl = document.getElementById('savedCard');
 const textAreaEl = document.getElementById('textArea');
+const mobileGenBtnEl = document.getElementById('mobileGenBtn');
 
 // DOM Elements for Notifications
 const limitNotifyEl = document.getElementById('limitNotify');
@@ -386,7 +387,7 @@ const clearList = () => {
 
 // Build form select functionality
 const generateButtonHandler = (event) => {
-    event.preventDefault();
+    // event.preventDefault();
 
     // Remove any existing 'remadeEl' 
     const existingRemadeEl = document.querySelector('.remadeEl');
@@ -604,6 +605,10 @@ const randomChance = () => { return Math.random() < 0.5 };
 
 // Event Listeners
 generateBtnEl.addEventListener('click', generateButtonHandler);
+mobileGenBtnEl.addEventListener('click', () => {
+    console.log("Mobile generate button clicked");
+    generateButtonHandler();
+})
 clearListBtnEl.addEventListener('click', clearList); 
 clearSavesEl.addEventListener('click', checkClearSaves);
 searchSelectionEl.addEventListener('change', () => {
