@@ -299,16 +299,9 @@ const loadFromLocalStorage = () => {
         return;
     }
 
-    // Run createSavedContentEl for each savedContent
+    // Run createSavedContentEl for each savedContent and append it
     savedContent.forEach((item) => {
         const savedObjElement = createSavedContentEl(item);
-
-        // // Clear textArea and show content
-        // savedObjElement.addEventListener('click', () => {
-        //     clearList();
-        //     showSavedContent(item);
-        // });
-
         savedContentEl.append(savedObjElement);
     });
 
@@ -386,9 +379,7 @@ const clearList = () => {
 };
 
 // Build form select functionality
-const generateButtonHandler = (event) => {
-    // event.preventDefault();
-
+const generateButtonHandler = () => {
     // Remove any existing 'remadeEl' 
     const existingRemadeEl = document.querySelector('.remadeEl');
 
@@ -404,7 +395,6 @@ const generateButtonHandler = (event) => {
 
     // Collect the value from HTML formSelect and clear searchSelectionEl afterwards 
     let generateParam = searchSelectionEl.value;
-    // searchSelectionEl.value = '';
 
     // generate based by input
     switch (generateParam) {
@@ -606,7 +596,6 @@ const randomChance = () => { return Math.random() < 0.5 };
 // Event Listeners
 generateBtnEl.addEventListener('click', generateButtonHandler);
 mobileGenBtnEl.addEventListener('click', () => {
-    console.log("Mobile generate button clicked");
     generateButtonHandler();
 })
 clearListBtnEl.addEventListener('click', clearList); 
