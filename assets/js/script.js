@@ -421,6 +421,8 @@ const generateButtonHandler = () => {
             break;
         default: 
         alert('Please select a topic!');
+        limitNotifyEl.classList.add('hidden');
+        placeholderTextEl.classList.remove('hidden');
     };
 };
 
