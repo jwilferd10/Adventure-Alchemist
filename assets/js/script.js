@@ -330,6 +330,12 @@ const handleDelete = (containerDiv, savedObj) => {
 
         // Update array to localStorage
         saveToLocalStorage(savedData);
+
+        // Check if savedData length is 0
+        if (savedData.length === 0) {
+            // Hide the saved card
+            savedCardEl.classList.add('hidden');
+        }
     }
 };
 
