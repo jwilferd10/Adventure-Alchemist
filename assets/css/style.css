@@ -170,6 +170,15 @@ section {
     opacity: 0;
 }
 
+footer {
+    width: 100%;
+    background: #00000094;
+    color: white;
+    font-size: 1rem;
+    padding: 20px;
+    border-top: 5px solid #313131cf;
+}
+
 @keyframes flashing {
     0% {opacity: 0}
     50% {opacity: 1}
