@@ -48,6 +48,10 @@ main {
     padding: 1.3rem 1rem;
 }
 
+.cardEmoji {
+    filter: drop-shadow(0.5px 2px 1.5px #000000);
+}
+
 .backgroundEffect {
     background-color: #f5f5f580;
 }
