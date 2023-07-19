@@ -227,6 +227,10 @@ footer {
     #mobileGenBtn {
         display: block;
     }
+
+    .subText {
+        font-size: 3.5vw;
+    }
 }
 
 @media (max-width: 600px ) { 
