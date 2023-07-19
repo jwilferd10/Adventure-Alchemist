@@ -90,6 +90,10 @@ section {
     display: none;
 }
 
+#generatedContentHeader {
+    padding: 20px 0px 10px !important;
+}
+
 .deleteBtnStyle {
     color: white;
     background: linear-gradient(to right, #880101, #FF5252);
