@@ -353,10 +353,9 @@ const checkClearSaves = () => {
 }
 
 // Modal Visibility 
-const closeModal = () => {
-    modalNotifyEl.classList.remove('show');
-    modalNotifyEl.style.display = 'none';
-}
+const showModal = () => modalNotifyEl.classList.add('show');
+
+const closeModal = () => modalNotifyEl.classList.remove('show');
 
 // clearLocalStorage empties savedContent's list and clears up localStorage, then hide the clearSaves btn
 const clearLocalStorage = () => {
@@ -384,6 +383,13 @@ const clearList = () => {
     placeholderTextEl.classList.remove('hidden');
 };
 
+
+const emptyForm = () => {
+    modalHeaderEl.textContent = 'Test'
+    modalTextEl.textContent = 'Test Test'
+    modalActionBtnEl.classList.add('btn-outline-danger');
+    showModal();
+}
 // Build form select functionality
 const generateButtonHandler = () => {
     // Remove any existing 'remadeEl' 
@@ -426,7 +432,8 @@ const generateButtonHandler = () => {
             generateLoot();
             break;
         default: 
-        alert('Please select a topic!');
+        // alert('Please select a topic!');
+        emptyForm();
         limitNotifyEl.classList.add('hidden');
         placeholderTextEl.classList.remove('hidden');
     };
