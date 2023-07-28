@@ -385,9 +385,9 @@ const clearList = () => {
 
 
 const emptyForm = () => {
-    modalHeaderEl.textContent = 'Test'
-    modalTextEl.textContent = 'Test Test'
-    modalActionBtnEl.classList.add('btn-outline-danger');
+    modalHeaderEl.textContent = '🧙‍♂️ Seek the Wisdom of Arcane Insights!';
+    modalTextEl.textContent = 'Embark on an adventure of epic proportions! Select an insight from the sacred scrolls to unravel the secrets that lie ahead. Choose wisely, for your fate is written in the stars, and the realms of magic await your command. Step forth, brave traveler, and let the realm of imagination guide your path! 🌟';
+    modalActionBtnEl.classList.add('hidden');
     showModal();
 }
 // Build form select functionality
