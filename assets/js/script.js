@@ -394,8 +394,8 @@ const emptyForm = () => {
 
 // Show initial modal on app load
 const showInitialModal = () => {
-    modalHeaderEl.textContent = '🧙‍♂️ Welcome to Arcane Insights!';
-    modalTextEl.textContent = 'Embark on an adventure of mystical wonders! Select an insight from the sacred tomes of Arcane Insights to unveil the secrets that lie beyond the veil of reality. Choose wisely, for the arcane forces shall guide your path through enchanted realms and perilous quests. Step forth, brave traveler, and let the arcane knowledge illuminate your journey! ✨';
+    modalHeaderEl.textContent = '🧙‍♂️ Welcome to Adventure Alchemist!';
+    modalTextEl.textContent = 'Embark on an adventure of mystical wonders! Select an option from the sacred Arcane Insights to unveil adventures of epic or mundane proportions. Choose wisely, for the Arcane Insight shall divine your path through enchanted realms and perilous quests. So step forth, brave traveler, and let the arcane knowledge illuminate your journey! ✨';
   
     modalActionBtnEl.classList.remove('btn-outline-danger');
     modalActionBtnEl.classList.add('hidden');
