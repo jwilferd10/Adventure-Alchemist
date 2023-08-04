@@ -345,6 +345,7 @@ const checkClearSaves = () => {
     modalTextEl.textContent = "Clicking 'Confirm' will clear ALL saves, are you sure?"
 
     modalActionBtnEl.classList.add('btn-outline-danger');
+    modalActionBtnEl.classList.remove('hidden');
     modalActionBtnEl.textContent = 'Clear Saves';
 
     modalActionBtnEl.addEventListener('click', () => {
@@ -385,11 +386,23 @@ const clearList = () => {
 
 
 const emptyForm = () => {
-    modalHeaderEl.textContent = '🧙‍♂️ Seek the Wisdom of Arcane Insights!';
-    modalTextEl.textContent = 'Embark on an adventure of epic proportions! Select an insight from the sacred scrolls to unravel the secrets that lie ahead. Choose wisely, for your fate is written in the stars, and the realms of magic await your command. Step forth, brave traveler, and let the realm of imagination guide your path! 🌟';
+    modalHeaderEl.textContent = 'Please select an insight';
+    modalTextEl.textContent = 'The form is currently empty. Select an insight and begin.';
     modalActionBtnEl.classList.add('hidden');
     showModal();
 }
+
+// Show initial modal on app load
+const showInitialModal = () => {
+    modalHeaderEl.textContent = '🧙‍♂️ Welcome to Arcane Insights!';
+    modalTextEl.textContent = 'Embark on an adventure of mystical wonders! Select an insight from the sacred tomes of Arcane Insights to unveil the secrets that lie beyond the veil of reality. Choose wisely, for the arcane forces shall guide your path through enchanted realms and perilous quests. Step forth, brave traveler, and let the arcane knowledge illuminate your journey! ✨';
+  
+    modalActionBtnEl.classList.remove('btn-outline-danger');
+    modalActionBtnEl.classList.add('hidden');
+  
+    showModal();
+}
+
 // Build form select functionality
 const generateButtonHandler = () => {
     // Remove any existing 'remadeEl' 
@@ -620,5 +633,8 @@ searchSelectionEl.addEventListener('change', () => {
 });
 closeModalEl.addEventListener('click', closeModal);
 secondCloseButtonEl.addEventListener('click', closeModal);
+document.addEventListener('DOMContentLoaded', () => {
+    showInitialModal();
+})
 
 loadFromLocalStorage();
