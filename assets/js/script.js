@@ -341,8 +341,8 @@ const handleDelete = (containerDiv, savedObj) => {
 
 // Check with users if they want to clear save list
 const checkClearSaves = () => {
-    modalHeaderEl.textContent = "Let's Double Check..."
-    modalTextEl.textContent = "Clicking 'Confirm' will clear ALL saves, are you sure?"
+    modalHeaderEl.textContent = "🔍 Let's Double Check... 🔍";
+    modalTextEl.textContent = "⚠️ Clicking 'Confirm' will wipe away ALL your cherished saves. Are you absolutely certain about this daring decision?";
 
     modalActionBtnEl.classList.add('btn-outline-danger');
     modalActionBtnEl.classList.remove('hidden');
