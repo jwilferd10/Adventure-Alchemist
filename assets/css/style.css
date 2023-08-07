@@ -11,6 +11,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    font-family: 'Romanesco', cursive;
 }
 
 main {
@@ -34,6 +35,10 @@ img {
 #gitHubLink {
     text-decoration: none;
     color: white !important;
+}
+
+.cinzelFont {
+    font-family: 'Cinzel Decorative', cursive;
 }
 
 .card {
