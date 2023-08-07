@@ -26,6 +26,11 @@ main {
     padding: 0.5rem 0 2rem;
 }
 
+img {
+    height: auto;
+    width: 50%;
+}
+
 #gitHubLink {
     text-decoration: none;
     color: white !important;
@@ -288,5 +293,10 @@ footer {
         font-size: 6vw;
         white-space: nowrap;
         overflow: hidden;
+    }
+
+    img {
+        height: auto;
+        width: 80%;
     }
 }
