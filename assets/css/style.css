@@ -41,6 +41,15 @@ img {
     font-family: 'Cinzel Decorative', cursive;
 }
 
+.formCard {
+    background-color: #515151;
+    color: white;
+}
+
+select {
+    background: whitesmoke;
+}
+
 .card {
     width: 60%;
     margin-left: auto;
