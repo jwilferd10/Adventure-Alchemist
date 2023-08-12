@@ -542,18 +542,12 @@ const randomChance = () => { return Math.random() < 0.5 };
 
 // Event Listeners
 generateBtnEl.addEventListener('click', generateButtonHandler);
-mobileGenBtnEl.addEventListener('click', () => {
-    generateButtonHandler();
-})
+mobileGenBtnEl.addEventListener('click', () => generateButtonHandler());
 clearListBtnEl.addEventListener('click', clearList); 
 clearSavesEl.addEventListener('click', checkClearSaves);
-searchSelectionEl.addEventListener('change', () => {
-    generateBtnEl.focus();
-});
+searchSelectionEl.addEventListener('change', () => generateBtnEl.focus());
 closeModalEl.addEventListener('click', closeModal);
 secondCloseButtonEl.addEventListener('click', closeModal);
-document.addEventListener('DOMContentLoaded', () => {
-    showInitialModal();
-})
+document.addEventListener('DOMContentLoaded', () => showInitialModal());
 
 loadFromLocalStorage();
