@@ -2,13 +2,6 @@
 import { clearSavesEl, savedContentEl, savedCardEl } from './dom-elements.js';
 import { savedData, savedItemNum, clearList, showSavedContent } from './script.js';
 
-
-// // Retrieve value from localStorage otherwise create empty array
-// export let savedData = JSON.parse(localStorage.getItem('savedData')) || [];
-
-// // Retrieve value from localStorage, default 1 if no value is found
-// export let savedItemNum = parseInt(localStorage.getItem('savedItemNum')) || 1;
-
 // Function to save data to localStorage
 export let saveToLocalStorage = (savedData) => {
     // Use console.log to check content
