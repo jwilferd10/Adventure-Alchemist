@@ -18,6 +18,13 @@ import {
     secondCloseButtonEl
 } from './dom-elements.js';
 
+// localStorage 
+import { 
+    saveToLocalStorage, 
+    loadFromLocalStorage, 
+    createSavedContentEl 
+} from './localstorage.js';
+
 // Dungeon Parameters
 import {
     interiorDungeonThemes,
@@ -28,7 +35,7 @@ import {
     interiorAmbiance,
     exteriorAmbiance,
     areaDifficulty,
-  } from './dungeon-parameters.js';
+} from './dungeon-parameters.js';
 
 // Array that collects all existing Dungeon Parameters 
 const dungeonInfo = [
@@ -46,10 +53,10 @@ const dungeonInfo = [
 const generatedElements = [];
 
 // Retrieve value from localStorage otherwise create empty array
-let savedData = JSON.parse(localStorage.getItem('savedData')) || [];
+export let savedData = JSON.parse(localStorage.getItem('savedData')) || [];
 
-// Retrieve value from localStorage, default 1 if no value is found
-let savedItemNum = parseInt(localStorage.getItem('savedItemNum')) || 1;
+// // Retrieve value from localStorage, default 1 if no value is found
+export let savedItemNum = parseInt(localStorage.getItem('savedItemNum')) || 1;
 
 // Counter for generating unique IDs
 let idCounter = 0;
@@ -136,51 +143,51 @@ const savedContentList = (generatedEl, savedData) => {
 };
 
 
-// Append an HTML element to 'Saved Content'
-const createSavedContentEl = (savedObj) => {
-    // Create a container div to hold the list item and the delete button
-    const containerDiv = document.createElement('div');
-    containerDiv.classList.add('d-flex', 'flex-column', 'align-items-center');
+// // Append an HTML element to 'Saved Content'
+// const createSavedContentEl = (savedObj) => {
+//     // Create a container div to hold the list item and the delete button
+//     const containerDiv = document.createElement('div');
+//     containerDiv.classList.add('d-flex', 'flex-column', 'align-items-center');
 
-    // Set the unique ID as a data attribute on the container div
-    containerDiv.setAttribute('data-save-id', savedObj.id);
+//     // Set the unique ID as a data attribute on the container div
+//     containerDiv.setAttribute('data-save-id', savedObj.id);
 
-    // Create the delete button element
-    const deleteButton = document.createElement('button');
-    deleteButton.textContent = 'Delete';
-    deleteButton.classList.add('btn', 'border', 'border-dark', 'rounded', 'btn-danger');
-    deleteButton.addEventListener('click', () => {
-        handleDelete(containerDiv, savedObj);
-    });
+//     // Create the delete button element
+//     const deleteButton = document.createElement('button');
+//     deleteButton.textContent = 'Delete';
+//     deleteButton.classList.add('btn', 'border', 'border-dark', 'rounded', 'btn-danger');
+//     deleteButton.addEventListener('click', () => {
+//         handleDelete(containerDiv, savedObj);
+//     });
 
-    containerDiv.appendChild(deleteButton);
+//     containerDiv.appendChild(deleteButton);
 
-    // Create a list element
-    const generatedListItem = document.createElement('li');
-    generatedListItem.classList.add('text-center', 'listStyle', 'savedItem', 'border', 'border-dark', 'rounded');
+//     // Create a list element
+//     const generatedListItem = document.createElement('li');
+//     generatedListItem.classList.add('text-center', 'listStyle', 'savedItem', 'border', 'border-dark', 'rounded');
 
-    generatedListItem.addEventListener('click', () => {
-        clearList();
-        showSavedContent(savedObj);
-    });
+//     generatedListItem.addEventListener('click', () => {
+//         clearList();
+//         showSavedContent(savedObj);
+//     });
 
-    // Increment every time an element is created
-    const spanEl = document.createElement('span');
-    spanEl.textContent = `Save ${savedObj.id}`;
+//     // Increment every time an element is created
+//     const spanEl = document.createElement('span');
+//     spanEl.textContent = `Save ${savedObj.id}`;
 
-    // Append span element to generatedListItem
-    generatedListItem.appendChild(spanEl);
+//     // Append span element to generatedListItem
+//     generatedListItem.appendChild(spanEl);
 
-    containerDiv.appendChild(generatedListItem);
+//     containerDiv.appendChild(generatedListItem);
 
-    savedCardEl.classList.remove('hidden');
-    clearSavesEl.classList.remove('hidden');
+//     savedCardEl.classList.remove('hidden');
+//     clearSavesEl.classList.remove('hidden');
 
-    return containerDiv;
-};
+//     return containerDiv;
+// };
 
 // Recreate the textContent from generatedEl when invoked
-const showSavedContent = (savedObj) => {
+export const showSavedContent = (savedObj) => {
     const remadeEl = document.createElement('li');
     remadeEl.classList.add('text-center', 'listStyle', 'border', 'border-dark', 'rounded', 'remadeEl');
 
@@ -196,41 +203,41 @@ const showSavedContent = (savedObj) => {
     placeholderTextEl.classList.add('hidden');
 };
 
-// Function to save data to localStorage
-const saveToLocalStorage = (savedData) => {
-    // Use console.log to check content
-    console.log('Saving to localStorage:', savedData);
-    console.log('Saving savedItemNum to localStorage:', savedItemNum);
+// // Function to save data to localStorage
+// const saveToLocalStorage = (savedData) => {
+//     // Use console.log to check content
+//     console.log('Saving to localStorage:', savedData);
+//     console.log('Saving savedItemNum to localStorage:', savedItemNum);
 
-    localStorage.setItem('savedData', JSON.stringify(savedData));
-    localStorage.setItem('savedItemNum', savedItemNum.toString());
-};
+//     localStorage.setItem('savedData', JSON.stringify(savedData));
+//     localStorage.setItem('savedItemNum', savedItemNum.toString());
+// };
 
-// Function to load data from localStorage
-const loadFromLocalStorage = () => {
-    let savedContent = JSON.parse(localStorage.getItem('savedData'));
+// // Function to load data from localStorage
+// const loadFromLocalStorage = () => {
+//     let savedContent = JSON.parse(localStorage.getItem('savedData'));
 
-    // Check savedContent
-    console.log('Retrieved savedContent;', savedContent);
+//     // Check savedContent
+//     console.log('Retrieved savedContent;', savedContent);
 
-    if (!savedContent) {
-        console.log('No saved content has been found in localStorage');
-        return;
-    }
+//     if (!savedContent) {
+//         console.log('No saved content has been found in localStorage');
+//         return;
+//     }
 
-    // Run createSavedContentEl for each savedContent and append it
-    savedContent.forEach((item) => {
-        const savedObjElement = createSavedContentEl(item);
-        savedContentEl.append(savedObjElement);
-    });
+//     // Run createSavedContentEl for each savedContent and append it
+//     savedContent.forEach((item) => {
+//         const savedObjElement = createSavedContentEl(item);
+//         savedContentEl.append(savedObjElement);
+//     });
 
-    // Update the savedData array and savedItemNum from localStorage
-    savedData = savedContent;
-    savedItemNum = parseInt(localStorage.getItem('savedItemNum')) || 1;
+//     // Update the savedData array and savedItemNum from localStorage
+//     savedData = savedContent;
+//     savedItemNum = parseInt(localStorage.getItem('savedItemNum')) || 1;
 
-    console.log('Updated savedData:', savedData);
-    console.log('Updated savedItemNum:', savedItemNum);
-};
+//     console.log('Updated savedData:', savedData);
+//     console.log('Updated savedItemNum:', savedItemNum);
+// };
 
 // Function to handle deletion of a single saved item
 const handleDelete = (containerDiv, savedObj) => {
@@ -278,7 +285,7 @@ const showModal = () => modalNotifyEl.classList.add('show');
 const closeModal = () => modalNotifyEl.classList.remove('show');
 
 // clearLocalStorage empties savedContent's list and clears up localStorage, then hide the clearSaves btn
-const clearLocalStorage = () => {
+let clearLocalStorage = () => {
     // Clear the saves container
     savedContentEl.innerHTML = '';
 
@@ -296,7 +303,7 @@ const clearLocalStorage = () => {
 };
 
 // clearList empties the array and sets textAreaEl to an empty string
-const clearList = () => {
+export const clearList = () => {
     generatedElements.length = 0;
     textAreaEl.innerHTML = '';
     limitNotifyEl.classList.add('hidden');
