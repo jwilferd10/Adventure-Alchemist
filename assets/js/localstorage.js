@@ -30,10 +30,7 @@ export let loadFromLocalStorage = () => {
         savedContentEl.append(savedObjElement);
     });
 
-    // Update the savedData array and savedItemNum from localStorage
-    // savedData = savedContent;
-    // savedItemNum = parseInt(localStorage.getItem('savedItemNum')) || 1;
-
+    // Test logs
     console.log('Updated savedData:', savedData);
     console.log('Updated savedItemNum:', savedItemNum);
 };

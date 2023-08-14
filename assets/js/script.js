@@ -232,7 +232,7 @@ const emptyForm = () => {
     modalTextEl.textContent = 'The form is currently empty. Select an insight and begin.';
     modalActionBtnEl.classList.add('hidden');
     showModal();
-}
+};
 
 // Show initial modal on app load
 const showInitialModal = () => {
@@ -287,7 +287,6 @@ const generateButtonHandler = () => {
             generateLoot();
             break;
         default: 
-        // alert('Please select a topic!');
         emptyForm();
         limitNotifyEl.classList.add('hidden');
         placeholderTextEl.classList.remove('hidden');
