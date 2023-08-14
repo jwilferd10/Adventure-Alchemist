@@ -156,7 +156,7 @@ export const showSavedContent = (savedObj) => {
 };
 
 // Function to handle deletion of a single saved item
-const handleDelete = (containerDiv, savedObj) => {
+export const handleDelete = (containerDiv, savedObj) => {
     // Remove HTML
     containerDiv.remove();
 

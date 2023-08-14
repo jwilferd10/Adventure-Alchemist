@@ -1,6 +1,6 @@
 // Basic Application Use 
 import { clearSavesEl, savedContentEl, savedCardEl } from './dom-elements.js';
-import { savedData, savedItemNum, clearList, showSavedContent } from './script.js';
+import { savedData, savedItemNum, clearList, showSavedContent, handleDelete } from './script.js';
 
 // Function to save data to localStorage
 export let saveToLocalStorage = (savedData) => {
