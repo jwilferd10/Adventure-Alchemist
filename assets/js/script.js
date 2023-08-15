@@ -33,6 +33,15 @@ import {
     areaDifficulty,
 } from './dungeon-parameters.js';
 
+// Modal-Handler
+import {
+    showModal,
+    closeModal,
+    showClearSavesConfirmation,
+    emptyForm,
+    showInitialModal
+} from './modal-handler.js';
+
 // Array that collects all existing Dungeon Parameters 
 const dungeonInfo = [
     interiorDungeonThemes,
@@ -181,42 +190,42 @@ export const handleDelete = (containerDiv, savedObj) => {
     }
 };
 
-// Check with users if they want to clear save list
-const checkClearSaves = () => {
-    modalHeaderEl.textContent = "🔍 Let's Double Check... 🔍";
-    modalTextEl.textContent = "⚠️ Clicking 'Confirm' will wipe away ALL your cherished saves. Are you absolutely certain about this daring decision?";
+// // Check with users if they want to clear save list
+// const showClearSavesConfirmation = () => {
+//     modalHeaderEl.textContent = "🔍 Let's Double Check... 🔍";
+//     modalTextEl.textContent = "⚠️ Clicking 'Confirm' will wipe away ALL your cherished saves. Are you absolutely certain about this daring decision?";
 
-    modalActionBtnEl.classList.add('btn-outline-danger');
-    modalActionBtnEl.classList.remove('hidden');
-    modalActionBtnEl.textContent = 'Clear Saves';
+//     modalActionBtnEl.classList.add('btn-outline-danger');
+//     modalActionBtnEl.classList.remove('hidden');
+//     modalActionBtnEl.textContent = 'Clear Saves';
 
-    modalActionBtnEl.addEventListener('click', () => {
-        clearLocalStorage();
-    });
-}
+//     modalActionBtnEl.addEventListener('click', () => {
+//         clearLocalStorage();
+//     });
+// };
 
 // Modal Visibility 
-const showModal = () => modalNotifyEl.classList.add('show');
+// const showModal = () => modalNotifyEl.classList.add('show');
 
-const closeModal = () => modalNotifyEl.classList.remove('show');
+// const closeModal = () => modalNotifyEl.classList.remove('show');
 
-// clearLocalStorage empties savedContent's list and clears up localStorage, then hide the clearSaves btn
-let clearLocalStorage = () => {
-    // Clear the saves container
-    savedContentEl.innerHTML = '';
+// // clearLocalStorage empties savedContent's list and clears up localStorage, then hide the clearSaves btn
+// let clearLocalStorage = () => {
+//     // Clear the saves container
+//     savedContentEl.innerHTML = '';
 
-    // Clear the generatedElements array
-    savedData.length = 0;
+//     // Clear the generatedElements array
+//     savedData.length = 0;
 
-    // Reset the generated item counter
-    savedItemNum = 1;
+//     // Reset the generated item counter
+//     savedItemNum = 1;
 
-    // Hide the saved card and clear saves button
-    savedCardEl.classList.add('hidden');
-    clearSavesEl.classList.add('hidden');
+//     // Hide the saved card and clear saves button
+//     savedCardEl.classList.add('hidden');
+//     clearSavesEl.classList.add('hidden');
 
-    localStorage.clear();
-};
+//     localStorage.clear();
+// };
 
 // clearList empties the array and sets textAreaEl to an empty string
 export const clearList = () => {
@@ -227,23 +236,23 @@ export const clearList = () => {
 };
 
 
-const emptyForm = () => {
-    modalHeaderEl.textContent = 'Please select an insight';
-    modalTextEl.textContent = 'The form is currently empty. Select an insight and begin.';
-    modalActionBtnEl.classList.add('hidden');
-    showModal();
-};
+// const emptyForm = () => {
+//     modalHeaderEl.textContent = 'Please select an insight';
+//     modalTextEl.textContent = 'The form is currently empty. Select an insight and begin.';
+//     modalActionBtnEl.classList.add('hidden');
+//     showModal();
+// };
 
-// Show initial modal on app load
-const showInitialModal = () => {
-    modalHeaderEl.textContent = '🧙‍♂️ Welcome to Adventure Alchemist!';
-    modalTextEl.textContent = 'Embark on an adventure of mystical wonders! Select an option from the sacred Arcane Insights to unveil adventures of epic or mundane proportions. Choose wisely, for the Arcane Insight shall divine your path through enchanted realms and perilous quests. So step forth, brave traveler, and let the arcane knowledge illuminate your journey! ✨';
+// // Show initial modal on app load
+// const showInitialModal = () => {
+//     modalHeaderEl.textContent = '🧙‍♂️ Welcome to Adventure Alchemist!';
+//     modalTextEl.textContent = 'Embark on an adventure of mystical wonders! Select an option from the sacred Arcane Insights to unveil adventures of epic or mundane proportions. Choose wisely, for the Arcane Insight shall divine your path through enchanted realms and perilous quests. So step forth, brave traveler, and let the arcane knowledge illuminate your journey! ✨';
   
-    modalActionBtnEl.classList.remove('btn-outline-danger');
-    modalActionBtnEl.classList.add('hidden');
+//     modalActionBtnEl.classList.remove('btn-outline-danger');
+//     modalActionBtnEl.classList.add('hidden');
   
-    showModal();
-}
+//     showModal();
+// }
 
 // Build form select functionality
 const generateButtonHandler = () => {
@@ -464,12 +473,12 @@ const randomChance = () => { return Math.random() < 0.5 };
 
 // Event Listeners
 generateBtnEl.addEventListener('click', generateButtonHandler);
-mobileGenBtnEl.addEventListener('click', () => generateButtonHandler());
+mobileGenBtnEl.addEventListener('click', generateButtonHandler);
 clearListBtnEl.addEventListener('click', clearList); 
-clearSavesEl.addEventListener('click', checkClearSaves);
+clearSavesEl.addEventListener('click', showClearSavesConfirmation);
 searchSelectionEl.addEventListener('change', () => generateBtnEl.focus());
 closeModalEl.addEventListener('click', closeModal);
 secondCloseButtonEl.addEventListener('click', closeModal);
-document.addEventListener('DOMContentLoaded', () => showInitialModal());
+document.addEventListener('DOMContentLoaded', showInitialModal);
 
 loadFromLocalStorage();

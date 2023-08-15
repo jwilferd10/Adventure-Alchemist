@@ -77,3 +77,21 @@ export const createSavedContentEl = (savedObj) => {
 
     return containerDiv;
 };
+
+// clearLocalStorage empties savedContent's list and clears up localStorage, then hide the clearSaves btn
+export const clearLocalStorage = () => {
+    // Clear the saves container
+    savedContentEl.innerHTML = '';
+
+    // Clear the generatedElements array
+    savedData.length = 0;
+
+    // Reset the generated item counter
+    savedItemNum = 1;
+
+    // Hide the saved card and clear saves button
+    savedCardEl.classList.add('hidden');
+    clearSavesEl.classList.add('hidden');
+
+    localStorage.clear();
+};
