@@ -30,12 +30,7 @@ import {
 } from './dungeon-parameters.js';
 
 // Modal-Handler
-import {
-    closeModal,
-    showClearSavesConfirmation,
-    emptyForm,
-    showInitialModal
-} from './modal-handler.js';
+import { closeModal, showClearSavesConfirmation, emptyForm, showInitialModal } from './modal-handler.js';
 
 // Array that collects all existing Dungeon Parameters 
 const dungeonInfo = [
@@ -62,9 +57,7 @@ export let savedItemNum = parseInt(localStorage.getItem('savedItemNum')) || 1;
 let idCounter = 0;
 
 // Function to reset savedItemNum
-export const resetSavedItemNum = () => {
-    savedItemNum = 1;
-};
+export const resetSavedItemNum = () => { savedItemNum = 1 };
 
 // Function to generate a unique ID
 const generateUniqueID = () => `generated-${idCounter++}`;
