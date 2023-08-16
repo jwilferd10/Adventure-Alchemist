@@ -10,10 +10,6 @@ import {
     mobileGenBtnEl,
     limitNotifyEl,
     placeholderTextEl,
-    modalNotifyEl,
-    modalHeaderEl,
-    modalTextEl,
-    modalActionBtnEl,
     closeModalEl,
     secondCloseButtonEl
 } from './dom-elements.js';
@@ -35,7 +31,6 @@ import {
 
 // Modal-Handler
 import {
-    showModal,
     closeModal,
     showClearSavesConfirmation,
     emptyForm,
