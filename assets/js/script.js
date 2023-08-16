@@ -61,6 +61,11 @@ export let savedItemNum = parseInt(localStorage.getItem('savedItemNum')) || 1;
 // Counter for generating unique IDs
 let idCounter = 0;
 
+// Function to reset savedItemNum
+export const resetSavedItemNum = () => {
+    savedItemNum = 1;
+};
+
 // Function to generate a unique ID
 const generateUniqueID = () => `generated-${idCounter++}`;
 

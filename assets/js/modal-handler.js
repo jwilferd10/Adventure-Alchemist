@@ -35,7 +35,5 @@ export const showClearSavesConfirmation = () => {
     modalActionBtnEl.classList.remove('hidden');
     modalActionBtnEl.textContent = 'Clear Saves';
 
-    modalActionBtnEl.addEventListener('click', () => {
-        clearLocalStorage();
-    });
+    modalActionBtnEl.addEventListener('click', clearLocalStorage);
 };

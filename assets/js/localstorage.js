@@ -1,6 +1,6 @@
 // Basic Application Use 
 import { clearSavesEl, savedContentEl, savedCardEl } from './dom-elements.js';
-import { savedData, savedItemNum, clearList, showSavedContent, handleDelete } from './script.js';
+import { savedData, savedItemNum, resetSavedItemNum, clearList, showSavedContent, handleDelete } from './script.js';
 
 // Function to save data to localStorage
 export let saveToLocalStorage = (savedData) => {
@@ -87,7 +87,7 @@ export const clearLocalStorage = () => {
     savedData.length = 0;
 
     // Reset the generated item counter
-    savedItemNum = 1;
+    resetSavedItemNum();
 
     // Hide the saved card and clear saves button
     savedCardEl.classList.add('hidden');
