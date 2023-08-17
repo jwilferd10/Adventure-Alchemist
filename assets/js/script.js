@@ -242,8 +242,7 @@ const generateButtonHandler = () => {
 // generate every topic all at once 
 const generateDungeon = () => {
     const numberOfRooms = setRoomAmount();
-    const theme = setTheme();
-    const ambiance = setAmbiance();
+    const themeAndAmbiance = setTheme();
     const monstersArr = setMonsterType();
     const monsterStr = formatMonsterStr(monstersArr);
     const trap = setTrap();
@@ -251,7 +250,7 @@ const generateDungeon = () => {
     const difficulty = setDifficulty();
 
     // ternary operator is checking whether traps are in or not
-    appendGeneratedText(`You have entered a ${theme} with ${numberOfRooms} ${numberOfRooms === 1 ? 'noteworthy area.' : 'noteworthy areas.'} ${ambiance} Be cautious of the ${monsterStr} that may lurk about. ${trap ? ` You're bound to run into a ${trap} Trap somewhere.` : ''} ${difficulty} Perhaps you shall find ${lootItem} amidst the shadows.`);
+    appendGeneratedText(`You have entered a ${themeAndAmbiance.theme} with ${numberOfRooms} ${numberOfRooms === 1 ? 'noteworthy area.' : 'noteworthy areas.'} ${themeAndAmbiance.ambiance} Be cautious of the ${monsterStr} that may lurk about. ${trap ? ` You're bound to run into a ${trap} Trap somewhere.` : ''} ${difficulty} Perhaps you shall find ${lootItem} amidst the shadows.`);
 };
 
 // generate theme
@@ -259,7 +258,6 @@ const generateDungeonTheme = () => {
     const theme = setTheme();
     const ambiance = setAmbiance();
     appendGeneratedText(`You have entered a ${theme}. ${ambiance}`);
-
 };
 
 // generate room amount
@@ -306,15 +304,15 @@ const setRoomAmount = () =>  Math.floor(Math.random() * 30) + 1;
 
 // Randomly select theme
 const setTheme = () => {
-    let dungeonLocation = randomChance();
+    // Decide if dungeonLocation is true or false 
+    const dungeonLocation = randomChance();
 
-    // If True, return exterior dungeon themes
-    if (dungeonLocation) {
-        return getRandomItem(dungeonInfo[0]);
-    } else {
-        // If false, return interior dungeon themes
-        return getRandomItem(dungeonInfo[1]);
-    };
+    // Based on the results, theme and ambiance will either be exterior or interior settings
+    const theme = dungeonLocation ? getRandomItem(dungeonInfo[0]) : getRandomItem(dungeonInfo[1]);
+    const ambianceArray = dungeonLocation ? dungeonInfo[6] : dungeonInfo[5];
+    const ambiance = getRandomItem(ambianceArray);
+
+    return { theme, ambiance };
 };
 
 // Randomly select monster type
@@ -379,13 +377,6 @@ const setTrap = () => {
 
 // Randomly select loot type
 const setLoot = () => getRandomItem(dungeonInfo[4]);
-
-// setAmbiance
-const setAmbiance = (dungeonLocation) =>  { 
-    // Check to see if dungeonLocation is true or false and pass array data appropriately
-    let ambianceArray = dungeonLocation ? dungeonInfo[5] : dungeonInfo[6];
-    return getRandomItem(ambianceArray);
-};
 
 // set difficulty
 const setDifficulty = () => getRandomItem(dungeonInfo[7]);
