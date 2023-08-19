@@ -21,10 +21,9 @@ Coming Soon!
 ## :wave: Description: 
 Adventure Alchemist is an application with an aim to help make the process of generating dungeon scenarios for your tabletop RPGs, specifically DnD campaigns, easier and more accessible. This app utilizes a variety of algorithms and user preference to create, save and recall unique scenarios for the user. When generating a scenario the application takes into account various factors such as dungeon theme, size, and difficulty. 
 
-With Adventure Alchemist, dungeon masters and players can quickly generate creative and exciting scenarios to spice up their campaigns or spark up some ideas. Keeping the gameplay fresh and engaging!
+With Adventure Alchemist, both dungeon masters and players can swiftly conjure up imaginative and enthralling scenarios, injecting a fresh dose of excitement into their campaigns. This dynamic tool ensures gameplay remains engaging and invigorating.
 
-
-Thanks so much for checking out Adventure Alchemist! This application was an accumulation of ideas and practices that I've picked up from past projects, I found myself stuck on errors a few times - such as working with localStorage and figuring out why it's unique ID wasn't going through. This project was also a  commission and I recieved the green-light to keep this repository public for everyone to use. I devoted time into ensuring the code is modularized and easily modifiable. It's my hope that this application helps YOU out in anyway possible. Feel free to take a look through the files and fork it if you'd like, Happy Coding!
+Thanks so much for checking out Adventure Alchemist! The development journey of Adventure Alchemist has been a culmination of insights and lessons drawn from previous projects. Overcoming challenges, including nuances with localStorage and unique identifier issues, has been an integral part of refining the application. This project was also a  commission and I received the green-light to keep this repository public for everyone to use. I devoted time into ensuring the code is modularized and easily modifiable. It's my hope that this application helps YOU out in anyway possible. Feel free to take a look through the files and fork it if you'd like, Happy Coding!
 
 ## :book: User Story:
 **AS A Dungeon Master for a DnD Campaign**
