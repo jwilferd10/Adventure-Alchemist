@@ -1,5 +1,6 @@
-import { appendGeneratedText, dungeonInfo } from "./main.js";
+import { dungeonInfo } from "./main.js";
 import { monsterTypes } from './dungeon-parameters.js';
+import { generateUniqueID, createListElement, savedContentList, showSavedContent, handleDelete, clearList, appendGeneratedText } from './utilities.js';
 
 // generate every topic all at once 
 export const generateDungeon = () => {
