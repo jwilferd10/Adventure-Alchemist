@@ -3,8 +3,6 @@ import { modalNotifyEl, modalHeaderEl, modalTextEl, modalActionBtnEl } from './d
 
 import { clearLocalStorage } from './localstorage.js';
 
-import { generateUniqueID, createListElement, savedContentList, showSavedContent, handleDelete, clearList, appendGeneratedText } from './utilities.js';
-
 // Modal Functionality 
 export const showModal = () => modalNotifyEl.classList.add('show');
 export const closeModal = () => modalNotifyEl.classList.remove('show');

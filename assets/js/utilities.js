@@ -4,7 +4,6 @@ import { savedContentEl, savedCardEl, textAreaEl, limitNotifyEl, placeholderText
 // localStorage 
 import { saveToLocalStorage, createSavedContentEl } from './localstorage.js';
 
-
 // Retrieve value from localStorage otherwise create empty array
 export let savedData = JSON.parse(localStorage.getItem('savedData')) || [];
 

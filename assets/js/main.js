@@ -1,21 +1,8 @@
 // Basic Application Use 
-import {
-    generateBtnEl,
-    clearListBtnEl,
-    clearSavesEl,
-    searchSelectionEl,
-    savedContentEl,
-    savedCardEl,
-    textAreaEl,
-    mobileGenBtnEl,
-    limitNotifyEl,
-    placeholderTextEl,
-    closeModalEl,
-    secondCloseButtonEl
-} from './dom-elements.js';
+import { generateBtnEl, clearListBtnEl, clearSavesEl, searchSelectionEl, mobileGenBtnEl, limitNotifyEl, placeholderTextEl, closeModalEl, secondCloseButtonEl } from './dom-elements.js';
 
 // localStorage 
-import { saveToLocalStorage, loadFromLocalStorage, createSavedContentEl } from './localstorage.js';
+import { loadFromLocalStorage } from './localstorage.js';
 
 // Dungeon Parameters
 import { interiorDungeonThemes, exteriorDungeonThemes, monsterTypes, trapTypes, lootType, interiorAmbiance, exteriorAmbiance, areaDifficulty } from './dungeon-parameters.js';
@@ -26,7 +13,8 @@ import { closeModal, showClearSavesConfirmation, emptyForm, showInitialModal } f
 // Scenario-Generation
 import { generateDungeon, generateDungeonTheme, generateRoomAmount, generateDifficulty, generateMonsterType, generateTrap, generateLoot } from './scenario-generation.js';
 
-import { generateUniqueID, createListElement, savedContentList, showSavedContent, handleDelete, clearList, appendGeneratedText } from './utilities.js';
+// Utility Import
+import { clearList } from './utilities.js';
 
 // Array that collects all existing Dungeon Parameters 
 export const dungeonInfo = [
