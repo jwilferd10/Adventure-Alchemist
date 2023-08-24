@@ -1,6 +1,8 @@
-# 🐉 🛠️ Adventure Alchemist 🛠️🐉
+![Adventure Alchemist Logo](assets/images/adventurealchemist.png)
 
-## Unleash Your Creativity With Our Dungeon Generator!
+<h1 align="center">
+  Unleash Your Creativity With Our Dungeon Generator!
+</h1>
 
 :computer: **Live Deployment**: https://jwilferd10.github.io/Adventure-Alchemist/
 
