@@ -1,5 +1,5 @@
 // Basic Application Use 
-import { generateBtnEl, clearListBtnEl, clearSavesEl, searchSelectionEl, mobileGenBtnEl, limitNotifyEl, placeholderTextEl, closeModalEl, secondCloseButtonEl } from './dom-elements.js';
+import { searchSelectionEl, limitNotifyEl, placeholderTextEl } from './dom-elements.js';
 
 // localStorage 
 import { loadFromLocalStorage } from './localstorage.js';
@@ -8,14 +8,12 @@ import { loadFromLocalStorage } from './localstorage.js';
 import { interiorDungeonThemes, exteriorDungeonThemes, monsterTypes, trapTypes, lootType, interiorAmbiance, exteriorAmbiance, areaDifficulty } from './dungeon-parameters.js';
 
 // Modal-Handler
-import { closeModal, showClearSavesConfirmation, emptyForm, showInitialModal } from './modal-handler.js';
+import { emptyForm } from './modal-handler.js';
 
 // Scenario-Generation
 import { generateDungeon, generateDungeonTheme, generateRoomAmount, generateDifficulty, generateMonsterType, generateTrap, generateLoot } from './scenario-generation.js';
 
-// Utility Import
-import { clearList } from './utilities.js';
-
+// Event Handlers
 import { setupEventListeners } from './event-handlers.js';
 
 // Array that collects all existing Dungeon Parameters 
