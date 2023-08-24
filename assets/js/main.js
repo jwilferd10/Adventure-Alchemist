@@ -16,6 +16,8 @@ import { generateDungeon, generateDungeonTheme, generateRoomAmount, generateDiff
 // Utility Import
 import { clearList } from './utilities.js';
 
+import { setupEventListeners } from './event-handlers.js';
+
 // Array that collects all existing Dungeon Parameters 
 export const dungeonInfo = [
     interiorDungeonThemes,
@@ -29,7 +31,7 @@ export const dungeonInfo = [
 ];
 
 // Build form select functionality
-const generateButtonHandler = () => {
+export const generateButtonHandler = () => {
     // Remove any existing 'remadeEl' 
     const existingRemadeEl = document.querySelector('.remadeEl');
 
@@ -76,14 +78,5 @@ const generateButtonHandler = () => {
     };
 };
 
-// Event Listeners
-generateBtnEl.addEventListener('click', generateButtonHandler);
-mobileGenBtnEl.addEventListener('click', generateButtonHandler);
-clearListBtnEl.addEventListener('click', clearList); 
-clearSavesEl.addEventListener('click', showClearSavesConfirmation);
-searchSelectionEl.addEventListener('change', () => generateBtnEl.focus());
-closeModalEl.addEventListener('click', closeModal);
-secondCloseButtonEl.addEventListener('click', closeModal);
-document.addEventListener('DOMContentLoaded', showInitialModal);
-
+setupEventListeners();
 loadFromLocalStorage();
