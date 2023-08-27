@@ -18,7 +18,10 @@
   - [Contact Information](#e-mail-contact-information)
 
 ## :camera: Preview:
-Coming Soon!
+<p float="left">
+  <img src= "assets/images/DesktopImg.png"/>
+  <img src= "assets/images/MobileImg.png"/>
+</p>
 
 ## :wave: Description: 
 Adventure Alchemist is an application with an aim to help make the process of generating dungeon scenarios for your tabletop RPGs, specifically DnD campaigns, easier and more accessible. This app utilizes a variety of algorithms and user preference to create, save and recall unique scenarios for the user. When generating a scenario the application takes into account various factors such as dungeon theme, size, and difficulty. 
