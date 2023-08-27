@@ -1,3 +1,5 @@
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+
 ![Adventure Alchemist Logo](assets/images/adventurealchemist.png)
 
 <h1 align="center">
