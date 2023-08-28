@@ -72,6 +72,23 @@ To use Adventure Alchemist:
 4. Optionally, click the 'generate' button again to generate a new scenario with the same preferences
 
 Repeat steps 1-4 as desired
+
+### Running Locally
+
+To run the Adventure Alchemist app locally, you can use a tool like `http-server`. If you haven't already installed it, you can install it globally using npm:
+
+```bash
+npm install -g http-server
+```
+
+After installing, navigate to the root directory of your Adventure Alchemist project and run the following command:
+
+```
+http-server -p 3000 --cors --module
+```
+This will start an HTTP server that serves Adventure Alchemist on port 3000. You can then access the app by opening your web browser and navigating to `http://localhost:3000`.
+
+Please note that the provided command assumes you have `Node.js` and `npm` installed on your system.
   
 ## :e-mail: Contact Information:
 - ### [jwilferd10](https://github.com/jwilferd10)
