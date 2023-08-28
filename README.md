@@ -26,7 +26,7 @@
 </p>
 
 ## :movie_camera: Demo:
-![image](assets/images/LAADeskGif.gif)
+![image](assets/images/AADeskGif.gif)
 ![image](assets/images/AAMobGif.gif)
 
 ## :wave: Description: 
