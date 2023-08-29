@@ -1,4 +1,5 @@
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+[![GitHub Release](https://img.shields.io/github/release/jwilferd10/Adventure-Alchemist.svg)](https://github.com/jwilferd10/Adventure-Alchemist/releases/latest)
 
 ![Adventure Alchemist Logo](assets/images/adventurealchemist.png)
 
