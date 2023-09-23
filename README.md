@@ -18,7 +18,7 @@
   - [User Story](#book-user-story)
   - [Resources Used](#floppy_disk-resources-used)
   - [Getting Started](#minidisc-usage)
-  - [Contact Information](#e-mail-contact-information)
+  - [Contact Information](#e-mail-contributors-and-contact-information)
 
 ## :camera: Preview:
 <p float="left">
@@ -113,5 +113,7 @@ This will start an HTTP server that serves Adventure Alchemist on port 3000. You
 
 Please note that the provided command assumes you have `Node.js` and `npm` installed on your system.
   
-## :e-mail: Contact Information:
+## :e-mail: Contributors and Contact Information:
 - ### [jwilferd10](https://github.com/jwilferd10)
+- ### [agwal](agwalvisual@gmail.com)
+  - [Digital Portfolio](https://www.escapemotions.com/community/user/Agwal)
