@@ -1,4 +1,5 @@
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+[![GitHub Release](https://img.shields.io/github/release/jwilferd10/Adventure-Alchemist.svg)](https://github.com/jwilferd10/Adventure-Alchemist/releases/latest)
 
 ![Adventure Alchemist Logo](assets/images/adventurealchemist.png)
 
@@ -17,7 +18,7 @@
   - [User Story](#book-user-story)
   - [Resources Used](#floppy_disk-resources-used)
   - [Getting Started](#minidisc-usage)
-  - [Contact Information](#e-mail-contact-information)
+  - [Contact Information](#e-mail-contributors-and-contact-information)
 
 ## :camera: Preview:
 <p float="left">
@@ -26,15 +27,36 @@
 </p>
 
 ## :movie_camera: Demo:
-![image](assets/images/LAADeskGif.gif)
+![image](assets/images/AADeskGif.gif)
 ![image](assets/images/AAMobGif.gif)
 
 ## :wave: Description: 
-Adventure Alchemist is an application with an aim to help make the process of generating dungeon scenarios for your tabletop RPGs, specifically DnD campaigns, easier and more accessible. This app utilizes a variety of algorithms and user preference to create, save and recall unique scenarios for the user. When generating a scenario the application takes into account various factors such as dungeon theme, size, and difficulty. 
 
-With Adventure Alchemist, both dungeon masters and players can swiftly conjure up imaginative and enthralling scenarios, injecting a fresh dose of excitement into their campaigns. This dynamic tool ensures gameplay remains engaging and invigorating.
+### 🔮 Adventure Alchemist: Dungeon Scenario Generator
 
-Thanks so much for checking out Adventure Alchemist! The development journey of Adventure Alchemist has been a culmination of insights and lessons drawn from previous projects. Overcoming challenges, including nuances with localStorage and unique identifier issues, has been an integral part of refining the application. This project was also a  commission and I received the green-light to keep this repository public for everyone to use. I devoted time into ensuring the code is modularized and easily modifiable. It's my hope that this application helps YOU out in anyway possible. Feel free to take a look through the files and fork it if you'd like, Happy Coding!
+Adventure Alchemist is a tool designed to simplify and enhance the process of generating captivating dungeon scenarios for tabletop RPGs, including DnD campaigns. Whether you're a seasoned Dungeon Master or a curious player, this application empowers you to effortlessly create, save, and recall unique scenarios based on your preferences.
+
+If you're looking for ways to change things up on your tabletop games, try us out! 
+
+### 🚀 Features:
+
+- Utilizes algorithms to create imaginative and engaging scenarios.
+- Considers factors such as dungeon theme, interior/exterior setting, size, monster types and difficulty for a more diverse experience.
+- Provides both dungeon masters and players with dynamic and invigorating scenarios.
+
+### 🎯 Modern Approach:
+The development of Adventure Alchemist represents a fusion of insights from previous projects and modern JavaScript techniques. Leveraging arrow functions, the codebase is characterized by concise and readable syntax, enhancing both clarity and maintainability.
+
+Adventure Alchemist is organized into ES6 JavaScript modules, ensuring clean separation of concerns and streamlined maintenance. Modules for DOM manipulation, localStorage management, scenario generation, and user interactions contribute to reusability and easy collaboration.
+
+### 🌐 Accessible and Open:
+Adventure Alchemist originated as a commission and has been made public for the community to benefit from. The repository encourages exploration and collaboration, with the codebase thoughtfully organized and easily modifiable. Feel free to delve into the code, contribute, and customize it to your needs.
+
+### 💭 Developer Notes:
+This application has been a very fun journey, it was immensely entertaining coming up with a variety of scenarios. Most fun was coming up with a framework on how Adventure Alchemist would work, a lot of that development came from back and forth conversations between with the client and I. There's a few more memorable moments I'm taking away from this app, such as troubleshooting and fixing issues with localStorage and adhering to modern techniques by using ES6 modules. 
+
+### 🙏 Thank You!
+For your interest in Adventure Alchemist. I hope this tool enriches your RPG experiences and adds a spark of creativity to your campaigns. Take a moment to explore the repository, and don't hesitate to share your feedback or contribute to the project. Happy coding!
 
 ## :book: User Story:
 **AS A Dungeon Master for a DnD Campaign**
@@ -72,6 +94,26 @@ To use Adventure Alchemist:
 4. Optionally, click the 'generate' button again to generate a new scenario with the same preferences
 
 Repeat steps 1-4 as desired
+
+### Running Locally
+Because Adventure Alchemist is using ES6 Modules, the app WILL NOT function if you use `Open in Browser` (VSCode) 
+
+So to run the app locally, you can use a tool like `http-server`. If you haven't already installed it, you can install it globally using npm:
+
+```bash
+npm install -g http-server
+```
+
+After installing, navigate to the root directory of Adventure Alchemist and run the following command:
+
+```
+http-server -p 3000 --cors --module
+```
+This will start an HTTP server that serves Adventure Alchemist on port 3000. You can then access the app by opening your web browser and navigating to `http://localhost:3000`.
+
+Please note that the provided command assumes you have `Node.js` and `npm` installed on your system.
   
-## :e-mail: Contact Information:
+## :e-mail: Contributors and Contact Information:
 - ### [jwilferd10](https://github.com/jwilferd10)
+- ### [agwal](agwalvisual@gmail.com)
+  - [Digital Portfolio](https://www.escapemotions.com/community/user/Agwal)
